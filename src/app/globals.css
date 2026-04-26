@@ -1,26 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* v4부터 커스텀 설정은 css 공간 안에 @theme을 추가하여 정의합니다 */
+@theme {
+  --color-custom-blue: #0b89ff;
+  --color-custom-gray: #313131;
+  --color-custom-lightgray: #f1f1f2;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(
+    250,
+    250,
+    250
+  ); /* Tailwind v4에선 bg-gray-50 등으로 편하게 가능! */
 }
