@@ -5,6 +5,7 @@
   --color-custom-blue: #0b89ff;
   --color-custom-gray: #313131;
   --color-custom-lightgray: #f1f1f2;
+  --color-custom-darkgray: #7f8992;
 }
 
 html,
@@ -16,4 +17,15 @@ body {
     250,
     250
   ); /* Tailwind v4에선 bg-gray-50 등으로 편하게 가능! */
+}
+
+@utility scrollbar-hide {
+  /* 파이어폭스, IE, 엣지용 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* 크롬, 사파리, 최신 웹킷 브라우저용 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
