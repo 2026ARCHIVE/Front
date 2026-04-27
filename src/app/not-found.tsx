@@ -7,7 +7,13 @@ export default function NotFound() {
   const router = useRouter();
   return (
     <div className="py-7 px-17 flex flex-col gap-10 items-center justify-center">
-      <Image src="/error.png" alt="Error" width={400} height={400} />
+      <Image
+        src="/error.png"
+        alt="Error"
+        width={400}
+        height={400}
+        priority={true}
+      />
       <div className="flex flex-col gap-3.5">
         <h3 className="font-bold text-[18px]">서비스에 접속할 수 없습니다.</h3>
         <p className="text-[#BEC6CD] text-[15px] text-center">
