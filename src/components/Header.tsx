@@ -34,6 +34,8 @@ export default function Header() {
         return "분실물 상세";
       case "/goods/[id]":
         return "굿즈 상세";
+      case "/about":
+        return "Deer for U: ARCHIVE";
       default:
         return "에러";
     }

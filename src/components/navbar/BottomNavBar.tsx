@@ -40,11 +40,11 @@ export default function BottomNavBar() {
 
       <Link
         href="/"
-        className={`flex flex-col items-center text-sm gap-1 w-7.25 h-12.25 justify-between transition-colors ${isActive("/") ? "text-custom-blue" : "text-custom-gray"}`}
+        className={`flex flex-col items-center text-sm gap-1 w-7.25 h-12.25 justify-between transition-colors ${isActive("/") || isActive("/about") ? "text-custom-blue" : "text-custom-gray"}`}
       >
         <HomeIcon />
         <span
-          className={`text-[12px] font-bold ${isActive("/") ? "text-custom-blue" : "text-custom-gray"}`}
+          className={`text-[12px] font-bold ${isActive("/") || isActive("/about") ? "text-custom-blue" : "text-custom-gray"}`}
         >
           홈
         </span>
