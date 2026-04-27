@@ -1,6 +1,6 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import React, { use } from "react";
+import React from "react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -35,7 +35,7 @@ export default function Header() {
       case "/goods/[id]":
         return "굿즈 상세";
       default:
-        return "대동제 2026";
+        return "에러";
     }
   };
 
@@ -46,7 +46,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 flex w-full max-w-md items-center justify-between bg-white px-5 pb-5 pt-18.75 h-31.25">
       <button
         onClick={() => router.back()}
-        className="flex h-8 w-8 items-center justify-center rounded-full text-custom-gray hover:bg-gray-100 transition-colors"
+        className="flex h-8 w-8 items-center justify-center rounded-full text-black hover:bg-gray-100 transition-colors cursor-pointer"
         aria-label="뒤로 가기"
       >
         <svg
