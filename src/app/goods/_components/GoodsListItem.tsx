@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { Goods } from "./GoodsList";
 import { useRouter } from "next/navigation";
+import SoldOutState from "./SoldOutState";
 
 export default function GoodsListItem({
   id,
@@ -30,15 +31,7 @@ export default function GoodsListItem({
           <p className="text-[13px] text-gray-500">{place}</p>
         </div>
 
-        {isSoldOut ? (
-          <p className="text-white bg-red-500 px-2.5 py-1 rounded-md w-fit text-[11px] font-semibold">
-            품절
-          </p>
-        ) : (
-          <p className="text-white bg-[#0B89FF] px-2.5 py-1 rounded-md w-fit text-[11px] font-semibold">
-            판매중
-          </p>
-        )}
+        <SoldOutState isSoldOut={isSoldOut} />
       </div>
     </div>
   );
