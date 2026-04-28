@@ -7,6 +7,20 @@ export default function Header() {
   const router = useRouter();
 
   const getHeaderTitle = () => {
+    if (pathname.startsWith("/event/") && pathname !== "/event")
+      return "이벤트 상세";
+    if (pathname.startsWith("/booths/") && pathname !== "/booths")
+      return "부스 상세";
+    if (
+      pathname.startsWith("/lost-and-found/") &&
+      pathname !== "/lost-and-found"
+    )
+      return "분실물 상세";
+    if (pathname.startsWith("/goods/") && pathname !== "/goods")
+      return "굿즈 상세";
+    if (pathname.startsWith("/notice/") && pathname !== "/notice")
+      return "공지 상세";
+
     switch (pathname) {
       case "/":
         return "홈";
@@ -18,22 +32,12 @@ export default function Header() {
         return "일정";
       case "/notice":
         return "공지";
-      case "/not-found":
-        return "에러";
       case "/event":
         return "이벤트";
       case "/lost-and-found":
         return "분실물";
       case "/goods":
         return "굿즈";
-      case "/event/[id]":
-        return "이벤트 상세";
-      case "/booths/[id]":
-        return "부스 상세";
-      case "/lost-and-found/[id]":
-        return "분실물 상세";
-      case "/goods/[id]":
-        return "굿즈 상세";
       case "/about":
         return "Deer for U: ARCHIVE";
       default:
