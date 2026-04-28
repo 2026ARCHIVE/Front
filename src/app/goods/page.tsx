@@ -1,5 +1,10 @@
-import React from 'react'
+import React from "react";
+import GoodsList from "./_components/GoodsList";
 
 export default function GoodsPage() {
-  return <div>Goods Page</div>;
+  return (
+    <>
+      <GoodsList />
+    </>
+  );
 }
