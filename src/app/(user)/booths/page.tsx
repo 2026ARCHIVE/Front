@@ -31,15 +31,15 @@ export default function BoothsPage() {
     });
   }, [searchKeyword, activeFilter, booths]);
 
-  useEffect(() => {
-    if (searchKeyword.trim() === "관리자") {
+  const handleSearchSubmit = (keyword: string) => {
+    if (keyword.trim() === "관리자") {
       router.push("/admin/login");
     }
-  }, [searchKeyword, router]);
+  };
 
   return (
     <div className="px-8 overflow-y-auto flex-1 h-full pb-24">
-      <SearchBar onSearch={setSearchKeyword} />
+      <SearchBar onSearch={setSearchKeyword} onSubmit={handleSearchSubmit} />
       <Filter onFilterChange={setActiveFilter} activeFilter={activeFilter} />
       {booths.length === 0 ? (
         <div className="flex items-center justify-center h-full mt-10">
