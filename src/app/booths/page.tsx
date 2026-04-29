@@ -5,11 +5,13 @@ import Filter from "./_components/Filter";
 import BoothList from "./_components/BoothList";
 import { BoothData, dummyBooths } from "./_data/boothData";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function BoothsPage() {
   const [searchKeyword, setSearchKeyword] = React.useState("");
   const [activeFilter, setActiveFilter] = React.useState("전체");
   const [booths, setBooths] = React.useState<BoothData[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const timeset = setTimeout(() => {
@@ -28,6 +30,12 @@ export default function BoothsPage() {
       return matchesKeyword && matchesFilter;
     });
   }, [searchKeyword, activeFilter, booths]);
+
+  useEffect(() => {
+    if (searchKeyword.trim() === "관리자") {
+      router.push("/admin/login");
+    }
+  }, [searchKeyword, router]);
 
   return (
     <div className="px-8 overflow-y-auto flex-1 h-full pb-24">
