@@ -1,5 +1,5 @@
-import React from 'react'
+import EventListView from "./_components/EventListView";
 
 export default function EventPage() {
-  return <div>Event Page</div>;
+  return <EventListView />;
 }
