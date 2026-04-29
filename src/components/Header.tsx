@@ -18,8 +18,6 @@ export default function Header() {
       return "분실물 상세";
     if (pathname.startsWith("/goods/") && pathname !== "/goods")
       return "굿즈 상세";
-    if (pathname.startsWith("/notice/") && pathname !== "/notice")
-      return "공지 상세";
 
     switch (pathname) {
       case "/":
@@ -31,7 +29,7 @@ export default function Header() {
       case "/schedule":
         return "일정";
       case "/notice":
-        return "공지";
+        return "공지사항";
       case "/event":
         return "이벤트";
       case "/lost-and-found":
