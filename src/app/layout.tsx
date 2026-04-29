@@ -1,7 +1,5 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import BottomNavBar from "@/components/navbar/BottomNavBar";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "SMU 26 대동제",
@@ -15,13 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="bg-gray-100 antialiased">
-        <div className="mx-auto flex min-h-screen max-w-md flex-col bg-white shadow-lg relative ">
-          <Header />
-          <main className="flex-1 overflow-y-auto pb-28">{children}</main>
-          <BottomNavBar />
-        </div>
-      </body>
+      <body className="bg-gray-100 antialiased">{children}</body>
     </html>
   );
 }
