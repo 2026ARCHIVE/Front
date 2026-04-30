@@ -1,7 +1,5 @@
-import React from 'react'
+import LostAndFoundListView from "./_components/list/LostAndFoundListView";
 
 export default function LostAndFoundPage() {
-  return (
-    <div>Lost and Found Page</div>
-  )
+  return <LostAndFoundListView />;
 }
