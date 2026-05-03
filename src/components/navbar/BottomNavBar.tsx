@@ -13,7 +13,7 @@ export default function BottomNavBar() {
   };
 
   return (
-    <nav className="fixed bottom-0 z-50 flex h-25 w-full max-w-md items-center justify-between rounded-t-2xl bg-white px-10 pb-7.5 ">
+    <nav className="fixed bottom-0 z-50 flex h-25 w-full max-w-md items-center justify-between rounded-t-2xl bg-white px-10 pb-2 ">
       <Link
         href="/booths"
         className={`flex flex-col items-center text-sm gap-1 w-7.25 h-12.25 justify-between transition-colors ${isActive("/booths") ? "text-custom-blue" : "text-custom-gray"}`}
