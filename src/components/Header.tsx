@@ -47,7 +47,7 @@ export default function Header() {
     return null;
   }
   return (
-    <header className="sticky top-0 z-50 flex w-full max-w-md items-center justify-between bg-white px-5 pb-5 pt-18.75 h-31.25">
+    <header className="sticky top-0 z-50 flex w-full max-w-md items-center justify-between bg-white px-5 pb-5 pt-5">
       <button
         onClick={() => router.back()}
         className="flex h-8 w-8 items-center justify-center rounded-full text-black hover:bg-gray-100 transition-colors cursor-pointer"

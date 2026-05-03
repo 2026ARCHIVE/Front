@@ -10,7 +10,7 @@ import NoticeModal from "./(home)/_components/NoticeModal";
 
 export default function Page() {
   return (
-    <div>
+    <div className="pb-16">
       <NoticeModal />
       <HomeHeader />
       <MainBanner />
