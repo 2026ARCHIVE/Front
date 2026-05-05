@@ -19,7 +19,7 @@ export const dummyBooths: BoothData[] = [
     host: "컴퓨터공학과 학생회",
     time: "18:00 - 23:00",
     location: "미래백년관 앞",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const dummyBooths: BoothData[] = [
     host: "디자인학부",
     time: "10:00 - 17:00",
     location: "노천극장",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ export const dummyBooths: BoothData[] = [
     host: "경영학부 학생회",
     time: "17:00 - 23:00",
     location: "학생회관 앞 광장",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 
   // 2. 동아리
@@ -48,7 +48,7 @@ export const dummyBooths: BoothData[] = [
     host: "루트(댄스동아리)",
     time: "19:00 - 24:00",
     location: "학생회관 1층",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ export const dummyBooths: BoothData[] = [
     host: "빛그림(사진동아리)",
     time: "11:00 - 18:00",
     location: "학술정보관 로비",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 6,
@@ -66,7 +66,7 @@ export const dummyBooths: BoothData[] = [
     host: "소리사랑(밴드동아리)",
     time: "12:00 - 20:00",
     location: "노천극장 앞 무대",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 
   // 3. 외부업체
@@ -77,7 +77,7 @@ export const dummyBooths: BoothData[] = [
     host: "레드불 코리아",
     time: "10:00 - 20:00",
     location: "대운동장 앞",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 8,
@@ -86,7 +86,7 @@ export const dummyBooths: BoothData[] = [
     host: "인생네컷",
     time: "10:00 - 22:00",
     location: "미래백년관 로비",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 9,
@@ -95,7 +95,7 @@ export const dummyBooths: BoothData[] = [
     host: "에브리타임",
     time: "11:00 - 18:00",
     location: "학생회관 앞",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 
   // 4. 푸드트럭
@@ -106,7 +106,7 @@ export const dummyBooths: BoothData[] = [
     host: "푸드트럭 연합",
     time: "15:00 - 24:00",
     location: "노천극장 주차장",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 11,
@@ -115,7 +115,7 @@ export const dummyBooths: BoothData[] = [
     host: "마이쭈러스",
     time: "15:00 - 24:00",
     location: "노천극장 주차장",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 12,
@@ -124,7 +124,7 @@ export const dummyBooths: BoothData[] = [
     host: "썸머후르츠",
     time: "12:00 - 22:00",
     location: "노천극장 주차장",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 
   // 5. 총학부스
@@ -135,7 +135,7 @@ export const dummyBooths: BoothData[] = [
     host: "제 60대 총학생회",
     time: "10:00 - 20:00",
     location: "학술정보관 앞 부스",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 14,
@@ -144,7 +144,7 @@ export const dummyBooths: BoothData[] = [
     host: "제 60대 총학생회",
     time: "10:00 - 18:00",
     location: "미래백년관 앞",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 15,
@@ -153,7 +153,7 @@ export const dummyBooths: BoothData[] = [
     host: "제 60대 총학생회 학생복지국",
     time: "10:00 - 24:00",
     location: "노천극장 종합본부",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 
   // 6. 교내부서
@@ -164,7 +164,7 @@ export const dummyBooths: BoothData[] = [
     host: "상명대학교 취업지원센터",
     time: "10:00 - 17:00",
     location: "학생회관 2층",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 17,
@@ -173,7 +173,7 @@ export const dummyBooths: BoothData[] = [
     host: "국제교류처",
     time: "13:00 - 17:00",
     location: "미래백년관 1층 로비",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
   {
     id: 18,
@@ -182,6 +182,6 @@ export const dummyBooths: BoothData[] = [
     host: "학생상담센터",
     time: "11:00 - 16:00",
     location: "학술정보관 1층",
-    imageUrl: "/booths/dummy_booth.png",
+    imageUrl: "/Booths/dummy_booth.png",
   },
 ];
