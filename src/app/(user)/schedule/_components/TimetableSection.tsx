@@ -23,7 +23,8 @@ export default function TimetableSection({
   }, [expanded, initialVisibleCount, items]);
 
   return (
-    <section className="pt-6.25">
+
+    <section className="py-6.25">
       <div className="flex items-end justify-between">
         <h3 className="text-[21px] font-bold text-custom-gray">타임테이블</h3>
       </div>
