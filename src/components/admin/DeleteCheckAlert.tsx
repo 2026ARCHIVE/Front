@@ -13,7 +13,14 @@ export default function DeleteCheckAlert({
 }: DeleteCheckAlertProps) {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full bg-black/50 z-50  flex items-center justify-center"></div>
+      <div
+        className="fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center cursor-pointer"
+        onClick={() => {
+          setVisible(false);
+          onCancel();
+        }}
+      ></div>
+
       <div className="bg-white p-6 rounded-lg shadow-lg z-50 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80">
         <h2 className="text-xl font-bold mb-4">삭제 확인</h2>
         <p className="mb-6">정말로 삭제하시겠습니까?</p>
