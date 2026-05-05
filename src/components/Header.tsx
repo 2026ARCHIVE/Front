@@ -50,9 +50,9 @@ export default function Header() {
         return "이벤트 관리";
       case "/admin/event/write-and-edit":
         return "이벤트 등록 및 수정";
-      case "/admin/lost-and-found":
+      case "/admin/lost":
         return "분실물 관리";
-      case "/admin/lost-and-found/write-and-edit":
+      case "/admin/lost/write-and-edit":
         return "분실물 등록 및 수정";
       case "/admin/goods":
         return "굿즈 관리";
