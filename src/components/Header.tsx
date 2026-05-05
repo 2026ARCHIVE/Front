@@ -7,6 +7,15 @@ export default function Header() {
   const router = useRouter();
 
   const getHeaderTitle = () => {
+    if (pathname.startsWith("/admin/notice/write-and-edit"))
+      return "공지 등록 및 수정";
+    if (pathname.startsWith("/admin/event/write-and-edit"))
+      return "이벤트 등록 및 수정";
+    if (pathname.startsWith("/admin/lost/write-and-edit"))
+      return "분실물 등록 및 수정";
+    if (pathname.startsWith("/admin/goods/write-and-edit"))
+      return "굿즈 등록 및 수정";
+
     if (pathname.startsWith("/event/") && pathname !== "/event")
       return "이벤트 상세";
     if (pathname.startsWith("/booths/") && pathname !== "/booths")
@@ -44,20 +53,12 @@ export default function Header() {
         return "관리자";
       case "/admin/notice":
         return "공지 관리";
-      case "/admin/notice/write-and-edit":
-        return "공지 등록 및 수정";
       case "/admin/event":
         return "이벤트 관리";
-      case "/admin/event/write-and-edit":
-        return "이벤트 등록 및 수정";
       case "/admin/lost":
         return "분실물 관리";
-      case "/admin/lost/write-and-edit":
-        return "분실물 등록 및 수정";
       case "/admin/goods":
         return "굿즈 관리";
-      case "/admin/goods/write-and-edit":
-        return "굿즈 등록 및 수정";
       default:
         return "에러";
     }

@@ -1,5 +1,10 @@
-import React from "react";
+import "react-quill-new/dist/quill.snow.css";
+import FormLayout from "./[id]/_components/FormLayout";
 
-export default function AdminNoticeWriteAndEditPage() {
-  return <div>Admin Notice Write And Edit Page</div>;
+export default function WritePage() {
+  return (
+    <>
+      <FormLayout />
+    </>
+  );
 }
