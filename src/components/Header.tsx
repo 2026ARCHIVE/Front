@@ -38,6 +38,26 @@ export default function Header() {
         return "굿즈";
       case "/about":
         return "Deer for U: ARCHIVE";
+      case "/admin/login":
+        return "로그인";
+      case "/admin":
+        return "관리자";
+      case "/admin/notice":
+        return "공지 관리";
+      case "/admin/notice/write-and-edit":
+        return "공지 등록 및 수정";
+      case "/admin/event":
+        return "이벤트 관리";
+      case "/admin/event/write-and-edit":
+        return "이벤트 등록 및 수정";
+      case "/admin/lost-and-found":
+        return "분실물 관리";
+      case "/admin/lost-and-found/write-and-edit":
+        return "분실물 등록 및 수정";
+      case "/admin/goods":
+        return "굿즈 관리";
+      case "/admin/goods/write-and-edit":
+        return "굿즈 등록 및 수정";
       default:
         return "에러";
     }

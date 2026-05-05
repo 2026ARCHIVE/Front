@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import React from "react";
 
 export default function AdminLayout({
@@ -6,8 +7,14 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen bg-white text-black w-full">
-      <aside className="w-64 bg-gray-200">관리자 사이드바</aside>
+    <div className="mx-auto flex min-h-screen max-w-md flex-col bg-white shadow-lg relative">
+      <Header />
+      <div
+        id="subHeader"
+        className="h-12 bg-[#FFEE00] flex items-center justify-center text-black font-semibold"
+      >
+        관리자 대시보드
+      </div>
       <main className="flex-1 overflow-y-auto">{children}</main>
     </div>
   );
