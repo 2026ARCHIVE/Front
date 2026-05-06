@@ -1,5 +1,10 @@
 import React from "react";
+import FormLayout from "./_components/FormLayout";
 
 export default function AdminEventWriteAndEditPage() {
-  return <div>Admin Event Write And Edit Page</div>;
+  return (
+    <div className="p-4">
+      <FormLayout />
+    </div>
+  );
 }
