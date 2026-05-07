@@ -1,11 +1,12 @@
 "use client";
-import { useRouter } from "next/navigation";
-import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect } from "react";
 import Cookies from "js-cookie";
 
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = React.useState<string | null>(null);
+  const searchParams = useSearchParams();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -41,7 +42,12 @@ export default function LoginPage() {
       setError("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
   };
-
+  useEffect(() => {
+    if (searchParams.get("message") === "unauthorized") {
+      alert("로그인이 필요한 페이지입니다. 로그인 후 이용해주세요.");
+      window.history.replaceState(null, "", "/admin/login");
+    }
+  }, [searchParams]);
   return (
     <form
       onSubmit={handleSubmit}
