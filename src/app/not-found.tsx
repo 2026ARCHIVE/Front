@@ -17,6 +17,7 @@ export default function NotFound() {
           width={400}
           height={400}
           priority={true}
+          className="m-auto h-auto"
         />
         <div className="flex flex-col gap-3.5">
           <h3 className="font-bold text-[18px]">
