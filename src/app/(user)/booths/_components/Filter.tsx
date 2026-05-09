@@ -2,7 +2,7 @@
 import React from "react";
 import FilterItem from "./FilterItem";
 
-const filters = [
+const defaultFilters = [
   "전체",
   "학과",
   "동아리",
@@ -15,12 +15,14 @@ const filters = [
 interface FilterProps {
   onFilterChange: (filter: string) => void;
   activeFilter: string;
+  filters?: string[];
 }
 
-export default function Filter({ onFilterChange, activeFilter }: FilterProps) {
+export default function Filter({ onFilterChange, activeFilter, filters }: FilterProps) {
+  const list = filters ?? defaultFilters;
   return (
     <div className="flex overflow-x-auto gap-3 scrollbar-hide snap-x">
-      {filters.map((filter) => (
+      {list.map((filter) => (
         <FilterItem
           key={filter}
           label={filter}
