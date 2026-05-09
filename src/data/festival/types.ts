@@ -1,0 +1,10 @@
+export type FestivalListItem = {
+  id: number;
+  boothNo?: number;
+  name: string;
+  host?: string;
+  time?: string;
+  location?: string;
+  description: string;
+  imageUrl: string;
+};
