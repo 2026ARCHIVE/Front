@@ -1,12 +1,13 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import Cookies from "js-cookie";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const [error, setError] = React.useState<string | null>(null);
   const searchParams = useSearchParams();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -42,18 +43,20 @@ export default function LoginPage() {
       setError("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
     }
   };
+
   useEffect(() => {
     if (searchParams.get("message") === "unauthorized") {
       alert("로그인이 필요한 페이지입니다. 로그인 후 이용해주세요.");
       window.history.replaceState(null, "", "/admin/login");
     }
   }, [searchParams]);
+
   return (
     <form
       onSubmit={handleSubmit}
       className="mx-auto mt-6 w-full max-w-sm rounded-lg bg-white p-6 shadow-md"
     >
-      <div className=" flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
         <p className="text-sm font-semibold">이메일</p>
         <input
           type="email"
@@ -76,5 +79,13 @@ export default function LoginPage() {
         로그인
       </button>
     </form>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-10">로딩 중...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
