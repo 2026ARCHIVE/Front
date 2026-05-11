@@ -4,7 +4,7 @@ export default function MainBanner() {
   return (
     <div>
       <Image
-        src="/Home/banner.png"
+        src="/home/banner/main_banner.webp"
         priority
         alt="Main Banner"
         width={1200}
