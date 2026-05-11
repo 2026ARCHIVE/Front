@@ -32,7 +32,7 @@ export default function NoticeModal() {
     <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-black/70 h-screen w-full">
       <div className="w-7/8 max-w-sm flex flex-col items-center">
         <Image
-          src="/poster.png"
+          src="/poster.webp"
           alt="Notice Poster"
           width={400}
           height={300}

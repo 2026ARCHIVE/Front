@@ -17,7 +17,7 @@ export default function Poster() {
         priority={true}
       />
       <Image
-        src="/poster.png"
+        src="/poster.webp"
         alt="Poster"
         width={800}
         height={1200}
