@@ -1,25 +1,52 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import { type EventItem } from "../_data/eventData";
 
 type Props = {
   item: EventItem;
+  priority?: boolean;
 };
 
-function Thumbnail({ hasImage }: { hasImage: boolean }) {
+function Thumbnail({
+  src,
+  alt,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) {
   return (
-    <div className="h-25 w-25 shrink-0 overflow-hidden rounded bg-gray-200">
-      {hasImage ? <div className="h-full w-full bg-gray-200" /> : null}
+    <div className="relative h-25 w-25 shrink-0 overflow-hidden rounded bg-gray-200">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="100px"
+        className="object-cover"
+        priority={Boolean(priority)}
+        loading={priority ? "eager" : "lazy"}
+      />
     </div>
   );
 }
 
-export default function EventListItem({ item }: Props) {
+export default function EventListItem({ item, priority }: Props) {
+  const thumbSrc = item.imageUrl;
   return (
     <Link href={`/event/${item.id}`} className="flex gap-5">
-      <Thumbnail hasImage={Boolean(item.imageUrl)} />
+      {thumbSrc ? (
+        <Thumbnail
+          src={thumbSrc}
+          alt={`${item.title} 썸네일`}
+          priority={priority}
+        />
+      ) : (
+        <div className="h-25 w-25 shrink-0 overflow-hidden rounded bg-gray-200" />
+      )}
       <div className="min-w-0 ">
         <div className="text-[18px] font-bold text-custom-gray truncate">
           {item.title}
