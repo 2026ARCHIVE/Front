@@ -19,10 +19,10 @@ export default function LineupSection({ items }: Props) {
       <div className=" flex flex-col gap-5">
         {items.map((li, index) => (
           <div key={li.id}>
-            {li.imageUrl ? (
+            {li.imageUrlSchedule ? (
               <div className="relative h-[220px] w-full overflow-hidden rounded bg-gray-200">
                 <Image
-                  src={li.imageUrl}
+                  src={li.imageUrlSchedule}
                   alt={li.title}
                   fill
                   className="object-cover object-[center_20%]"

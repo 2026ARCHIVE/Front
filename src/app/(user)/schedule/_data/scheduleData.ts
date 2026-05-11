@@ -27,7 +27,8 @@ interface LineupItem {
   date: string;
   title: string;
   timeRange?: string; // "20:00 - 21:00"
-  imageUrl?: string;
+  imageUrlHome?: string;
+  imageUrlSchedule?: string;
 }
 
 const scheduleItems: ScheduleItem[] = [
@@ -179,42 +180,48 @@ const lineupItems: LineupItem[] = [
     date: "2026-05-27",
     title: "키비츠",
     timeRange: "19:30 - 20:00",
-    imageUrl: "/lineup/keyveatz_1.webp",
+    imageUrlHome: "/lineup/keyveatz_2.webp",
+    imageUrlSchedule: "/lineup/keyveatz_1.webp",
   },
   {
     id: "coogie",
     date: "2026-05-27",
     title: "쿠기",
     timeRange: "20:10 - 20:40",
-    imageUrl: "/lineup/coogie.webp",
+    imageUrlHome: "/lineup/coogie.webp",
+    imageUrlSchedule: "/lineup/coogie.webp",
   },
   {
     id: "lucy",
     date: "2026-05-27",
     title: "루시",
     timeRange: "20:50 - 21:20",
-    imageUrl: "/lineup/lucy.webp",
+    imageUrlHome: "/lineup/lucy.webp",
+    imageUrlSchedule: "/lineup/lucy.webp",
   },
   {
     id: "heize",
     date: "2026-05-28",
     title: "헤이즈",
     timeRange: "19:20 - 19:50",
-    imageUrl: "/lineup/heize_2.webp",
+    imageUrlHome: "/lineup/heize_1.webp",
+    imageUrlSchedule: "/lineup/heize_2.webp",
   },
   {
     id: "homies",
     date: "2026-05-28",
     title: "호미들",
     timeRange: "20:00 - 20:30",
-    imageUrl: "/lineup/homies_1.webp",
+    imageUrlHome: "/lineup/homies_2.webp",
+    imageUrlSchedule: "/lineup/homies_1.webp",
   },
   {
     id: "stayc",
     date: "2026-05-28",
     title: "스테이씨",
     timeRange: "20:40 - 21:10",
-    imageUrl: "/lineup/stayc_1.webp",
+    imageUrlHome: "/lineup/stayc_2.webp",
+    imageUrlSchedule: "/lineup/stayc_1.webp",
   },
 ];
 

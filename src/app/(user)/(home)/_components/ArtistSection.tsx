@@ -11,11 +11,11 @@ export default function ArtistSection() {
   return (
     <SectionLayout title="대동제 출연 아티스트" link="/schedule">
       {lineupItems.map((artist) =>
-        artist.imageUrl ? (
+        artist.imageUrlHome ? (
           <ArtistCard
             key={artist.id}
             name={artist.title}
-            imageUrl={artist.imageUrl}
+            imageUrl={artist.imageUrlHome}
             date={dateLabelByDate[artist.date] ?? artist.date}
           />
         ) : null,
