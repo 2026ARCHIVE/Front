@@ -5,7 +5,6 @@ import EventSection from "./(home)/_components/EventSection";
 import LostAndFoundSection from "./(home)/_components/LostAndFoundSection";
 import MainBanner from "./(home)/_components/MainBanner";
 import NoticeTicker from "./(home)/_components/NoticeTicker";
-import MapSection from "./(home)/_components/MapSection";
 import NoticeModal from "./(home)/_components/NoticeModal";
 
 export default function Page() {
@@ -17,7 +16,6 @@ export default function Page() {
       <NoticeTicker />
       <ArtistSection />
       <EventSection />
-      <MapSection />
       <LostAndFoundSection />
     </div>
   );
