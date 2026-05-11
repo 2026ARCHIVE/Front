@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import { type LineupItem } from "../_data/scheduleData";
 
@@ -16,10 +17,19 @@ export default function LineupSection({ items }: Props) {
     <section className="pb-6.25">
       <h3 className=" mb-7.5 text-[21px] font-bold text-black">라인업</h3>
       <div className=" flex flex-col gap-5">
-        {items.map((li) => (
+        {items.map((li, index) => (
           <div key={li.id}>
             {li.imageUrl ? (
-              <div className="h-[88px] w-full overflow-hidden rounded bg-gray-200" />
+              <div className="relative h-[220px] w-full overflow-hidden rounded bg-gray-200">
+                <Image
+                  src={li.imageUrl}
+                  alt={li.title}
+                  fill
+                  className="object-cover object-[center_20%]"
+                  sizes="(max-width: 768px) 100vw, 640px"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </div>
             ) : (
               <SkeletonPoster />
             )}
