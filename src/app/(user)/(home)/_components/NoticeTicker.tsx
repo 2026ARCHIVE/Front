@@ -56,7 +56,7 @@ export default function NoticeTicker() {
       </div>
 
       <Image
-        src="/Home/arrow.svg"
+        src="/home/arrow.svg"
         alt="Arrow Right"
         width={8}
         height={8}
