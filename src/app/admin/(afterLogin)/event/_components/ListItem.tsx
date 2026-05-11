@@ -13,7 +13,6 @@ export default function ListItem({ id, title, date }: ListItemProps) {
   const router = useRouter();
   const [visible, setVisible] = React.useState(false);
 
-  // 💡 삭제 처리 로직 함수
   const handleDelete = async () => {
     try {
       // await fetch(`/api/events/${id}`, { method: 'DELETE' });

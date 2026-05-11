@@ -1,5 +1,10 @@
 import React from "react";
+import FormLayout from "./_components/FormLayout";
 
 export default function AdminLostWriteAndEditPage() {
-  return <div>Admin Lost Write And Edit Page</div>;
+  return (
+    <div className="flex flex-col gap-6">
+      <FormLayout />
+    </div>
+  );
 }
