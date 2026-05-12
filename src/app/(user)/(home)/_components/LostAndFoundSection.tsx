@@ -6,7 +6,7 @@ import { lostItems } from "../../lost-and-found/_data/lostAndFoundData";
 export default function LostAndFoundSection() {
   return (
     <SectionLayout title="분실물 안내" link="/lost-and-found">
-      {lostItems.slice(0, 4).map((item) => (
+      {lostItems.slice(0, 3).map((item) => (
         <Link
           key={item.id}
           href={`/lost-and-found/${item.id}`}
