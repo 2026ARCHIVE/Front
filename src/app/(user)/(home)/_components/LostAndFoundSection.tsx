@@ -1,12 +1,13 @@
 import React from "react";
 import SectionLayout from "./SectionLayout";
 import Link from "next/link";
-import { lostItems } from "../../lost-and-found/_data/lostAndFoundData";
+import { fetchLostItems } from "../../lost-and-found/_data/lostAndFoundData";
 
-export default function LostAndFoundSection() {
+export default async function LostAndFoundSection() {
+  const items = await fetchLostItems();
   return (
     <SectionLayout title="분실물 안내" link="/lost-and-found">
-      {lostItems.slice(0, 3).map((item) => (
+      {items.slice(0, 3).map((item) => (
         <Link
           key={item.id}
           href={`/lost-and-found/${item.id}`}

@@ -1,27 +1,49 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   type LostItemCategory,
-  lostItems,
+  type LostItem,
+  fetchLostItemsByQuery,
 } from "../../_data/lostAndFoundData";
 import LostAndFoundCategoryTabs from "./LostAndFoundCategoryTabs";
 import LostAndFoundEmptyResult from "./LostAndFoundEmptyResult";
 import LostAndFoundListItem from "./LostAndFoundListItem";
 import LostAndFoundSearchInput from "./LostAndFoundSearchInput";
 
-export default function LostAndFoundListView() {
+type Props = {
+  items: LostItem[];
+};
+
+export default function LostAndFoundListView({ items }: Props) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<LostItemCategory>("전체");
+  const [remoteItems, setRemoteItems] = useState<LostItem[]>(items);
+  const [loading, setLoading] = useState(false);
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return lostItems.filter((i) => {
-      const byQuery = !q || i.title.toLowerCase().includes(q);
-      const byCategory = category === "전체" || i.category === category;
-      return byQuery && byCategory;
-    });
-  }, [query, category]);
+  const debouncedQuery = useDebouncedValue(query, 250);
+
+  useEffect(() => {
+    let cancelled = false;
+    const run = async () => {
+      setLoading(true);
+      try {
+        const next = await fetchLostItemsByQuery({
+          search: debouncedQuery.trim() ? debouncedQuery.trim() : undefined,
+          category,
+        });
+        if (!cancelled) setRemoteItems(next);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+    void run();
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedQuery, category]);
+
+  const filtered = useMemo(() => remoteItems, [remoteItems]);
 
   return (
     <div className="px-6.25 pb-6.25">
@@ -29,7 +51,11 @@ export default function LostAndFoundListView() {
       <LostAndFoundCategoryTabs value={category} onChange={setCategory} />
 
       <div className="mt-6.25">
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="text-[12px] font-semibold text-custom-darkgray">
+            불러오는 중...
+          </div>
+        ) : filtered.length === 0 ? (
           <LostAndFoundEmptyResult />
         ) : (
           <div className="flex flex-col gap-5">
@@ -41,5 +67,14 @@ export default function LostAndFoundListView() {
       </div>
     </div>
   );
+}
+
+function useDebouncedValue<T>(value: T, delayMs: number) {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const t = setTimeout(() => setDebounced(value), delayMs);
+    return () => clearTimeout(t);
+  }, [value, delayMs]);
+  return debounced;
 }
 
