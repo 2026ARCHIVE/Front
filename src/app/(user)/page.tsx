@@ -6,6 +6,8 @@ import LostAndFoundSection from "./(home)/_components/LostAndFoundSection";
 import MainBanner from "./(home)/_components/MainBanner";
 import NoticeTicker from "./(home)/_components/NoticeTicker";
 import NoticeModal from "./(home)/_components/NoticeModal";
+import GoodsBanner from "./(home)/_components/GoodsBanner";
+import Credit from "./(home)/_components/Credit";
 
 export default function Page() {
   return (
@@ -16,7 +18,9 @@ export default function Page() {
       <NoticeTicker />
       <ArtistSection />
       <EventSection />
+      <GoodsBanner />
       <LostAndFoundSection />
+      <Credit />
     </div>
   );
 }
