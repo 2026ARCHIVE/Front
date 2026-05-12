@@ -1,15 +1,24 @@
 import React from "react";
-import { GoodsDetail } from "./GoodsDetailBody";
+import { GoodsDetail } from "@/api/goods";
 import SoldOutState from "../../_components/SoldOutState";
 
-export default function GoodsDetailBoard({
-  name,
-  description,
-  price,
-  isSoldOut,
-  salesTime,
-  place,
-}: GoodsDetail) {
+interface GoodsDetailBoardProps {
+  goods: GoodsDetail;
+}
+
+export default function GoodsDetailBoard({ goods }: GoodsDetailBoardProps) {
+  const {
+    name,
+    description,
+    price,
+    location,
+    status,
+    salesOpenTime,
+    salesCloseTime,
+  } = goods;
+  const isSoldOut = status === "SOLD_OUT";
+  const salesTime = `${salesOpenTime} - ${salesCloseTime}`;
+
   return (
     <div className="px-5.25 flex flex-col gap-2.5">
       <h1 className="text-xl font-semibold">{name}</h1>
@@ -21,7 +30,7 @@ export default function GoodsDetailBoard({
           <span className="w-28 text-[14px] text-custom-darkgray shrink-0">
             구매 장소
           </span>
-          <span className="text-[14px] text-black">{place}</span>
+          <span className="text-[14px] text-black">{location}</span>
         </div>
 
         <div className="flex items-center">

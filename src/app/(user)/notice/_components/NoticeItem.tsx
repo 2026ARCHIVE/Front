@@ -1,27 +1,32 @@
 "use client";
 
 import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Notice } from "@/api/notice";
 
 interface NoticeItemProps {
-  notice: {
-    id: number;
-    title: string;
-    date: Date;
-    detail: string;
-  };
+  notice: Notice;
 }
 
 export default function NoticeItem({ notice }: NoticeItemProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
 
-  const formattedDate = notice.date
-    .toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replace(/\./g, ".")
-    .trim();
+  const expandedId = searchParams.get("id");
+  const [isOpen, setIsOpen] = useState(
+    expandedId ? Number(expandedId) === notice.id : false,
+  );
+
+  const dateObj = new Date(notice.createdAt);
+  const formattedDate =
+    dateObj
+      .toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+      .replace(/\./g, ".")
+      .trim() +
+    ` ${String(dateObj.getHours()).padStart(2, "0")}:${String(dateObj.getMinutes()).padStart(2, "0")}`; // 시간까지 표시 추가
 
   return (
     <div className="border-b border-gray-200">
@@ -30,7 +35,9 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
         className="w-full flex items-center justify-between px-6.5 py-5 bg-white text-left cursor-pointer"
       >
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-[17px] font-bold text-black">{notice.title}</h3>
+          <h3 className="text-[17px] font-bold text-black">
+            {notice.pinned ? `[공지] ${notice.title}` : notice.title}
+          </h3>
           <p className="text-[13px] text-gray-400">{formattedDate}</p>
         </div>
 
@@ -59,8 +66,8 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="bg-custom-lightgray px-6.5 py-6 text-[15px] leading-relaxed text-custom-darkgray break-keep">
-            {notice.detail}
+          <div className="bg-custom-lightgray px-6.5 py-6 text-[15px] leading-relaxed text-custom-darkgray break-keep min-h-[80px]">
+            {notice.content}
           </div>
         </div>
       </div>
