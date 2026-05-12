@@ -7,7 +7,7 @@ export default async function LostAndFoundSection() {
   const items = await fetchLostItems();
   return (
     <SectionLayout title="분실물 안내" link="/lost-and-found">
-      {items.slice(0, 4).map((item) => (
+      {items.slice(0, 3).map((item) => (
         <Link
           key={item.id}
           href={`/lost-and-found/${item.id}`}
