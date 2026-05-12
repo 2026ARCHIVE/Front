@@ -13,13 +13,16 @@ export async function apiFetchJson<T>(
   path: string,
   { revalidate, headers, ...init }: ApiFetchOptions = {},
 ): Promise<{ status: number; ok: boolean; data: T | null }> {
+  const isServer = typeof window === "undefined";
   const res = await fetch(`${getApiBaseUrl()}${path}`, {
     ...init,
     headers: {
       Accept: "application/json",
       ...headers,
     },
-    ...(typeof revalidate === "number" ? { next: { revalidate } } : {}),
+    ...(isServer && typeof revalidate === "number"
+      ? { next: { revalidate } }
+      : {}),
   });
 
   let data: T | null = null;
