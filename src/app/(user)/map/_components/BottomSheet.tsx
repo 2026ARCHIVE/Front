@@ -175,7 +175,7 @@ export default function BottomSheet({
       <div
         ref={sheetRef}
         className={[
-          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white shadow-2xl",
+          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white",
           dragging
             ? "transition-none"
             : "transition-transform duration-200 ease-out",

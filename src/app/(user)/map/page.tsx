@@ -125,7 +125,7 @@ export default function MapPage() {
                   <Link
                     key={item.id}
                     href={href}
-                    className="flex gap-3 rounded-xl border border-black/5 bg-white p-3 shadow-sm active:bg-black/2"
+                    className="flex gap-3 rounded-xl border border-black/5 bg-white p-3 active:bg-black/2"
                   >
                     <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-black/5">
                       <Image
