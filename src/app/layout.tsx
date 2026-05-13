@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SMU 26 대동제",
+  title: "Deer for U: ARCHIVE",
   description: "2026 대동제 축제 웹사이트입니다.",
 };
 
