@@ -55,8 +55,10 @@ export default function NoticeTicker() {
   if (notices.length === 0) {
     return (
       <div className="flex items-center justify-between bg-custom-gray px-6.5 py-3 text-white h-11">
-        <span className="font-bold text-[14px] shrink-0 ">공지사항</span>
-        <span className="text-[14px] text-white">공지사항이 없습니다.</span>
+        <div className="flex gap-[14px]">
+          <span className="font-bold text-[14px] shrink-0 ">공지사항</span>
+          <span className="text-[14px] text-white">공지사항이 없습니다.</span>
+        </div>
         <button
           onClick={() => router.push("/notice")}
           className="shrink-0 cursor-pointer p-1"
