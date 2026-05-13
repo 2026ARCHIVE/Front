@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 export default function HomeHeader() {
   return (
-    <div className="p-7.5 pt-8">
+    <div className="px-7.5 pt-8 pb-[9px]">
       <Image
         src="/logo.svg"
         priority
