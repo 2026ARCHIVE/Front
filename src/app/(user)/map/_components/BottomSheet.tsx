@@ -209,9 +209,7 @@ export default function BottomSheet({
           </div>
         </div>
 
-        {title && (
-          <div className="px-5 py-1 text-[16px] font-bold">{title}</div>
-        )}
+        {title && <div className="px-5 py-1 text-xl font-bold">{title}</div>}
 
         <div
           className="px-5 pb-6 pt-3 overflow-y-auto scrollbar-hide [&::-webkit-scrollbar]:hidden"

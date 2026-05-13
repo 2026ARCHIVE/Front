@@ -137,7 +137,7 @@ export default function MapPage() {
                       />
                     </div>
                     <div className="min-w-0 flex flex-col gap-0.5">
-                      <div className="truncate text-[15px] font-bold leading-snug text-black">
+                      <div className="truncate text-lg font-bold leading-snug text-black">
                         {item.name}
                       </div>
                       <div className="line-clamp-2 text-[13px] leading-snug text-custom-gray/85">
