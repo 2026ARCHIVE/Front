@@ -13,9 +13,15 @@ function LoginForm() {
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
+    const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+
+    if (!email || !password) {
+      setError("이메일과 비밀번호를 모두 입력해주세요.");
+      return;
+    }
 
     try {
-      const response = await fetch("/api/admin/login", {
+      const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,16 +32,33 @@ function LoginForm() {
       if (response.ok) {
         // 로그인 성공 시, 토큰을 쿠키에 저장
         const data = await response.json();
-        Cookies.set("token", data.token, {
+        Cookies.set("accessToken", data.accessToken, {
           expires: 1,
           secure: process.env.NODE_ENV === "production",
           sameSite: "strict",
         });
+        Cookies.set("refreshToken", data.refreshToken, {
+          expires: 7,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "strict",
+        });
         alert("로그인 성공!");
+        if (process.env.NODE_ENV === "development") {
+          console.log("발급된 토큰:", data.accessToken);
+          console.log("쿠키에 저장된 토큰:", Cookies.get("accessToken"));
+          console.log(
+            "쿠키에 저장된 리프레시 토큰:",
+            Cookies.get("refreshToken"),
+          );
+        }
         router.push("/admin");
       } else if (response.status === 401) {
         setError(
           "입력한 아이디 혹은 비밀번호가 올바르지 않습니다. 다시 시도하세요.",
+        );
+      } else if (response.status === 423) {
+        setError(
+          "5회 입력 실패로 10분간 계정이 잠겼습니다. 잠시 후 다시 시도해주세요.",
         );
       }
     } catch (error) {
