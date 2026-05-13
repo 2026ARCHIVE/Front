@@ -10,15 +10,8 @@ import { useRouter } from "next/navigation";
 export default function BoothsPage() {
   const [searchKeyword, setSearchKeyword] = React.useState("");
   const [activeFilter, setActiveFilter] = React.useState("전체");
-  const [booths, setBooths] = React.useState<BoothData[]>([]);
+  const [booths, setBooths] = React.useState<BoothData[]>(dummyBooths);
   const router = useRouter();
-
-  useEffect(() => {
-    const timeset = setTimeout(() => {
-      setBooths(dummyBooths);
-    }, 1000);
-    return () => clearTimeout(timeset);
-  }, []);
 
   const filteredBooths = React.useMemo(() => {
     return booths.filter((booth) => {

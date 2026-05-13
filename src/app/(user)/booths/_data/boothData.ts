@@ -1,5 +1,6 @@
 import type { FestivalListItem } from "@/data/festival/types";
 import { experienceList } from "@/data/festival/experiences";
+import { foodTruckList } from "@/data/festival/food-trucks";
 
 export interface BoothData {
   id: number;
@@ -48,6 +49,7 @@ const experienceCategoryById: Record<number, string> = {
   34: "동아리",
 };
 
+// 일반 부스 맵핑
 function festivalItemToBoothData(item: FestivalListItem): BoothData {
   const category = experienceCategoryById[item.id] ?? "동아리";
   return {
@@ -61,6 +63,24 @@ function festivalItemToBoothData(item: FestivalListItem): BoothData {
   };
 }
 
-export const dummyBooths: BoothData[] = experienceList.map(
-  festivalItemToBoothData,
-);
+// 푸드트럭 맵핑
+function foodTruckItemToBoothData(item: FestivalListItem): BoothData {
+  return {
+    id: item.id + 100, // ID 중복 방지
+    name: item.name,
+    category: "푸드트럭", // 푸드트럭으로 고정 분류
+    host: item.name, // 호스트명은 일단 푸드트럭의 이름으로 통일
+    time: "DAY 1 10:00-22:00", // 나중에 값 들어오기 전까지 지정 임시 값
+    location: "푸드트럭 존", // 지정 임시 값
+    imageUrl: item.imageUrl,
+  };
+}
+
+// 기존 booth 배열에서 map 처리된 내용
+const experienceBooths = experienceList.map(festivalItemToBoothData);
+const foodTruckBooths = foodTruckList.map(foodTruckItemToBoothData);
+
+export const dummyBooths: BoothData[] = [
+  ...experienceBooths,
+  ...foodTruckBooths,
+];
