@@ -6,7 +6,7 @@ export function proxy(request: NextRequest) {
   const isProtectedAdminRoute =
     pathname.startsWith("/admin") && pathname !== "/admin/login";
 
-  const hasToken = request.cookies.get("token")?.value;
+  const hasToken = request.cookies.get("accessToken")?.value;
 
   if (isProtectedAdminRoute && !hasToken) {
     const loginUrl = new URL("/admin/login?message=unauthorized", request.url);
