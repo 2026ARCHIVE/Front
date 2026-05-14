@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { adminFetch } from "@/api/admin/client";
 
 interface FormLayoutProps {
   initialTitle?: string;
   initialContent?: string;
   initialIsSticked?: boolean;
-  noticeId?: string;
+  noticeId?: number;
 }
 export default function FormLayout({
   initialTitle = "",
@@ -18,19 +19,56 @@ export default function FormLayout({
   const [title, setTitle] = useState(initialTitle);
   const [isSticked, setIsSticked] = useState(initialIsSticked);
   const router = useRouter();
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (noticeId) {
-      alert(
-        `공지사항 수정: ${JSON.stringify({ noticeId, title, content, isSticked })}`,
-      );
-    } else {
-      alert(
-        `새 공지사항 등록: ${JSON.stringify({ title, content, isSticked })}`,
-      );
+
+    if (!title.trim() || !content.trim()) {
+      alert("제목과 내용을 모두 입력해주세요.");
+      return;
     }
-    router.replace("/admin/notice");
+
+    try {
+      const payload = {
+        title: title.trim(),
+        content: content.trim(),
+        pinned: isSticked,
+      };
+
+      if (noticeId) {
+        await adminFetch(`/admin/notices/${noticeId}`, {
+          method: "PATCH",
+          body: JSON.stringify(payload),
+        }).then((res) => {
+          if (!res.ok) {
+            console.error("공지사항 수정 실패", res);
+            throw new Error("공지사항 수정 실패");
+          }
+        });
+
+        alert("공지사항이 성공적으로 수정되었습니다.");
+      } else {
+        await adminFetch("/admin/notices", {
+          method: "POST",
+          body: JSON.stringify(payload),
+        }).then((res) => {
+          if (!res.ok) {
+            console.error("공지사항 등록 실패", res);
+
+            throw new Error("공지사항 등록 실패");
+          }
+        });
+
+        alert("공지사항이 성공적으로 등록되었습니다.");
+      }
+
+      router.replace("/admin/notice");
+    } catch (error) {
+      console.error(error);
+      alert("저장 중 오류가 발생했습니다. 다시 시도해주세요.");
+    }
   };
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col h-full bg-white p-4">
       <input
