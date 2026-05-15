@@ -10,7 +10,7 @@ export default function LostAndFoundEmptyResult() {
         aria-label="검색 결과 없음"
         className="relative w-full max-w-[332px] h-[214px] rounded-lg overflow-hidden"
         style={{
-          background: 'url("/error.webp") #fff 50% / contain no-repeat',
+          background: 'url("/error.svg") #fff 50% / contain no-repeat',
         }}
       >
         <div aria-hidden="true" className="absolute inset-0 bg-white/55" />

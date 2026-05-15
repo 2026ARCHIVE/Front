@@ -12,10 +12,10 @@ export default function NotFound() {
       <Header />
       <div className="py-7 px-17 flex flex-col gap-10 items-center justify-center">
         <Image
-          src="/error.webp"
+          src="/error.svg"
           alt="Error"
-          width={400}
-          height={400}
+          width={281}
+          height={181}
           priority={true}
           className="m-auto h-auto"
         />
