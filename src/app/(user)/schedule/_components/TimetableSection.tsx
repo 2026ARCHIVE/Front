@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { type ScheduleItem } from "../_data/scheduleData";
 
 function formatTimeRange(item: ScheduleItem) {
-  return item.end ? `${item.start} - ${item.end}` : item.start;
+  return item.end ? `${item.start} ~ ${item.end}` : item.start;
 }
 
 function formatDetailTimeRange(
   item: NonNullable<ScheduleItem["details"]>[number],
 ) {
-  return item.end ? `${item.start} - ${item.end}` : item.start;
+  return item.end ? `${item.start} ~ ${item.end}` : item.start;
 }
 
 const expandableTitles = new Set([
@@ -48,9 +48,9 @@ export default function TimetableSection({ items }: Props) {
   };
 
   return (
-    <section className="py-6.25">
-      <div className="flex items-end justify-between">
-        <h3 className="text-[21px] font-bold text-custom-gray">타임테이블</h3>
+    <section className="-mx-6.25 px-6.25">
+      <div className="flex items-end justify-between pb-[13px]">
+        <h3 className="text-[21px] font-bold text-black">타임테이블</h3>
       </div>
 
       {items.length === 0 ? (
@@ -58,16 +58,17 @@ export default function TimetableSection({ items }: Props) {
           선택한 날짜에 등록된 일정이 없어요.
         </div>
       ) : (
-        <div className="mt-3">
-          <div className="flex flex-col gap-6">
-            {items.map((item) => {
-              const canExpand =
-                expandableTitles.has(item.title) &&
-                Boolean(item.details?.length);
-              const isExpanded = expandedTitles.has(item.title);
+        <div className="-mx-6.25 flex flex-col">
+          {items.map((item, index) => {
+            const canExpand =
+              expandableTitles.has(item.title) && Boolean(item.details?.length);
+            const isExpanded = expandedTitles.has(item.title);
 
-              return (
-                <article key={item.id} className="flex flex-col gap-3">
+            return (
+              <article key={item.id} className="border-b border-[#E8EBED]">
+                <div
+                  className={`px-6.25 pb-[13px] ${index === 0 ? "pt-0" : "pt-[13px]"}`}
+                >
                   <div
                     role={canExpand ? "button" : undefined}
                     tabIndex={canExpand ? 0 : undefined}
@@ -81,56 +82,61 @@ export default function TimetableSection({ items }: Props) {
                     }
                     className={canExpand ? "cursor-pointer" : undefined}
                   >
-                    <div className="flex items-center gap-4">
-                      <span className="border border-solid border-[#D2D9DF] px-1 py-0.5 text-[11px] font-bold text-custom-gray">
+                    <div className="flex flex-col gap-[13px]">
+                      <span className="inline-flex w-fit border border-[#D2D9DF] bg-white px-[4px] py-[2px] text-[13px] font-semibold text-[#464B50]">
                         {formatTimeRange(item)}
                       </span>
-                    </div>
-                    <div className="mt-3 flex items-end justify-between gap-4">
-                      <div className="flex flex-col gap-1">
-                        <div className="text-[14px] font-bold text-black">
-                          {item.title}
-                        </div>
-                        {item.description && (
-                          <div className="text-[12px] font-semibold text-[#A6AFB7]">
-                            {item.description}
+                      <div className="flex items-end justify-between gap-4">
+                        <div className="flex min-w-0 flex-col gap-1">
+                          <div className="text-[14px] font-bold leading-snug text-black">
+                            {item.title}
                           </div>
+                          {item.description && (
+                            <div className="text-[12px] font-normal leading-snug text-[#A6AFB7]">
+                              {item.description}
+                            </div>
+                          )}
+                        </div>
+                        {canExpand && (
+                          <span className="shrink-0 text-[12px] font-normal text-[#A6AFB7]">
+                            {isExpanded ? "간략히보기" : "전체보기"}
+                          </span>
                         )}
                       </div>
-                      {canExpand && (
-                        <span className="shrink-0 text-[12px] font-semibold text-custom-gray opacity-40">
-                          {isExpanded ? "간략히보기" : "전체보기"}
-                        </span>
-                      )}
                     </div>
                   </div>
                   {canExpand && isExpanded && (
-                    <div className="-mx-6.25 flex flex-col gap-6 bg-[#F1F1F2] px-6.25 py-6">
-                      {item.details?.map((detail) => (
-                        <div key={detail.id} className="flex flex-col gap-3">
-                          <div className="flex items-center gap-4">
-                            <span className="border border-solid border-[#D2D9DF] px-1 py-0.5 text-[11px] font-bold text-custom-gray">
+                    <div className="mt-[13px] -mx-6.25 flex flex-col bg-custom-lightgray py-4">
+                      {item.details?.map((detail, detailIndex) => (
+                        <div
+                          key={detail.id}
+                          className="border-b border-[#E8EBED] last:border-b-0"
+                        >
+                          <div
+                            className={`flex flex-col gap-[13px] px-6.25 pb-[13px] ${detailIndex === 0 ? "pt-0" : "pt-[13px]"}`}
+                          >
+                            <span className="inline-flex w-fit border border-[#D2D9DF] bg-white px-[4px] py-[2px] text-[13px] font-semibold text-[#464B50]">
                               {formatDetailTimeRange(detail)}
                             </span>
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <div className="text-[14px] font-bold text-black">
-                              {detail.title}
-                            </div>
-                            {detail.description && (
-                              <div className="text-[12px] font-semibold text-[#A6AFB7]">
-                                {detail.description}
+                            <div className="flex flex-col gap-1">
+                              <div className="text-[15px] font-bold leading-snug text-black">
+                                {detail.title}
                               </div>
-                            )}
+                              {detail.description && (
+                                <div className="text-[12px] font-normal leading-snug text-[#A6AFB7]">
+                                  {detail.description}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
                       ))}
                     </div>
                   )}
-                </article>
-              );
-            })}
-          </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       )}
     </section>
