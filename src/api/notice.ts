@@ -1,4 +1,3 @@
-// src/api/notice.ts
 import { apiFetchJson } from "./client";
 import { adminFetch } from "./admin/client";
 
