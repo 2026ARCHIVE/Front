@@ -2,12 +2,14 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { createEvent } from "@/api/events";
 
 interface FormLayoutProps {
   // 편집용
   eventId?: string;
   title?: string;
-  date?: string;
+  startDate?: string;
+  endDate?: string;
   location?: string;
   description?: string;
   method?: string;
@@ -19,7 +21,8 @@ interface FormLayoutProps {
 export default function FormLayout({
   eventId,
   title,
-  date,
+  startDate,
+  endDate,
   location,
   description,
   method,
@@ -53,27 +56,91 @@ export default function FormLayout({
     }
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
 
-    const submitData = {
-      title: formData.get("title"),
-      date: formData.get("date"),
-      location: formData.get("location"),
-      description: formData.get("description"),
-      method: formData.get("method"),
-      prizeText: formData.get("prizeText"),
-      mainImage: formData.get("mainImage"),
-      prizeImage: formData.get("prizeImage"),
-    };
-    console.log("전송할 FormData 객체:", formData);
+    const title = formData.get("title")?.toString().trim();
+    const startTime = formData.get("startTime")?.toString().trim();
+    const endTime = formData.get("endTime")?.toString().trim();
+    const location = formData.get("location")?.toString().trim();
+    const description = formData.get("description")?.toString().trim();
+    const method = formData.get("method")?.toString().trim();
+    const prizeText = formData.get("prizeText")?.toString().trim();
 
-    if (eventId) {
-      alert(`이벤트 수정: ${JSON.stringify({ eventId, ...submitData })}`);
-    } else {
-      alert(`이벤트 생성: ${JSON.stringify(submitData)}`);
+    if (!title) {
+      alert("제목을 입력해주세요.");
+      return;
+    }
+    if (!mainImgPreview) {
+      alert("이벤트 메인 이미지를 등록해주세요.");
+      return;
+    }
+    if (!startTime || !endTime) {
+      alert("시작 및 종료 일시를 모두 입력해주세요.");
+      return;
+    }
+    if (!location) {
+      alert("장소를 입력해주세요.");
+      return;
+    }
+    if (!description) {
+      alert("설명을 입력해주세요.");
+      return;
+    }
+    if (!method) {
+      alert("진행 방법을 입력해주세요.");
+      return;
+    }
+    if (prizeCategory === "category1" && !prizeText) {
+      alert("상품 설명(텍스트)을 입력해주세요.");
+      return;
+    }
+    if (prizeCategory === "category2" && !prizeImgPreview) {
+      alert("상품 이미지를 등록해주세요.");
+      return;
+    }
+
+    try {
+      if (eventId) {
+        alert("이벤트 수정은 아직 구현되지 않았습니다.");
+      } else {
+        const apiFormData = new FormData();
+
+        const requestData = {
+          title: title,
+          description: description,
+          content: method,
+          startTime: startTime.length === 16 ? `${startTime}:00` : startTime,
+          endTime: endTime.length === 16 ? `${endTime}:00` : endTime,
+          location: location,
+        };
+
+        apiFormData.append("data", JSON.stringify(requestData));
+
+        const mainImageFile = formData.get("mainImage") as File;
+        if (mainImageFile && mainImageFile.size > 0) {
+          apiFormData.append("images", mainImageFile);
+        }
+
+        const prizeImageFile =
+          prizeCategory === "category2"
+            ? (formData.get("prizeImage") as File)
+            : null;
+        if (prizeImageFile && prizeImageFile.size > 0) {
+          apiFormData.append("images", prizeImageFile);
+        }
+
+        await createEvent(apiFormData);
+
+        alert("이벤트가 성공적으로 생성되었습니다.");
+        router.push("/admin/event");
+        router.refresh();
+      }
+    } catch (error) {
+      console.error("이벤트 전송 에러 캐치:", error);
+      alert("이벤트 저장 중 오류가 발생했습니다. 콘솔을 확인하세요.");
     }
   };
 
@@ -141,17 +208,26 @@ export default function FormLayout({
         />
       </section>
       <div className="flex gap-4 flex-col  bg-custom-lightgray p-4 rounded-lg">
-        <section className="flex flex-row gap-4">
-          <p>일시</p>
+        <section className="flex flex-row gap-4 items-center">
+          <p className="whitespace-nowrap">시작 일시</p>
           <input
-            name="date"
-            type="text"
-            placeholder="일시를 입력하세요"
-            defaultValue={date || ""}
+            name="startTime"
+            type="datetime-local"
+            className="p-1 rounded-md border border-gray-300 w-full"
+            defaultValue={startDate || ""}
           />
         </section>
-        <section className="flex flex-row gap-4">
-          <p>장소</p>
+        <section className="flex flex-row gap-4 items-center">
+          <p className="whitespace-nowrap">종료 일시</p>
+          <input
+            name="endTime"
+            type="datetime-local"
+            className="p-1 rounded-md border border-gray-300 w-full"
+            defaultValue={endDate || ""}
+          />
+        </section>
+        <section className="flex flex-row gap-4 items-center">
+          <p className="whitespace-nowrap">장소</p>
           <input
             name="location"
             type="text"

@@ -8,7 +8,9 @@ export async function adminFetch(endpoint: string, options: RequestInit = {}) {
   const token = Cookies.get("accessToken");
 
   const headers = new Headers(options.headers);
-  headers.set("Content-Type", "application/json");
+  if (!(options.body instanceof FormData)) {
+    headers.set("Content-Type", "application/json");
+  }
 
   if (token) {
     headers.set("Authorization", `Bearer ${token}`);
@@ -58,7 +60,9 @@ export async function adminFetch(endpoint: string, options: RequestInit = {}) {
         }
 
         const newHeaders = new Headers(options.headers);
-        newHeaders.set("Content-Type", "application/json");
+        if (!(options.body instanceof FormData)) {
+          newHeaders.set("Content-Type", "application/json");
+        }
         newHeaders.set("Authorization", `Bearer ${data.accessToken}`);
 
         response = await fetch(`${BASE_URL}${endpoint}`, {
