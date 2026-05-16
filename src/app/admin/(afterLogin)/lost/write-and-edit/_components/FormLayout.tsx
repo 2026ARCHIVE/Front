@@ -3,43 +3,34 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { createLostItem, updateLostItem } from "@/api/lost-items";
 
 interface FormLayoutProps {
-  lostId?: number; 
+  lostId?: number;
   itemName?: string;
-  category?: string; 
+  category?: string;
   description?: string;
-  imageUrls?: string[]; 
+  imageUrls?: string[];
   foundLocation?: string;
   foundTime?: string;
-  storageLocation?: string; 
-  status?: string; 
+  storageLocation?: string;
+  status?: string;
 }
 
 // 화면에 렌더링할 한글명과 서버로 전송할 영문명(Enum) 매핑
 const CATEGORIES: { key: string; label: string }[] = [
-  { key: "WALLET", label: "지갑" },
-  { key: "ELECTRONICS", label: "전자기기" },
+  { key: "CLOTHING", label: "의류" },
   { key: "ACCESSORY", label: "액세서리" },
+  { key: "ELECTRONICS", label: "전자기기" },
   { key: "BAG", label: "가방" },
-  { key: "ETC", label: "기타" },
+  { key: "WALLET", label: "지갑" },
+  { key: "DOCUMENT", label: "문서/신분증" },
+  { key: "UMBRELLA", label: "우산" },
+  { key: "BOTTLE", label: "텀블러/물병" },
+  { key: "STATIONERY", label: "필기구" },
+  { key: "KEY", label: "열쇠" },
+  { key: "OTHER", label: "기타" },
 ];
-
-const STATUSES: { key: string; label: string; color: string; text: string }[] =
-  [
-    {
-      key: "STORED",
-      label: "보관중",
-      color: "bg-blue-500",
-      text: "text-white",
-    },
-    {
-      key: "RETRIEVED",
-      label: "회수완료",
-      color: "bg-gray-700",
-      text: "text-white",
-    },
-  ];
 
 export default function FormLayout({
   lostId,
@@ -60,9 +51,6 @@ export default function FormLayout({
   const [selectedCategory, setSelectedCategory] = useState<string>(
     category || "",
   );
-  const [selectedStatus, setSelectedStatus] = useState<string>(
-    status || "STORED",
-  );
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -73,7 +61,7 @@ export default function FormLayout({
   };
 
   // 등록 및 수정 핸들러
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -105,27 +93,60 @@ export default function FormLayout({
       return;
     }
 
-    const submitData = {
-      itemName,
-      category: selectedCategory,
-      description,
-      foundLocation,
-      foundTime,
-      storageLocation,
-      status: selectedStatus,
-      image,
-    };
-
-    console.log("전송할 데이터:", submitData);
-
     if (lostId) {
-      alert(
-        `분실물 수정: ${JSON.stringify({ id: lostId, ...submitData }, null, 2)}`,
-      );
-      router.replace(`/admin/lost/`);
+      try {
+        const apiFormData = new FormData();
+        const requestData = {
+          itemName,
+          category: selectedCategory,
+          description,
+          foundLocation,
+          foundTime,
+          storageLocation,
+        };
+        apiFormData.append(
+          "data",
+          new Blob([JSON.stringify(requestData)], { type: "application/json" }),
+        );
+
+        if (image && image.size > 0) {
+          apiFormData.append("images", image);
+        }
+
+        await updateLostItem(lostId, apiFormData);
+        alert("분실물이 성공적으로 수정되었습니다.");
+        router.replace(`/admin/lost/`);
+      } catch (error) {
+        console.error("분실물 수정 예외 발생:", error);
+        alert("분실물 수정에 실패했습니다.");
+      }
     } else {
-      alert(`분실물 등록: ${JSON.stringify(submitData, null, 2)}`);
-      router.replace(`/admin/lost/`);
+      try {
+        const apiFormData = new FormData();
+        const requestData = {
+          itemName,
+          category: selectedCategory,
+          description,
+          foundLocation,
+          foundTime,
+          storageLocation,
+        };
+        apiFormData.append(
+          "data",
+          new Blob([JSON.stringify(requestData)], { type: "application/json" }),
+        );
+
+        if (image && image.size > 0) {
+          apiFormData.append("images", image);
+        }
+
+        await createLostItem(apiFormData);
+        alert("분실물 등록이 완료되었습니다.");
+        router.replace(`/admin/lost/`);
+      } catch (error) {
+        console.error("분실물 등록 예외 발생:", error);
+        alert("분실물 등록에 실패했습니다.");
+      }
     }
   };
 
@@ -231,30 +252,6 @@ export default function FormLayout({
                   }`}
                 >
                   {cat.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* 상태 */}
-        <div className="flex">
-          <span className="w-24 text-[#a3a3a3] font-medium pt-1">상태</span>
-          <div className="flex-1 bg-[#d9d9d9] p-3 rounded relative">
-            <div className="absolute top-3 right-3 text-black">▼</div>
-            <div className="flex flex-col items-start gap-2 max-w-fit relative z-10">
-              {STATUSES.map((stat) => (
-                <button
-                  key={stat.key}
-                  type="button"
-                  onClick={() => setSelectedStatus(stat.key)}
-                  className={`px-3 py-1 rounded-sm text-sm font-bold ${
-                    selectedStatus === stat.key
-                      ? `${stat.color} ${stat.text}`
-                      : "bg-gray-400 text-gray-100 opacity-60"
-                  }`}
-                >
-                  {stat.label}
                 </button>
               ))}
             </div>

@@ -1,58 +1,30 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LostItem from "./_components/LostItem";
 import WriteButton from "@/components/admin/WriteButton";
 import { Loader2 } from "lucide-react";
-
-export interface LostItem {
-  id: number;
-  itemName: string;
-  category: string;
-  foundLocation: string;
-  imgUrls: string[];
-  status: string;
-  createdAt: string;
-}
-
-const dummyLostItems: LostItem[] = [
-  {
-    id: 1,
-    itemName: "분실물 이름",
-    category: "카테고리 1",
-    foundLocation: "한누리관 10F",
-    imgUrls: [],
-    status: "상태 1",
-    createdAt: "2026-05-28T19:40:00",
-  },
-  {
-    id: 2,
-    itemName: "분실물 이름",
-    category: "카테고리 2",
-    foundLocation: "한누리관 10F",
-    imgUrls: [],
-    status: "상태 2",
-    createdAt: "2026-05-28T19:40:00",
-  },
-  {
-    id: 3,
-    itemName: "분실물 이름",
-    category: "카테고리 3",
-    foundLocation: "한누리관 10F",
-    imgUrls: [],
-    status: "상태 3",
-    createdAt: "2026-05-28T19:40:00",
-  },
-];
+import { getLostItems, LostItemApi } from "@/api/lost-items";
 
 export default function AdminLostPage() {
-  const [lostItems, setLostItems] = React.useState<LostItem[]>([]);
-  React.useEffect(() => {
-    setTimeout(() => {
-      setLostItems(dummyLostItems);
-    }, 1000);
+  const [lostItems, setLostItems] = useState<LostItemApi[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLostItems = async () => {
+      try {
+        const data = await getLostItems();
+        console.log("조회된 분실물 데이터:", data);
+        setLostItems(data);
+      } catch (error) {
+        console.error("분실물 조회 실패:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchLostItems();
   }, []);
 
-  if (lostItems.length === 0) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center h-64 text-blue-300">
         <Loader2 className="animate-spin" size={40} />
