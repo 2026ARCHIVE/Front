@@ -1,4 +1,5 @@
 import { apiFetchJson } from "./client";
+import { adminFetch } from "./admin/client";
 
 export type EventApiItem = {
   id: number;
@@ -17,7 +18,9 @@ export type EventApiDetailItem = EventApiItem & {
 };
 
 export async function getEvents() {
-  const res = await apiFetchJson<EventApiItem[]>("/events", { revalidate: 300 });
+  const res = await apiFetchJson<EventApiItem[]>("/events", {
+    revalidate: 300,
+  });
   if (!res.ok) throw new Error(`이벤트 목록 조회 실패 (${res.status})`);
 
   if (process.env.NODE_ENV !== "production") {
@@ -42,3 +45,17 @@ export async function getEvent(id: string) {
   return res.data;
 }
 
+export async function createEvent(formData: FormData) {
+  const response = await adminFetch("/admin/events", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("서버 에러 상세 내용:", errorText);
+    throw new Error(`이벤트 생성 실패 (${response.status}) - ${errorText}`);
+  }
+
+  return response.json();
+}

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ListItemProps {
-  id: string;
+  id: number;
   title: string;
   date: string;
 }

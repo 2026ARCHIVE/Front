@@ -1,23 +1,33 @@
+"use client";
 import WriteButton from "@/components/admin/WriteButton";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ListItem from "./_components/ListItem";
-
-const dummyEvents = [
-  { id: "1", title: "이벤트 1", date: "2024-07-01" },
-  { id: "2", title: "이벤트 2", date: "2024-07-15" },
-  { id: "3", title: "이벤트 3", date: "2024-08-01" },
-];
+import { EventApiItem, getEvents } from "@/api/events";
 
 export default function AdminEventPage() {
+  const [events, setEvents] = useState<EventApiItem[]>([]);
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const data = await getEvents();
+      setEvents(data);
+    };
+    fetchEvents();
+  }, []);
   return (
     <div>
       <WriteButton link="/admin/event/write-and-edit" />
-      {dummyEvents.map((event) => (
+      {events.map((event) => (
         <ListItem
           key={event.id}
           id={event.id}
           title={event.title}
-          date={event.date}
+          date={new Date(event.createdAt).toLocaleString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
         />
       ))}
     </div>
