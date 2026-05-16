@@ -25,7 +25,7 @@ export default function LineupSection({ items }: Props) {
                   src={li.imageUrlSchedule}
                   alt={li.title}
                   fill
-                  className="object-cover object-[center_20%]"
+                  className={`object-cover ${li.id === "lucy" ? "object-[center_55%]" : "object-[center_20%]"}`}
                   sizes="(max-width: 768px) 100vw, 640px"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
