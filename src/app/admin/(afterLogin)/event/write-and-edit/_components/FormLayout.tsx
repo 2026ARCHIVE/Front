@@ -112,12 +112,17 @@ export default function FormLayout({
           title: title,
           description: description,
           content: method,
+          contentType: prizeCategory === "category2" ? "IMAGE" : "TEXT",
+          productDescription: prizeText || "",
           startTime: startTime.length === 16 ? `${startTime}:00` : startTime,
           endTime: endTime.length === 16 ? `${endTime}:00` : endTime,
           location: location,
         };
 
-        apiFormData.append("data", JSON.stringify(requestData));
+        apiFormData.append(
+          "data",
+          new Blob([JSON.stringify(requestData)], { type: "application/json" }),
+        );
 
         const mainImageFile = formData.get("mainImage") as File;
         if (mainImageFile && mainImageFile.size > 0) {
@@ -129,7 +134,7 @@ export default function FormLayout({
             ? (formData.get("prizeImage") as File)
             : null;
         if (prizeImageFile && prizeImageFile.size > 0) {
-          apiFormData.append("images", prizeImageFile);
+          apiFormData.append("contentImages", prizeImageFile);
         }
 
         await createEvent(apiFormData);
