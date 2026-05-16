@@ -23,3 +23,16 @@ export async function getGoods() {
 export async function getGoodsById(id: number) {
   return await apiFetchJson<GoodsDetail>(`/goods/${id}`, { cache: "no-store" });
 }
+
+export async function updateGoodsStatus(
+  id: number,
+  status: "ON_SALE" | "SOLD_OUT",
+) {
+  return await apiFetchJson<null>(`/admin/goods/${id}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status }),
+  });
+}
