@@ -196,7 +196,7 @@ const lineupItems: LineupItem[] = [
     date: "2026-05-27",
     title: "루시",
     timeRange: "20:50 - 21:20",
-    imageUrlHome: "/lineup/lucy.webp",
+    imageUrlHome: "/lineup/home_lucy.webp",
     imageUrlSchedule: "/lineup/lucy.webp",
   },
   {
@@ -212,7 +212,7 @@ const lineupItems: LineupItem[] = [
     date: "2026-05-28",
     title: "호미들",
     timeRange: "20:00 - 20:30",
-    imageUrlHome: "/lineup/homies_2.webp",
+    imageUrlHome: "/lineup/home_homies.webp",
     imageUrlSchedule: "/lineup/homies_1.webp",
   },
   {
@@ -220,7 +220,7 @@ const lineupItems: LineupItem[] = [
     date: "2026-05-28",
     title: "스테이씨",
     timeRange: "20:40 - 21:10",
-    imageUrlHome: "/lineup/stayc_2.webp",
+    imageUrlHome: "/lineup/home_stacy.webp",
     imageUrlSchedule: "/lineup/stayc_1.webp",
   },
 ];
