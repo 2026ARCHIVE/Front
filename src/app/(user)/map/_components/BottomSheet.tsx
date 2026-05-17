@@ -175,7 +175,7 @@ export default function BottomSheet({
       <div
         ref={sheetRef}
         className={[
-          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white",
+          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white flex flex-col pb-4",
           dragging
             ? "transition-none"
             : "transition-transform duration-200 ease-out",
@@ -190,7 +190,7 @@ export default function BottomSheet({
         aria-label={title ?? "바텀시트"}
       >
         {/* 그랩바 */}
-        <div className="pt-2">
+        <div className="pt-2 shrink-0">
           <div
             className={[
               "mx-auto w-14 h-7 flex items-center justify-center",
@@ -209,12 +209,13 @@ export default function BottomSheet({
           </div>
         </div>
 
-        {title && <div className="px-5 py-1 text-xl font-bold">{title}</div>}
+        {title && (
+          <div className="px-5 py-1 text-xl font-bold shrink-0">{title}</div>
+        )}
 
         <div
-          className="px-5 pb-6 pt-3 overflow-y-auto scrollbar-hide [&::-webkit-scrollbar]:hidden"
+          className="px-5 pb-6 pt-3 overflow-y-auto flex-1 scrollbar-hide [&::-webkit-scrollbar]:hidden"
           style={{
-            maxHeight: height,
             scrollbarWidth: "none",
             msOverflowStyle: "none",
           }}
