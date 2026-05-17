@@ -1,18 +1,31 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useMemo, useRef } from "react";
 import Image from "next/image";
 
 export default function HomeHeader() {
   const [showOverlay, setShowOverlay] = React.useState(false);
 
+  const cCnt = useRef(0);
+  const tStamp = useRef(0);
+
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
 
-    if ((e.detail ^ 5) === 0) {
+    const now = Date.now();
+    if (now - tStamp.current < 400) {
+      cCnt.current += 1;
+    } else {
+      cCnt.current = 1;
+    }
+    tStamp.current = now;
+
+    if ((cCnt.current ^ 5) === 0) {
       setShowOverlay(true);
       setTimeout(() => {
         setShowOverlay(false);
       }, 3000);
+
+      cCnt.current = 0;
     }
   };
 
@@ -35,12 +48,11 @@ export default function HomeHeader() {
 
       {showOverlay && getAssetPath && (
         <div
-          className="absolute z-100 left-1/2 -translate-x-1/2 top-2/3 pointer-events-none"
+          className="absolute z-[100] left-1/2 -translate-x-1/2 top-2/3 pointer-events-none"
           aria-hidden="true"
         >
           <style>
             {`
-              /* heartbeat 대신 모호한 클래스명 사용 */
               @keyframes fAnim {
                 0%, 100% { transform: scale(1); }
                 15%, 45% { transform: scale(1.3); }
@@ -55,7 +67,7 @@ export default function HomeHeader() {
           <div className="ui-layer-fw">
             <Image
               src={getAssetPath}
-              alt="bg-overlay" 
+              alt="bg-overlay"
               width={500}
               height={500}
               className="max-w-[150vw] sm:max-w-none"
