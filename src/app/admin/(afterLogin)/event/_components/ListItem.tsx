@@ -1,4 +1,5 @@
 "use client";
+import { deleteEvent } from "@/api/events";
 import DeleteCheckAlert from "@/components/admin/DeleteCheckAlert";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -15,11 +16,13 @@ export default function ListItem({ id, title, date }: ListItemProps) {
 
   const handleDelete = async () => {
     try {
-      // await fetch(`/api/events/${id}`, { method: 'DELETE' });
+      await deleteEvent(id.toString());
+      alert("이벤트가 삭제되었습니다.");
+      setVisible(false);
       router.refresh();
     } catch (error) {
-      console.error("삭제 실패:", error);
-      alert("삭제에 실패했습니다.");
+      console.error("이벤트 삭제 에러:", error);
+      alert("삭제 중 오류가 발생했습니다.");
     }
   };
 

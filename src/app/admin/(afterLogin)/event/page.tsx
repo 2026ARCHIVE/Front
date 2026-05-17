@@ -1,18 +1,11 @@
-"use client";
 import WriteButton from "@/components/admin/WriteButton";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ListItem from "./_components/ListItem";
-import { EventApiItem, getEvents } from "@/api/events";
+import { getEvents } from "@/api/events";
 
-export default function AdminEventPage() {
-  const [events, setEvents] = useState<EventApiItem[]>([]);
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const data = await getEvents();
-      setEvents(data);
-    };
-    fetchEvents();
-  }, []);
+export default async function AdminEventPage() {
+  const events = await getEvents({ revalidate: 0 }); // 캐싱 무시하고 항상 최신 데이터 불러오기
+
   return (
     <div>
       <WriteButton link="/admin/event/write-and-edit" />
