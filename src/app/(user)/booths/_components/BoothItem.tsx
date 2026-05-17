@@ -14,7 +14,13 @@ export default function BoothItem({ booth }: BoothItemProps) {
   return (
     <div
       className="cursor-pointer hover:shadow-lg rounded-xl overflow-hidden w-full flex flex-col"
-      onClick={() => router.push(`/booths/${booth.id}`)}
+      onClick={() => {
+        if (booth.category === "푸드트럭") {
+          router.push(`/booths/foodtrucks/${booth.id - 100}`);
+        } else {
+          router.push(`/booths/${booth.id}`);
+        }
+      }}
     >
       <div className="relative w-full h-56">
         <Image

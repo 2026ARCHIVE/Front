@@ -70,8 +70,8 @@ function foodTruckItemToBoothData(item: FestivalListItem): BoothData {
     name: item.name,
     category: "푸드트럭", // 푸드트럭으로 고정 분류
     host: item.name, // 호스트명은 일단 푸드트럭의 이름으로 통일
-    time: "DAY 1 10:00-22:00", // 나중에 값 들어오기 전까지 지정 임시 값
-    location: "푸드트럭 존", // 지정 임시 값
+    time: item.time ?? "—",
+    location: item.location ?? "—",
     imageUrl: item.imageUrl,
   };
 }
