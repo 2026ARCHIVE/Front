@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { createEvent } from "@/api/events";
+import { createEvent, updateEvent } from "@/api/events";
 
 interface FormLayoutProps {
   // 편집용
@@ -103,46 +103,48 @@ export default function FormLayout({
     }
 
     try {
-      if (eventId) {
-        alert("이벤트 수정은 아직 구현되지 않았습니다.");
-      } else {
-        const apiFormData = new FormData();
+      const apiFormData = new FormData();
 
-        const requestData = {
-          title: title,
-          description: description,
-          content: method,
-          contentType: prizeCategory === "category2" ? "IMAGE" : "TEXT",
-          productDescription: prizeText || "",
-          startTime: startTime.length === 16 ? `${startTime}:00` : startTime,
-          endTime: endTime.length === 16 ? `${endTime}:00` : endTime,
-          location: location,
-        };
+      const requestData = {
+        title: title,
+        description: description,
+        content: method,
+        contentType: prizeCategory === "category2" ? "IMAGE" : "TEXT",
+        productDescription: prizeText || "",
+        startTime: startTime.length === 16 ? `${startTime}:00` : startTime,
+        endTime: endTime.length === 16 ? `${endTime}:00` : endTime,
+        location: location,
+      };
 
-        apiFormData.append(
-          "data",
-          new Blob([JSON.stringify(requestData)], { type: "application/json" }),
-        );
+      apiFormData.append(
+        "data",
+        new Blob([JSON.stringify(requestData)], { type: "application/json" }),
+      );
 
-        const mainImageFile = formData.get("mainImage") as File;
-        if (mainImageFile && mainImageFile.size > 0) {
-          apiFormData.append("images", mainImageFile);
-        }
-
-        const prizeImageFile =
-          prizeCategory === "category2"
-            ? (formData.get("prizeImage") as File)
-            : null;
-        if (prizeImageFile && prizeImageFile.size > 0) {
-          apiFormData.append("contentImages", prizeImageFile);
-        }
-
-        await createEvent(apiFormData);
-
-        alert("이벤트가 성공적으로 생성되었습니다.");
-        router.push("/admin/event");
-        router.refresh();
+      const mainImageFile = formData.get("mainImage") as File;
+      if (mainImageFile && mainImageFile.size > 0) {
+        apiFormData.append("images", mainImageFile);
       }
+
+      const prizeImageFile =
+        prizeCategory === "category2"
+          ? (formData.get("prizeImage") as File)
+          : null;
+      if (prizeImageFile && prizeImageFile.size > 0) {
+        apiFormData.append("contentImages", prizeImageFile);
+      }
+
+      if (eventId) {
+        await updateEvent(eventId, apiFormData);
+        
+        alert("이벤트가 성공적으로 수정되었습니다.");
+      } else {
+        await createEvent(apiFormData);
+        alert("이벤트가 성공적으로 생성되었습니다.");
+      }
+
+      router.push("/admin/event");
+      router.refresh();
     } catch (error) {
       console.error("이벤트 전송 에러 캐치:", error);
       alert("이벤트 저장 중 오류가 발생했습니다. 콘솔을 확인하세요.");

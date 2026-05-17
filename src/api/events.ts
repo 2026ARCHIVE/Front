@@ -14,12 +14,15 @@ export type EventApiItem = {
 
 export type EventApiDetailItem = EventApiItem & {
   content: string | null;
+  contentType?: string;
+  productDescription?: string | null;
+  contentImageUrls?: string[];
   updatedAt: string;
 };
 
-export async function getEvents() {
+export async function getEvents(options?: { revalidate?: number }) {
   const res = await apiFetchJson<EventApiItem[]>("/events", {
-    revalidate: 300,
+    revalidate: options?.revalidate ?? 300,
   });
   if (!res.ok) throw new Error(`이벤트 목록 조회 실패 (${res.status})`);
 
@@ -30,9 +33,9 @@ export async function getEvents() {
   return res.data ?? [];
 }
 
-export async function getEvent(id: string) {
+export async function getEvent(id: string, options?: { revalidate?: number }) {
   const res = await apiFetchJson<EventApiDetailItem>(`/events/${id}`, {
-    revalidate: 300,
+    revalidate: options?.revalidate ?? 300,
   });
 
   if (res.status === 404) return null;
@@ -58,4 +61,32 @@ export async function createEvent(formData: FormData) {
   }
 
   return response.json();
+}
+
+export async function updateEvent(id: string, formData: FormData) {
+  const response = await adminFetch(`/admin/events/${id}`, {
+    method: "PATCH",
+    body: formData,
+  });
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`[events] update response for id ${id}:`, response.status);
+  }
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("서버 에러 상세 내용:", errorText);
+    throw new Error(`이벤트 수정 실패 (${response.status}) - ${errorText}`);
+  }
+
+  return response.json();
+}
+
+export async function deleteEvent(id: string) {
+  const response = await adminFetch(`/admin/events/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("서버 에러 상세 내용:", errorText);
+    throw new Error(`이벤트 삭제 실패 (${response.status}) - ${errorText}`);
+  }
 }
