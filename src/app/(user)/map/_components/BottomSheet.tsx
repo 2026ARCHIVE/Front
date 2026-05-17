@@ -175,7 +175,7 @@ export default function BottomSheet({
       <div
         ref={sheetRef}
         className={[
-          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white flex flex-col pb-4",
+          "absolute w-full max-w-md left-1/2 rounded-t-3xl bg-white flex flex-col ",
           dragging
             ? "transition-none"
             : "transition-transform duration-200 ease-out",
@@ -214,10 +214,11 @@ export default function BottomSheet({
         )}
 
         <div
-          className="px-5 pb-6 pt-3 overflow-y-auto flex-1 scrollbar-hide [&::-webkit-scrollbar]:hidden"
+          className="px-5 pb-10 pt-3 overflow-y-auto flex-1 min-h-0 scrollbar-hide [&::-webkit-scrollbar]:hidden"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
+            paddingBottom: `calc(env(safe-area-inset-bottom) + ${translateY + 40}px)`,
           }}
         >
           {children}
