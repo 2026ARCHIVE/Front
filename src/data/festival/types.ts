@@ -7,4 +7,8 @@ export type FestivalListItem = {
   location?: string;
   description: string;
   imageUrl: string;
+  menu?: {
+    name: string;
+    price: string;
+  }[];
 };

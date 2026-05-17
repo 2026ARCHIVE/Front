@@ -12,6 +12,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-11",
     description: "3D 프린팅 출력물 판매 및 나만의 클릭커 커스터마이징 체험",
     imageUrl: "/map/experience/booth-01.webp",
+    menu: [
+      { name: "피젯토이 클릭커", price: "4,000-6,000원" },
+      { name: "클릭커 커스터 마이징 체험", price: "3,500-4,500원" },
+      { name: "꾸미기 데코레이션 파츠 및 부자재", price: "500-1,000원" },
+    ],
   },
   {
     id: 2,
@@ -22,6 +27,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-15",
     description: "음식 판매 및 동아리 홍보",
     imageUrl: "/map/experience/booth-02.webp",
+    menu: [
+      { name: "감자튀김", price: "3,000원" },
+      { name: "밀크쉐이크", price: "3,000원" },
+      { name: "감자튀김+밀크쉐이크 세트", price: "5,000원" },
+    ],
   },
   {
     id: 3,
@@ -32,6 +42,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-19",
     description: "실크 스트린을 통한 옷 제작 및 디제잉 운영",
     imageUrl: "/map/experience/booth-03.webp",
+    menu: [
+      { name: "옷+체험", price: "9,900원" },
+      { name: "체험(개인 옷 지참)", price: "3,000원" },
+    ],
   },
   {
     id: 4,
@@ -43,6 +57,7 @@ export const experienceList: FestivalListItem[] = [
     description:
       "인간 룰렛 게임 (DAY 1: 혼자 혹은 친구와 / DAY 2: 랜덤 소개팅)",
     imageUrl: "/map/experience/booth-04.webp",
+    menu: [{ name: "참가비", price: "1,000원" }],
   },
   {
     id: 5,
@@ -53,6 +68,12 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-16",
     description: "사탕팅 및 농구 게임",
     imageUrl: "/map/experience/booth-05.webp",
+    menu: [
+      { name: "번호 1개 넣기", price: "1,000원" },
+      { name: "번호 3개 넣기", price: "1,500원" },
+      { name: "번호 2개 뽑기", price: "2,000원" },
+      { name: "농구 게임 1회", price: "2,000원" },
+    ],
   },
   {
     id: 6,
@@ -63,6 +84,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-27",
     description: "빙수 판매",
     imageUrl: "/map/experience/booth-06.webp",
+    menu: [
+      { name: "팥빙수", price: "3,000원" },
+      { name: "초코빙수", price: "4,000원" },
+      { name: "인절미 콩가루 옵션", price: "500원" },
+    ],
   },
   {
     id: 7,
@@ -73,6 +99,12 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-5",
     description: "보드게임 카페 컨셉의 부스 운영",
     imageUrl: "/map/experience/booth-07.webp",
+    menu: [
+      { name: "입장료", price: "1,000원" },
+      { name: "멜론소다", price: "1,500원" },
+      { name: "얼박사", price: "1,500원" },
+      { name: "체리콕", price: "1,500원" },
+    ],
   },
   {
     id: 8,
@@ -83,6 +115,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-17",
     description: "문답 시그널 및 논알콜 칵테일 판매",
     imageUrl: "/map/experience/booth-08.webp",
+    menu: [
+      { name: "논알콜 칵테일&프레첼", price: "3,000원" },
+      { name: "문답시그널 번호 넣기", price: "500원" },
+      { name: "문답시그널 번호 뽑기", price: "1,000원" },
+    ],
   },
   {
     id: 9,
@@ -93,6 +130,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-14",
     description: "7.77초 맞춰라 및 음식 판매",
     imageUrl: "/map/experience/booth-09.webp",
+    menu: [
+      { name: "게임 참여 1회", price: "1,000원" },
+      { name: "물냉면+만두 2개", price: "6,000원" },
+      { name: "불냉면+만두 2개", price: "6,000원" },
+    ],
   },
   {
     id: 10,
@@ -103,6 +145,15 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-7",
     description: "미니게임",
     imageUrl: "/map/experience/booth-10.webp",
+    menu: [
+      { name: "티셔츠(2종)", price: "25,000원" },
+      { name: "신발 주머니(2종)", price: "15,000원" },
+      { name: "엽서(16종)", price: "2,000원" },
+      { name: "찌라시 스티커(3종)", price: "1,000원" },
+      { name: "핀버튼(5종)", price: "1,000원" },
+      { name: "반다나", price: "8,000원" },
+      { name: "타투스티커", price: "1,000원" },
+    ],
   },
   {
     id: 11,
@@ -113,6 +164,15 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-12",
     description: "실크스크린을 활용한 제품 판매 및 그래픽 굿즈 판매",
     imageUrl: "/map/experience/booth-11.webp",
+    menu: [
+      { name: "티셔츠(2종)", price: "25,000원" },
+      { name: "신발 주머니(2종)", price: "15,000원" },
+      { name: "엽서(16종)", price: "2,000원" },
+      { name: "찌라시 스티커(3종)", price: "1,000원" },
+      { name: "핀버튼(5종)", price: "1,000원" },
+      { name: "반다나", price: "8,000원" },
+      { name: "타투스티커", price: "1,000원" },
+    ],
   },
   {
     id: 12,
@@ -123,6 +183,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-6",
     description: "애니멀 페어링",
     imageUrl: "/map/experience/booth-12.webp",
+    menu: [
+      { name: "접수(2회)", price: "1,000원" },
+      { name: "뽑기(1회)", price: "1,000원" },
+    ],
   },
   {
     id: 13,
@@ -133,6 +197,13 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-9",
     description: "동아리 부원들이 제작한 굿즈 판매",
     imageUrl: "/map/experience/booth-13.webp",
+    menu: [
+      { name: "엽서(5종)", price: "1,000원" },
+      { name: "키링(6종)", price: "3,500원" },
+      { name: "마우스패드(4종)", price: "5,000원" },
+      { name: "스티커(7종)", price: "1,500원" },
+      { name: "안경닦이(2종)", price: "3,500원" },
+    ],
   },
   {
     id: 14,
@@ -143,6 +214,11 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-25",
     description: "게임 및 굿즈 판매 등",
     imageUrl: "/map/experience/booth-14.webp",
+    menu: [
+      { name: "DIY 깃발", price: "1,500원" },
+      { name: "DIY 피크(일반형)", price: "1,000원" },
+      { name: "DIY 피크(고리형)", price: "1,500원" },
+    ],
   },
   {
     id: 15,
@@ -153,6 +229,7 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-9",
     description: "게임 진행",
     imageUrl: "/map/experience/booth-15.webp",
+    menu: [{ name: "참가비 1회", price: "1,000원" }],
   },
   {
     id: 16,
@@ -163,6 +240,13 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-18",
     description: "식당 운영 및 소개팅",
     imageUrl: "/map/experience/booth-16.webp",
+    menu: [
+      { name: "상명시그널 번호 넣기", price: "500원" },
+      { name: "상명시그널 번호 뽑기", price: "1,000원" },
+      { name: "동물의 왕국(컵밥)", price: "4,000원" },
+      { name: "추억의 분식(떡볶이)", price: "4,000원" },
+      { name: "세렝게티(치킨라이스)", price: "5,000원" },
+    ],
   },
   {
     id: 17,
@@ -173,6 +257,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-8",
     description: "망치 게임",
     imageUrl: "/map/experience/booth-17.webp",
+    menu: [
+      { name: "사탕 접수", price: "500원" },
+      { name: "사탕 뽑기", price: "1,000원" },
+    ],
   },
   {
     id: 18,
@@ -183,6 +271,16 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-10",
     description: "마음 처방전, 응원 메시지 벽, 걱정 인형 만들기",
     imageUrl: "/map/experience/booth-18.webp",
+    menu: [
+      { name: "양말목 팔찌", price: "2,000원" },
+      { name: "양말목 클로버 키링", price: "2,000원" },
+      { name: "양말목 꽃모양 키링", price: "2,000원" },
+      { name: "버섯 키링", price: "3,500원" },
+      { name: "푸딩 키링", price: "4,000원" },
+      { name: "주머니 키링", price: "5,000원" },
+      { name: "토마토 키링", price: "1,000원" },
+      { name: "기타 코바늘 인형 키링", price: "3,000원" },
+    ],
   },
   {
     id: 19,
@@ -193,6 +291,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-21",
     description: "사탕시그널",
     imageUrl: "/map/experience/booth-19.webp",
+    menu: [
+      { name: "사탕 접수", price: "500원" },
+      { name: "사탕 뽑기", price: "1,000원" },
+    ],
   },
   {
     id: 20,
@@ -203,6 +305,16 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-8",
     description: "실오라기 멤버들이 만든 물품 판매 장터",
     imageUrl: "/map/experience/booth-20.webp",
+    menu: [
+      { name: "양말목 팔찌", price: "2,000원" },
+      { name: "양말목 클로버 키링", price: "2,000원" },
+      { name: "양말목 꽃모양 키링", price: "2,000원" },
+      { name: "버섯 키링", price: "3,500원" },
+      { name: "푸딩 키링", price: "4,000원" },
+      { name: "주머니 키링", price: "5,000원" },
+      { name: "토마토 키링", price: "1,000원" },
+      { name: "기타 코바늘 인형 키링", price: "3,000원" },
+    ],
   },
   {
     id: 21,
@@ -213,6 +325,13 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-28",
     description: "야구 푸드 판매 및 팀별 소개팅 부스",
     imageUrl: "/map/experience/booth-21.webp",
+    menu: [
+      { name: "콜팝", price: "3,000원" },
+      { name: "비빔국수", price: "5,000원" },
+      { name: "콜팝+비빔국수 세트", price: "7,000원" },
+      { name: "상대뽑기", price: "1,000원" },
+      { name: "본인 프로필 넣기", price: "500원" },
+    ],
   },
   {
     id: 22,
@@ -223,6 +342,12 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-13",
     description: "굿즈 판매 부스",
     imageUrl: "/map/experience/booth-22.webp",
+    menu: [
+      { name: "키링", price: "2,000원" },
+      { name: "스티커", price: "1,500원" },
+      { name: "티셔츠", price: "5,000원" },
+      { name: "핀버튼", price: "2,000원" },
+    ],
   },
   {
     id: 23,
@@ -233,6 +358,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-26",
     description: "희곡작품의 대사가 적힌 쪽지와 함께 꽃 판매",
     imageUrl: "/map/experience/booth-23.webp",
+    menu: [
+      { name: "꽃 한 송이", price: "4,400원" },
+      { name: "꽃 한 다발", price: "6,600원" },
+    ],
   },
   {
     id: 24,
@@ -243,6 +372,15 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-4",
     description: "플리마켓",
     imageUrl: "/map/experience/booth-24.webp",
+    menu: [
+      { name: "페브릭 키링", price: "2,500-6,000원" },
+      { name: "봉제인형 키링", price: "5,500원" },
+      { name: "카드 지갑", price: "5,500원" },
+      { name: "페브릭 소품", price: "3,000원" },
+      { name: "자체제작 의류", price: "10,000-30,000원" },
+      { name: "페브릭 가방", price: "10,000-20,000원" },
+      { name: "자체제작 악세서리", price: "3,000-20,000원" },
+    ],
   },
   {
     id: 25,
@@ -253,6 +391,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-3",
     description: "음식 판매 및 소개팅 부스",
     imageUrl: "/map/experience/booth-25.webp",
+    menu: [
+      { name: "냉우동", price: "4,500원" },
+      { name: "슬러시", price: "3,500원" },
+    ],
   },
   {
     id: 26,
@@ -263,6 +405,15 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-11",
     description: "민속촌 분위기의 음식 판매 및 게임 부스",
     imageUrl: "/map/experience/booth-26.webp",
+    menu: [
+      { name: "오미자", price: "2,000원" },
+      { name: "미숫가루", price: "1,000원" },
+      { name: "식혜", price: "1,500원" },
+      { name: "전", price: "3,500원" },
+      { name: "묵사발", price: "3,000원" },
+      { name: "옛날 과자", price: "1,000원" },
+      { name: "오락실 게임", price: "500원" },
+    ],
   },
   {
     id: 27,
@@ -273,6 +424,7 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-23",
     description: "사격 게임",
     imageUrl: "/map/experience/booth-27.webp",
+    menu: [{ name: "총알 10발", price: "2,000원" }],
   },
   {
     id: 28,
@@ -283,6 +435,11 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-3",
     description: "소개팅 부스 및 사진 촬영",
     imageUrl: "/map/experience/booth-28.webp",
+    menu: [
+      { name: "본인 사진 부착", price: "1,500원" },
+      { name: "사진 뽑기", price: "1,000원" },
+      { name: "폴라로이드 촬영", price: "1,000원" },
+    ],
   },
   {
     id: 29,
@@ -293,6 +450,25 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-10",
     description: "룩개팅 및 플리마켓",
     imageUrl: "/map/experience/booth-29.webp",
+    menu: [
+      { name: "스타일 매칭 박스 등록", price: "500원" },
+      { name: "룩개팅 뽑기", price: "1,000원" },
+      { name: "Flawed Long Sleeve", price: "42,000원" },
+      { name: "Canceller's Hooded Long Sleeve", price: "57,000원" },
+      { name: "Flawed Baggy Pants", price: "71,000원" },
+      { name: "0:03 Bootcut Pants", price: "87,000원" },
+      { name: "Salter-Harris Key Chain", price: "65,000원" },
+      { name: "Salter-Harris Long Necklace", price: "23,200원" },
+      { name: "Verbrannte Pin Badge Pack", price: "12,000원" },
+      { name: "팜스타 반팔(4종)", price: "52,000원" },
+      { name: "팜스타 바지", price: "110,000원" },
+      { name: "팜스타∙리리엣 키링", price: "10,000원" },
+      { name: "팜스타 스카프타올", price: "30,000원" },
+      { name: "리리엣 뱃지(3종)", price: "10,000원" },
+      { name: "리리엣 피크", price: "2,000원" },
+      { name: "타이가 스카프 반다나", price: "35,000원" },
+      { name: "타이가 키링", price: "18,000원" },
+    ],
   },
   {
     id: 30,
@@ -303,6 +479,10 @@ export const experienceList: FestivalListItem[] = [
     location: "소나무 숲 앞 A-5",
     description: "가챠 및 굿즈 판매",
     imageUrl: "/map/experience/booth-30.webp",
+    menu: [
+      { name: "키보드 스티커(3개)", price: "1,000원" },
+      { name: "오미쿠지(가챠) 1회", price: "3,000원" },
+    ],
   },
   {
     id: 31,
@@ -313,6 +493,12 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-4",
     description: "음식 판매",
     imageUrl: "/map/experience/booth-31.webp",
+    menu: [
+      { name: "본인 번호 넣기", price: "500원" },
+      { name: "상대방 번호 뽑기", price: "500원" },
+      { name: "에이드(3종)", price: "2,500원" },
+      { name: "쿨링시트(2매입)", price: "1,000원" },
+    ],
   },
   {
     id: 32,
@@ -323,6 +509,10 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-24",
     description: "게임 및 행운의 뽑기",
     imageUrl: "/map/experience/booth-32.webp",
+    menu: [
+      { name: "풍선 다트(5발)+동전(5코인) 패키지", price: "3,000원" },
+      { name: "종이/캡슐 뽑기 1회", price: "1,000원" },
+    ],
   },
   {
     id: 33,
@@ -333,6 +523,12 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-20",
     description: "소개팅 및 여름 필수템 판매",
     imageUrl: "/map/experience/booth-33.webp",
+    menu: [
+      { name: "본인 번호 넣기", price: "500원" },
+      { name: "상대방 번호 뽑기", price: "500원" },
+      { name: "에이드(3종)", price: "2,500원" },
+      { name: "쿨링시트(2매입)", price: "1,000원" },
+    ],
   },
   {
     id: 34,
@@ -343,5 +539,6 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 B-2",
     description: "게임 진행",
     imageUrl: "/map/experience/booth-34.webp",
+    menu: [{ name: "참가비(1회)", price: "1,000원" }],
   },
 ];
