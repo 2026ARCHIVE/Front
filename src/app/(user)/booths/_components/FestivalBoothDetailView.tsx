@@ -24,14 +24,34 @@ export default function FestivalBoothDetailView({
       </div>
       <div className="flex flex-col gap-9 ">
         <div>
-          <h1 className="text-[20px] font-semibold leading-snug">
-            {item.name}
-          </h1>
+          <div>
+            <h1 className="text-[20px] font-semibold leading-snug">
+              {item.name}
+            </h1>
+            <span className="font-medium text-md text-custom-darkgray">
+              {item.host}
+            </span>
+          </div>
+
           <p className="text-custom-darkgray text-[16px] pt-4">{item.time}</p>
           <p className="text-custom-darkgray text-[16px]">{item.location}</p>
           <p className="mt-4 text-[13px] leading-relaxed whitespace-pre-wrap text-custom-darkgray bg-custom-lightgray p-4 rounded-lg">
             {item.description}
           </p>
+        </div>
+        <div>
+          <h2 className="text-[20px] font-semibold">상품 목록</h2>
+          <div className="flex flex-col ">
+            {item.menu?.map((menuItem, index) => (
+              <p
+                key={index}
+                className=" text-[16px] py-4 border-b border-[#ECEFF0] flex justify-between"
+              >
+                <span>{menuItem.name}</span>
+                <span className="font-semibold">{menuItem.price}</span>
+              </p>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="text-[20px] font-semibold">시설 정보</h2>
