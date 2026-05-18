@@ -158,13 +158,20 @@ const scheduleItems: ScheduleItem[] = [
       },
       {
         id: "d2-5-2",
+        start: "19:30",
+        end: "20:00",
+        title: "키비츠",
+        description: "노천극장",
+      },
+      {
+        id: "d2-5-3",
         start: "20:00",
         end: "20:30",
         title: "호미들",
         description: "노천극장",
       },
       {
-        id: "d2-5-3",
+        id: "d2-5-4",
         start: "20:40",
         end: "21:10",
         title: "스테이씨",
@@ -176,12 +183,12 @@ const scheduleItems: ScheduleItem[] = [
 
 const lineupItems: LineupItem[] = [
   {
-    id: "keyveatz",
+    id: "keyvitup",
     date: "2026-05-27",
-    title: "키비츠",
+    title: "키빗업",
     timeRange: "19:30 - 20:00",
-    imageUrlHome: "/lineup/keyveatz_2.webp",
-    imageUrlSchedule: "/lineup/keyveatz_1.webp",
+    imageUrlHome: "/lineup/keyvitup.webp",
+    imageUrlSchedule: "/lineup/keyvitup.webp",
   },
   {
     id: "coogie",
@@ -206,6 +213,14 @@ const lineupItems: LineupItem[] = [
     timeRange: "19:20 - 19:50",
     imageUrlHome: "/lineup/heize_1.webp",
     imageUrlSchedule: "/lineup/heize_2.webp",
+  },
+  {
+    id: "keyveatz",
+    date: "2026-05-28",
+    title: "키비츠",
+    timeRange: "19:30 - 20:00",
+    imageUrlHome: "/lineup/keyveatz_2.webp",
+    imageUrlSchedule: "/lineup/keyveatz_1.webp",
   },
   {
     id: "homies",

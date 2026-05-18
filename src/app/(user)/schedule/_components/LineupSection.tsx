@@ -12,6 +12,11 @@ type Props = {
   items: LineupItem[];
 };
 
+const scheduleImagePosition: Record<string, string> = {
+  lucy: "object-[center_55%]",
+  keyvitup: "object-[center_50%]",
+};
+
 export default function LineupSection({ items }: Props) {
   return (
     <section className="pb-6.25">
@@ -25,7 +30,7 @@ export default function LineupSection({ items }: Props) {
                   src={li.imageUrlSchedule}
                   alt={li.title}
                   fill
-                  className={`object-cover ${li.id === "lucy" ? "object-[center_55%]" : "object-[center_20%]"}`}
+                  className={`object-cover ${scheduleImagePosition[li.id] ?? "object-[center_20%]"}`}
                   sizes="(max-width: 768px) 100vw, 640px"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
