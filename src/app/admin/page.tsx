@@ -20,7 +20,7 @@ export default function AdminPage() {
         }}
       />
       <RouteButton
-        label="분신물 관리"
+        label="분실물 관리"
         onClick={() => {
           router.push("/admin/lost");
         }}
