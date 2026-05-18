@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { type LostItem } from "../../_data/lostAndFoundData";
@@ -8,10 +9,10 @@ type Props = {
   item: LostItem;
 };
 
-function Thumbnail({ hasImage }: { hasImage: boolean }) {
+function Thumbnail({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="h-25 w-25 shrink-0 overflow-hidden rounded bg-gray-200">
-      {hasImage ? <div className="h-full w-full bg-gray-200" /> : null}
+    <div className="relative h-25 w-25 shrink-0 overflow-hidden  bg-gray-200">
+      <Image src={src} alt={alt} fill sizes="100px" className="object-cover" />
     </div>
   );
 }
@@ -19,7 +20,11 @@ function Thumbnail({ hasImage }: { hasImage: boolean }) {
 export default function LostAndFoundListItem({ item }: Props) {
   return (
     <Link href={`/lost-and-found/${item.id}`} className="flex gap-5">
-      <Thumbnail hasImage={Boolean(item.imageUrl)} />
+      {item.imageUrl ? (
+        <Thumbnail src={item.imageUrl} alt={`${item.title} 썸네일`} />
+      ) : (
+        <div className="h-25 w-25 shrink-0 overflow-hidden bg-gray-200" />
+      )}
       <div className="min-w-0 flex flex-col justify-between">
         <div className="text-[18px] font-bold text-custom-gray truncate">
           {item.title}
@@ -36,4 +41,3 @@ export default function LostAndFoundListItem({ item }: Props) {
     </Link>
   );
 }
-
