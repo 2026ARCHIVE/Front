@@ -18,10 +18,13 @@ export default function FormLayout({
   const [content, setContent] = useState(initialContent);
   const [title, setTitle] = useState(initialTitle);
   const [isSticked, setIsSticked] = useState(initialIsSticked);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
 
     if (!title.trim() || !content.trim()) {
       alert("제목과 내용을 모두 입력해주세요.");
@@ -29,6 +32,7 @@ export default function FormLayout({
     }
 
     try {
+      setIsSubmitting(true);
       const payload = {
         title: title.trim(),
         content: content.trim(),
@@ -66,6 +70,8 @@ export default function FormLayout({
     } catch (error) {
       console.error(error);
       alert("저장 중 오류가 발생했습니다. 다시 시도해주세요.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -102,14 +108,16 @@ export default function FormLayout({
           type="button"
           className="px-4 py-2 bg-gray-200 rounded-md"
           onClick={() => router.back()}
+          disabled={isSubmitting}
         >
           취소
         </button>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-md"
+          className="px-4 py-2 bg-blue-500 text-white rounded-md disabled:bg-blue-300 disabled:cursor-not-allowed"
+          disabled={isSubmitting}
         >
-          저장
+          {isSubmitting ? "저장 중..." : "저장"}
         </button>
       </div>
     </form>
