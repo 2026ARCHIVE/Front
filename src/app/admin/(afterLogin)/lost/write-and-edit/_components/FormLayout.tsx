@@ -52,6 +52,8 @@ export default function FormLayout({
     category || "",
   );
 
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -63,6 +65,9 @@ export default function FormLayout({
   // 등록 및 수정 핸들러
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitDisabled) return;
+
+    setSubmitDisabled(true);
 
     const formData = new FormData(e.currentTarget);
     const itemName = formData.get("itemName") as string;
@@ -80,16 +85,19 @@ export default function FormLayout({
       !description.trim()
     ) {
       alert("모든 텍스트 항목을 입력해주세요.");
+      setSubmitDisabled(false);
       return;
     }
 
     if (!selectedCategory) {
       alert("카테고리를 선택해주세요.");
+      setSubmitDisabled(false);
       return;
     }
 
     if (!imgPreview && (!image || image.size === 0)) {
       alert("사진을 첨부해주세요.");
+      setSubmitDisabled(false);
       return;
     }
 
@@ -119,6 +127,8 @@ export default function FormLayout({
       } catch (error) {
         console.error("분실물 수정 예외 발생:", error);
         alert("분실물 수정에 실패했습니다.");
+      } finally {
+        setSubmitDisabled(false);
       }
     } else {
       try {
@@ -146,6 +156,8 @@ export default function FormLayout({
       } catch (error) {
         console.error("분실물 등록 예외 발생:", error);
         alert("분실물 등록에 실패했습니다.");
+      } finally {
+        setSubmitDisabled(false);
       }
     }
   };
@@ -272,14 +284,16 @@ export default function FormLayout({
             type="button"
             onClick={() => router.back()}
             className="px-6 py-2.5 bg-[#f1f1f1] text-[#1c1b1f] font-semibold rounded-lg"
+            disabled={submitDisabled}
           >
             취소
           </button>
           <button
             type="submit"
-            className="px-6 py-2.5 bg-custom-blue text-white font-semibold rounded-lg"
+            className="px-6 py-2.5 bg-custom-blue text-white font-semibold rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={submitDisabled}
           >
-            저장
+            {submitDisabled ? "저장 중..." : "저장"}
           </button>
         </div>
       </div>
