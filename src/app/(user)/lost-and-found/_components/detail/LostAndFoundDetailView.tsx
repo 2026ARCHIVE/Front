@@ -27,7 +27,7 @@ export default function LostAndFoundDetailView({ item }: { item: LostItem }) {
           </div>
 
           <GrayBox>
-            <div className="px-4 py-3">
+            <div className="py-3">
               <InfoRow label="습득 장소" value={item.foundLocation} />
               <div className="h-px w-full bg-white/70" />
               <InfoRow label="습득 시간" value={item.foundAt} />
