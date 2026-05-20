@@ -9,7 +9,6 @@ const defaultFilters = [
   "외부업체",
   "푸드트럭",
   "총학부스",
-  "교내부서",
 ];
 
 interface FilterProps {
@@ -18,7 +17,11 @@ interface FilterProps {
   filters?: string[];
 }
 
-export default function Filter({ onFilterChange, activeFilter, filters }: FilterProps) {
+export default function Filter({
+  onFilterChange,
+  activeFilter,
+  filters,
+}: FilterProps) {
   const list = filters ?? defaultFilters;
   return (
     <div className="flex overflow-x-auto gap-3 scrollbar-hide snap-x">
