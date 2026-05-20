@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { boothMapPoints, type BoothMapPoint } from "../_data/boothMapPoints";
 
-const DEFAULT_ZOOM = 16;
+const DEFAULT_ZOOM = 17;
 
 function averageCenter(points: BoothMapPoint[]) {
   const fallback = { lat: 36.833678, lng: 127.179155 };
@@ -198,6 +198,7 @@ export default function NaverMap({
         푸드트럭: "/markers/marker-food.svg",
         운영본부: "/markers/marker-hq.svg",
         흡연구역: "/markers/marker-smoking.svg",
+        금연구역: "/markers/marker-nosmoking.svg",
         화장실: "/markers/marker-toilet.svg",
         의무실: "/markers/marker-medical.svg",
         체험: "/markers/marker-activity.svg",

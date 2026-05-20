@@ -4,6 +4,7 @@ export type MapCategory =
   | "푸드트럭"
   | "운영본부"
   | "흡연구역"
+  | "금연구역"
   | "화장실"
   | "의무실"
   | "체험";
@@ -151,13 +152,13 @@ export const boothMapPoints: BoothMapPoint[] = [
     lng: 127.17775,
   },
   {
-    // 본관앞
+    // 프홀 뒤?
     id: 15,
     name: "흡연구역 3",
     category: "흡연구역",
     location: "흡연구역",
-    lat: 36.833525,
-    lng: 127.1784,
+    lat: 36.8333,
+    lng: 127.1783,
   },
   {
     // 한누리
@@ -169,13 +170,13 @@ export const boothMapPoints: BoothMapPoint[] = [
     lng: 127.179,
   },
   {
-    // 푸드트럭쪽
+    // 식당앞
     id: 17,
     name: "흡연구역 5",
     category: "흡연구역",
     location: "흡연구역",
-    lat: 36.83324,
-    lng: 127.1807,
+    lat: 36.8335,
+    lng: 127.1795,
   },
   {
     // 흡연구역
@@ -185,6 +186,25 @@ export const boothMapPoints: BoothMapPoint[] = [
     location: "흡연구역",
     lat: 36.832339,
     lng: 127.181054,
+  },
+  // 금연구역
+  {
+    // 원래 본관 피던곳
+    id: 19,
+    name: "금연구역 1",
+    category: "금연구역",
+    location: "금연구역",
+    lat: 36.833525,
+    lng: 127.1784,
+  },
+  {
+    // 푸드트럭 뒤
+    id: 20,
+    name: "금연구역 2",
+    category: "금연구역",
+    location: "금연구역",
+    lat: 36.83324,
+    lng: 127.1807,
   },
 ];
 
