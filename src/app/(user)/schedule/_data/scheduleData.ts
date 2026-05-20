@@ -1,4 +1,3 @@
-// NOTE: 실제 데이터로 변경 예정
 interface ScheduleItem {
   id: string;
   date: string;
@@ -26,12 +25,26 @@ interface LineupItem {
   id: string;
   date: string;
   title: string;
-  timeRange?: string; // "20:00 - 21:00"
+  timeRange?: string;
   imageUrlHome?: string;
   imageUrlSchedule?: string;
 }
 
 const scheduleItems: ScheduleItem[] = [
+  {
+    id: "d1-booth",
+    date: "2026-05-27",
+    start: "10:00",
+    end: "22:00",
+    title: "부스 운영",
+  },
+  {
+    id: "d1-foodtruck",
+    date: "2026-05-27",
+    start: "11:00",
+    end: "22:00",
+    title: "푸드트럭",
+  },
   {
     id: "d1-1",
     date: "2026-05-27",
@@ -141,6 +154,20 @@ const scheduleItems: ScheduleItem[] = [
         title: "루시",
       },
     ],
+  },
+  {
+    id: "d2-booth",
+    date: "2026-05-28",
+    start: "10:00",
+    end: "22:00",
+    title: "부스 운영",
+  },
+  {
+    id: "d2-foodtruck",
+    date: "2026-05-28",
+    start: "11:00",
+    end: "22:00",
+    title: "푸드트럭",
   },
   {
     id: "d2-1",
