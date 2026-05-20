@@ -14,7 +14,10 @@ function formatDetailTimeRange(
 }
 
 const expandableTitles = new Set([
+  "동아리 리허설",
+  "동아리 공연",
   "동아리공연",
+  "총학생회 이벤트",
   "연예인 초청 공연",
   "연예인 초청공연",
 ]);
