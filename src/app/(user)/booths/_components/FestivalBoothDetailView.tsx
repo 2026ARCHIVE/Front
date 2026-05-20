@@ -35,7 +35,7 @@ export default function FestivalBoothDetailView({
 
           <p className="text-custom-darkgray text-[16px] pt-4">{item.time}</p>
           <p className="text-custom-darkgray text-[16px]">{item.location}</p>
-          <p className="mt-4 text-[13px] leading-relaxed whitespace-pre-wrap text-custom-darkgray bg-custom-lightgray p-4 rounded-lg">
+          <p className="mt-4 text-[14px] leading-relaxed whitespace-pre-wrap text-custom-darkgray bg-custom-lightgray p-4 rounded-lg">
             {item.description}
           </p>
         </div>
@@ -52,6 +52,13 @@ export default function FestivalBoothDetailView({
               </p>
             ))}
           </div>
+          {item.etc && (
+            <div className="mt-4 rounded-lg bg-custom-lightgray p-4">
+              <p className="whitespace-pre-wrap text-[14px] leading-relaxed text-custom-darkgray">
+                ** {item.etc}
+              </p>
+            </div>
+          )}
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="text-[20px] font-semibold">시설 정보</h2>

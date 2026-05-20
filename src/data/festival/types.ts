@@ -11,4 +11,5 @@ export type FestivalListItem = {
     name: string;
     price: string;
   }[];
+  etc?: string;
 };
