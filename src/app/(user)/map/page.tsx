@@ -32,6 +32,7 @@ export default function MapPage() {
     "체험",
     "의무실",
     "흡연구역",
+    "금연구역",
     "무대",
     "운영본부",
   ];
