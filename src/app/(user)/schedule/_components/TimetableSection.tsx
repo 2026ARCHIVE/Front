@@ -14,7 +14,10 @@ function formatDetailTimeRange(
 }
 
 const expandableTitles = new Set([
+  "동아리 리허설",
+  "동아리 공연",
   "동아리공연",
+  "총학생회 이벤트",
   "연예인 초청 공연",
   "연예인 초청공연",
 ]);
@@ -67,7 +70,9 @@ export default function TimetableSection({ items }: Props) {
             return (
               <article key={item.id} className="border-b border-[#E8EBED]">
                 <div
-                  className={`px-6.25 pb-[13px] ${index === 0 ? "pt-0" : "pt-[13px]"}`}
+                  className={`px-6.25 ${index === 0 ? "pt-0" : "pt-[13px]"} ${
+                    canExpand && isExpanded ? "" : "pb-[13px]"
+                  }`}
                 >
                   <div
                     role={canExpand ? "button" : undefined}
@@ -105,35 +110,33 @@ export default function TimetableSection({ items }: Props) {
                       </div>
                     </div>
                   </div>
-                  {canExpand && isExpanded && (
-                    <div className="mt-[13px] -mx-6.25 flex flex-col bg-custom-lightgray py-4">
-                      {item.details?.map((detail, detailIndex) => (
-                        <div
-                          key={detail.id}
-                          className="border-b border-[#E8EBED] last:border-b-0"
-                        >
-                          <div
-                            className={`flex flex-col gap-[13px] px-6.25 pb-[13px] ${detailIndex === 0 ? "pt-0" : "pt-[13px]"}`}
-                          >
-                            <span className="inline-flex w-fit border border-[#D2D9DF] bg-white px-[4px] py-[2px] text-[13px] font-semibold text-[#464B50]">
-                              {formatDetailTimeRange(detail)}
-                            </span>
-                            <div className="flex flex-col gap-1">
-                              <div className="text-[15px] font-bold leading-snug text-black">
-                                {detail.title}
-                              </div>
-                              {detail.description && (
-                                <div className="text-[12px] font-normal leading-snug text-[#A6AFB7]">
-                                  {detail.description}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                 </div>
+                {canExpand && isExpanded && (
+                  <div className="mt-[13px] flex flex-col bg-custom-lightgray px-6.25 py-[26px]">
+                    {item.details?.map((detail, detailIndex) => (
+                      <div
+                        key={detail.id}
+                        className={`flex flex-col gap-[13px] ${
+                          detailIndex > 0 ? "mt-[26px]" : ""
+                        }`}
+                      >
+                        <span className="inline-flex w-fit border border-[#D2D9DF] bg-white px-[4px] py-[2px] text-[13px] font-semibold text-[#464B50]">
+                          {formatDetailTimeRange(detail)}
+                        </span>
+                        <div className="flex flex-col gap-1">
+                          <div className="text-[15px] font-bold leading-snug text-black">
+                            {detail.title}
+                          </div>
+                          {detail.description && (
+                            <div className="text-[12px] font-normal leading-snug text-[#A6AFB7]">
+                              {detail.description}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </article>
             );
           })}
