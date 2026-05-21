@@ -10,6 +10,7 @@ export const experienceList: FestivalListItem[] = [
     host: "AR·VR 미디어디자인 전공",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-1-13",
+    zone: "B",
     description: "3D 프린팅 출력물 판매 및 나만의 클릭커 커스터마이징 체험",
     imageUrl: "/map/experience/booth-01.webp",
     menu: [
@@ -25,6 +26,7 @@ export const experienceList: FestivalListItem[] = [
     host: "CCC",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-1-12",
+    zone: "B",
     description: "음식 판매 및 동아리 홍보",
     imageUrl: "/map/experience/booth-02.webp",
     menu: [
@@ -40,6 +42,7 @@ export const experienceList: FestivalListItem[] = [
     host: "CRUNK BRAIN",
     time: "DAY 1 10:00-18:00 · DAY 2 10:00-18:00",
     location: "학생회관 앞 A-2-4",
+    zone: "B",
     description: "실크 스트린을 통한 옷 제작 및 디제잉 운영",
     imageUrl: "/map/experience/booth-03.webp",
     menu: [
@@ -54,6 +57,7 @@ export const experienceList: FestivalListItem[] = [
     host: "RENEW",
     time: "DAY 1 14:00-18:00 · DAY 2 14:00-18:00",
     location: "학생회관 앞 A-1-9",
+    zone: "B",
     description:
       "인간 룰렛 게임 (DAY 1: 혼자 혹은 친구와 / DAY 2: 랜덤 소개팅)",
     imageUrl: "/map/experience/booth-04.webp",
@@ -66,6 +70,7 @@ export const experienceList: FestivalListItem[] = [
     host: "STEAL",
     time: "DAY 1 11:00-18:00 · DAY 2 11:00-18:00",
     location: "학생회관 앞 A-2-1",
+    zone: "B",
     description: "사탕팅 및 농구 게임",
     imageUrl: "/map/experience/booth-05.webp",
     menu: [
@@ -82,6 +87,7 @@ export const experienceList: FestivalListItem[] = [
     host: "건설시스템공학과",
     time: "DAY 1 12:00-18:00 · DAY 2 12:00-18:00",
     location: "학생회관 앞 A-2-10",
+    zone: "B",
     description: "빙수 판매",
     imageUrl: "/map/experience/booth-06.webp",
     menu: [
@@ -97,6 +103,7 @@ export const experienceList: FestivalListItem[] = [
     host: "겟아웃",
     time: "DAY 1 11:00-18:00 · DAY 2 11:00-18:00",
     location: "학생회관 앞 A-1-5",
+    zone: "B",
     description: "보드게임 카페 컨셉의 부스 운영",
     imageUrl: "/map/experience/booth-07.webp",
     menu: [
@@ -113,6 +120,7 @@ export const experienceList: FestivalListItem[] = [
     host: "경영공학과",
     time: "DAY 1 10:00-17:00 · DAY 2 10:00-17:00",
     location: "학생회관 앞 A-1-10",
+    zone: "B",
     description: "문답 시그널 및 논알콜 칵테일 판매",
     imageUrl: "/map/experience/booth-08.webp",
     menu: [
@@ -128,6 +136,7 @@ export const experienceList: FestivalListItem[] = [
     host: "테온",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-1-6",
+    zone: "B",
     description: "7.77초 맞춰라 및 음식 판매",
     imageUrl: "/map/experience/booth-09.webp",
     menu: [
@@ -143,6 +152,7 @@ export const experienceList: FestivalListItem[] = [
     host: "교육방송국 SMBS",
     time: "DAY 1 13:00-15:00 · DAY 2 10:00-17:00",
     location: "학생회관 앞 A-1-3",
+    zone: "B",
     description: "미니게임",
     imageUrl: "/map/experience/booth-10.webp",
     menu: [
@@ -162,6 +172,7 @@ export const experienceList: FestivalListItem[] = [
     host: "그래픽미디어랩",
     time: "DAY 1 13:00-17:00 · DAY 2 13:00-17:00",
     location: "소나무 숲 앞 A-3-22",
+    zone: "A",
     description: "실크스크린을 활용한 제품 판매 및 그래픽 굿즈 판매",
     imageUrl: "/map/experience/booth-11.webp",
     menu: [
@@ -181,6 +192,7 @@ export const experienceList: FestivalListItem[] = [
     host: "그린화학공학과",
     time: "DAY 1 11:30-18:00 · DAY 2 11:30-18:00",
     location: "학생회관 앞 A-1-8",
+    zone: "B",
     description: "애니멀 페어링",
     imageUrl: "/map/experience/booth-12.webp",
     menu: [
@@ -195,6 +207,7 @@ export const experienceList: FestivalListItem[] = [
     host: "다다름",
     time: "DAY 1 12:00-18:00 · DAY 2 12:00-18:00",
     location: "소나무 숲 앞 A-3-21",
+    zone: "A",
     description: "동아리 부원들이 제작한 굿즈 판매",
     imageUrl: "/map/experience/booth-13.webp",
     menu: [
@@ -212,6 +225,7 @@ export const experienceList: FestivalListItem[] = [
     host: "다크니스",
     time: "DAY 1 12:00-18:00 · DAY 2 12:00-18:00",
     location: "학생회관 앞 A-2-8",
+    zone: "B",
     description: "게임 및 굿즈 판매 등",
     imageUrl: "/map/experience/booth-14.webp",
     menu: [
@@ -227,6 +241,7 @@ export const experienceList: FestivalListItem[] = [
     host: "마법연구회",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-2-7",
+    zone: "B",
     description: "게임 진행",
     imageUrl: "/map/experience/booth-15.webp",
     menu: [{ name: "참가비 1회", price: "1,000원" }],
@@ -238,6 +253,7 @@ export const experienceList: FestivalListItem[] = [
     host: "무대미술전공",
     time: "DAY 1 10:00-16:00 · DAY 2 10:00-16:00",
     location: "학생회관 앞 A-1-14",
+    zone: "B",
     description: "망치 게임",
     imageUrl: "/map/experience/booth-17.webp",
     menu: [
@@ -252,6 +268,7 @@ export const experienceList: FestivalListItem[] = [
     host: "간호학과",
     time: "DAY 1 12:00-15:00 · DAY 2 11:00-15:00",
     location: "학생회관 앞 A-1-11",
+    zone: "B",
     description: "마음 처방전, 응원 메시지 벽, 걱정 인형 만들기",
     imageUrl: "/map/experience/booth-18.webp",
     menu: [
@@ -272,6 +289,7 @@ export const experienceList: FestivalListItem[] = [
     host: "시스템반도체공학과",
     time: "DAY 1 12:00-19:00 · DAY 2 11:00-18:00",
     location: "학생회관 앞 A-2-6",
+    zone: "B",
     description: "사탕시그널",
     imageUrl: "/map/experience/booth-19.webp",
     menu: [
@@ -286,6 +304,7 @@ export const experienceList: FestivalListItem[] = [
     host: "실오라기",
     time: "DAY 1 13:00-17:00 · DAY 2 13:00-17:00",
     location: "소나무숲 앞 A-3-20",
+    zone: "A",
     description: "실오라기 멤버들이 만든 물품 판매 장터",
     imageUrl: "/map/experience/booth-20.webp",
     menu: [
@@ -306,6 +325,7 @@ export const experienceList: FestivalListItem[] = [
     host: "싸이클링 히트",
     time: "DAY 1 12:00-20:00 · DAY 2 12:00-20:00",
     location: "학생회관 앞 A-2-11",
+    zone: "B",
     description: "야구 푸드 판매 및 팀별 소개팅 부스",
     imageUrl: "/map/experience/booth-21.webp",
     menu: [
@@ -324,6 +344,7 @@ export const experienceList: FestivalListItem[] = [
     host: "아소부",
     time: "DAY 1 10:00-16:00 · DAY 2 10:00-16:00",
     location: "소나무 숲 앞 A-3-9",
+    zone: "A",
     description: "굿즈 판매 부스",
     imageUrl: "/map/experience/booth-22.webp",
     menu: [
@@ -340,6 +361,7 @@ export const experienceList: FestivalListItem[] = [
     host: "연극전공",
     time: "DAY 1 10:00-17:00 · DAY 2 10:00-17:00",
     location: "소나무 숲 앞 A-3-23",
+    zone: "A",
     description: "희곡작품의 대사가 적힌 쪽지와 함께 꽃 판매",
     imageUrl: "/map/experience/booth-23.webp",
     menu: [
@@ -354,6 +376,7 @@ export const experienceList: FestivalListItem[] = [
     host: "옴므, 팜므, 헤비메탈",
     time: "DAY 1 10:00-17:00 · DAY 2 10:00-17:00",
     location: "소나무 숲 앞 A-3-7",
+    zone: "A",
     description: "플리마켓",
     imageUrl: "/map/experience/booth-24.webp",
     menu: [
@@ -373,6 +396,7 @@ export const experienceList: FestivalListItem[] = [
     host: "요쿡",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-1-4",
+    zone: "B",
     description: "음식 판매 및 소개팅 부스",
     imageUrl: "/map/experience/booth-25.webp",
     menu: [
@@ -387,6 +411,7 @@ export const experienceList: FestivalListItem[] = [
     host: "연",
     time: "DAY 1 10:00-18:00 · DAY 2 10:00-18:00",
     location: "학생회관 앞 A-3-24",
+    zone: "A",
     description: "민속촌 분위기의 음식 판매 및 게임 부스",
     imageUrl: "/map/experience/booth-26.webp",
     menu: [
@@ -407,6 +432,7 @@ export const experienceList: FestivalListItem[] = [
     host: "인더스트리얼디자인전공",
     time: "DAY 1 10:00-17:30 · DAY 2 10:00-17:30",
     location: "소나무 숲 앞 A-2-2",
+    zone: "B",
     description: "사격 게임",
     imageUrl: "/map/experience/booth-27.webp",
     menu: [{ name: "총알 10발", price: "2,000원" }],
@@ -418,6 +444,7 @@ export const experienceList: FestivalListItem[] = [
     host: "치즈",
     time: "DAY 1 12:00-17:30 · DAY 2 12:00-17:30",
     location: "소나무 숲 앞 A-3-6",
+    zone: "A",
     description: "소개팅 부스 및 사진 촬영",
     imageUrl: "/map/experience/booth-28.webp",
     menu: [
@@ -434,6 +461,7 @@ export const experienceList: FestivalListItem[] = [
     host: "패션디자인전공",
     time: "DAY 1 10:00-17:00 · DAY 2 10:00-17:00",
     location: "소나무 숲 앞 A-3-10",
+    zone: "A",
     description: "룩개팅 및 플리마켓",
     imageUrl: "/map/experience/booth-29.webp",
     menu: [
@@ -463,6 +491,7 @@ export const experienceList: FestivalListItem[] = [
     host: "폴리오",
     time: "DAY 1 12:00-18:00 · DAY 2 12:00-18:00",
     location: "소나무 숲 앞 A-3-8",
+    zone: "A",
     description: "가챠 및 굿즈 판매",
     imageUrl: "/map/experience/booth-30.webp",
     menu: [
@@ -477,6 +506,7 @@ export const experienceList: FestivalListItem[] = [
     host: "글로벌금융경영학부",
     time: "DAY 1 10:00-품절 시 · DAY 2 10:00-품절 시",
     location: "학생회관 앞 A-1-7",
+    zone: "B",
     description: "음식 판매",
     imageUrl: "/map/experience/booth-31.webp",
     menu: [
@@ -493,6 +523,7 @@ export const experienceList: FestivalListItem[] = [
     host: "소프트웨어학과",
     time: "DAY 1 11:00-17:00 · DAY 2 11:00-17:00",
     location: "학생회관 앞 A-2-9",
+    zone: "B",
     description: "게임 및 행운의 뽑기",
     imageUrl: "/map/experience/booth-32.webp",
     menu: [
@@ -507,6 +538,7 @@ export const experienceList: FestivalListItem[] = [
     host: "그린스마트시티학과",
     time: "DAY 1 11:30-20:00 · DAY 2 11:30-20:00",
     location: "학생회관 앞 A-2-5",
+    zone: "B",
     description: "소개팅 및 여름 필수템 판매",
     imageUrl: "/map/experience/booth-33.webp",
     menu: [
@@ -523,6 +555,7 @@ export const experienceList: FestivalListItem[] = [
     host: "디어스",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-1-2",
+    zone: "B",
     description: "게임 진행",
     imageUrl: "/map/experience/booth-34.webp",
     menu: [{ name: "참가비(1회)", price: "1,000원" }],
@@ -534,6 +567,7 @@ export const experienceList: FestivalListItem[] = [
     host: "CLUB C",
     time: "DAY 1 12:00-18:00 · DAY 2 12:00-18:00",
     location: "소나무숲 앞 A-3-19",
+    zone: "A",
     description: "수공예 작품 전시 및 판매",
     imageUrl: "/map/experience/booth-35.webp",
     menu: [
@@ -550,6 +584,7 @@ export const experienceList: FestivalListItem[] = [
     host: "스포츠융합학부",
     time: "DAY 1 13:00-18:00 · DAY 2 13:00-18:00",
     location: "학생회관 앞 A-2-3",
+    zone: "B",
     description: "배근력 및 악력 목표 기록 맞추기",
     imageUrl: "/map/experience/booth-36.webp",
     menu: [{ name: "참가비", price: "1,000원" }],
