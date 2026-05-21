@@ -12,4 +12,5 @@ export type FestivalListItem = {
     price: string;
   }[];
   etc?: string;
+  zone: "A" | "B" | "C" | "additional";
 };
