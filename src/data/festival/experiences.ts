@@ -48,6 +48,13 @@ export const experienceList: FestivalListItem[] = [
     menu: [
       { name: "옷+체험", price: "9,900원" },
       { name: "체험(개인 옷 지참)", price: "3,000원" },
+      { name: "기본 논알콜 칵테일", price: "▼" },
+      { name: "아이스 아웃(블루+레드)", price: "3,500원" },
+      { name: "얼그레이 블랙 아웃(얼그레이)", price: "3,500원" },
+      { name: "피폭 모히또(모히또)", price: "3,500원" },
+      { name: "스페셜 논알콜 칵테일", price: "▼" },
+      { name: "밀키 뇌수", price: "4,500원" },
+      { name: "모란지 그릴즈", price: "4,500원" },
     ],
   },
   {
@@ -181,7 +188,7 @@ export const experienceList: FestivalListItem[] = [
       { name: "엽서(16종)", price: "2,000원" },
       { name: "찌라시 스티커(3종)", price: "1,000원" },
       { name: "핀버튼(5종)", price: "1,000원" },
-      { name: "반다나", price: "8,000원" },
+      { name: "스크래치 복권", price: "1,000원" },
       { name: "타투스티커", price: "1,000원" },
     ],
   },
@@ -315,7 +322,8 @@ export const experienceList: FestivalListItem[] = [
       { name: "푸딩 키링", price: "4,000원" },
       { name: "주머니 키링", price: "5,000원" },
       { name: "토마토 키링", price: "1,000원" },
-      { name: "기타 코바늘 인형 키링", price: "3,000원" },
+      { name: "앙버터 호두과자 키링", price: "3,000원" },
+      { name: "고양이 인형 키링", price: "3,000원" },
     ],
   },
   {
@@ -400,8 +408,9 @@ export const experienceList: FestivalListItem[] = [
     description: "음식 판매 및 소개팅 부스",
     imageUrl: "/map/experience/booth-25.webp",
     menu: [
-      { name: "냉우동", price: "4,500원" },
-      { name: "슬러시", price: "3,500원" },
+      { name: "냉우동", price: "5,000원" },
+      { name: "에이드", price: "2,500원" },
+      { name: "연인찾기 쪽지", price: "500원" },
     ],
   },
   {
