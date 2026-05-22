@@ -13,7 +13,7 @@ export default async function LostAndFoundSection() {
           key={item.id}
           href={`/lost-and-found/${item.id}`}
           aria-label={`${item.title} 상세로 이동`}
-          className="relative block h-[142px] w-[120px] shrink-0 snap-start overflow-hidden bg-[#E0E0E0]  focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform"
+          className="relative block h-[142px] w-[120px] shrink-0 snap-start rounded-lg overflow-hidden bg-[#E0E0E0]  focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform"
         >
           {item.imageUrl ? (
             <Image
