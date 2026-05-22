@@ -201,7 +201,7 @@ export default function NaverMap({
         금연구역: "/markers/marker-nosmoking.svg",
         화장실: "/markers/marker-toilet.svg",
         의무실: "/markers/marker-medical.svg",
-        체험: "/markers/marker-activity.svg",
+        부스: "/markers/marker-activity.svg",
       };
       const iconUrl = iconUrlByCategory[p.category];
       const iconSize = naver.maps.Size
