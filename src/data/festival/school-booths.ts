@@ -30,7 +30,7 @@ export const schoolBoothList: FestivalListItem[] = [
     description:
       "내 마음을 엽서에 담아 보내고, 누군가의 이야기에 살짝 공감해보는 시간!",
     menu: [{ name: "편지 작성 1회", price: "500원" }],
-    imageUrl: "/map/school/school-2.webp",
+    imageUrl: "/map/school/school-2-cut.webp",
   },
   {
     id: 3,
