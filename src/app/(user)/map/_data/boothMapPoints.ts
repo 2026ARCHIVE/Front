@@ -206,6 +206,25 @@ export const boothMapPoints: BoothMapPoint[] = [
     lat: 36.83324,
     lng: 127.1807,
   },
+  // 의무실
+  {
+    // 푸드트럭 뒤
+    id: 20,
+    name: "의무실 1",
+    category: "의무실",
+    location: "의무실",
+    lat: 36.83272,
+    lng: 127.179,
+  },
+  {
+    // 푸드트럭 뒤
+    id: 20,
+    name: "의무실 2",
+    category: "의무실",
+    location: "의무실",
+    lat: 36.83276,
+    lng: 127.17879,
+  },
 ];
 
 function averageLatLng(points: BoothMapPoint[]) {
