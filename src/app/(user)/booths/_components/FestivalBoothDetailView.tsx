@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { FestivalListItem } from "@/data/festival/types";
+import MiniMap from "../[id]/_components/MiniMap";
 
 type Props = {
   item: FestivalListItem;
@@ -62,7 +63,7 @@ export default function FestivalBoothDetailView({
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="text-[20px] font-semibold">시설 정보</h2>
-          <div className="bg-custom-lightgray w-full h-60"></div>
+          <MiniMap boothNo={item.boothNo} zone={item.zone} />
           <p className="text-[14px] text-[#252528]">
             상명대학교 천안캠퍼스 {item.boothNo}번 부스
           </p>
