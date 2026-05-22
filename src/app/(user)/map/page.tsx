@@ -15,13 +15,22 @@ import {
   type BoothMapPoint,
   type MapCategory,
 } from "./_data/boothMapPoints";
-import { experienceList, foodTruckList } from "@/data/festival";
+import {
+  experienceList,
+  externalCompanyList,
+  foodTruckList,
+  schoolBoothList,
+} from "@/data/festival";
+import {
+  EXTERNAL_BOOTH_ID_OFFSET,
+  SCHOOL_BOOTH_ID_OFFSET,
+} from "../booths/_data/boothData";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function MapPage() {
   const [active, setActive] = useState<MapCategory>("전체");
-  const [sheetMode, setSheetMode] = useState<"체험" | "푸드트럭" | null>(null);
+  const [sheetMode, setSheetMode] = useState<"부스" | "푸드트럭" | null>(null);
   const filterWrapRef = useRef<HTMLDivElement | null>(null);
   const [sheetTopLimit, setSheetTopLimit] = useState(0);
   const [bottomNavHeight, setBottomNavHeight] = useState(100);
@@ -29,7 +38,7 @@ export default function MapPage() {
     "전체",
     "화장실",
     "푸드트럭",
-    "체험",
+    "부스",
     "의무실",
     "흡연구역",
     "금연구역",
@@ -42,8 +51,28 @@ export default function MapPage() {
     return boothMapPoints.filter((p) => p.category === active);
   }, [active]);
 
+  const mapZoom = active === "전체" ? 18 : 17;
+
+  const experienceSheetItems = useMemo(
+    () => [
+      ...experienceList.map((item) => ({
+        item,
+        href: `/booths/${item.id}`,
+      })),
+      ...externalCompanyList.map((item) => ({
+        item,
+        href: `/booths/${item.id + EXTERNAL_BOOTH_ID_OFFSET}`,
+      })),
+      ...schoolBoothList.map((item) => ({
+        item,
+        href: `/booths/${item.id + SCHOOL_BOOTH_ID_OFFSET}`,
+      })),
+    ],
+    [],
+  );
+
   const handlePointClick = useCallback((p: BoothMapPoint) => {
-    if (p.category === "체험") setSheetMode("체험");
+    if (p.category === "부스") setSheetMode("부스");
     if (p.category === "푸드트럭") setSheetMode("푸드트럭");
   }, []);
 
@@ -102,29 +131,34 @@ export default function MapPage() {
 
       <div className="mt-4">
         <div className="px-6.25">
-          <NaverMap points={points} onPointClick={handlePointClick} />
+          <NaverMap
+            points={points}
+            onPointClick={handlePointClick}
+            initialZoom={mapZoom}
+          />
         </div>
       </div>
 
       {sheetMode && (
         <BottomSheet
           open
-          title={sheetMode === "체험" ? "체험 목록" : "푸드트럭 목록"}
+          title={sheetMode === "부스" ? "부스 목록" : "푸드트럭 목록"}
           onClose={() => setSheetMode(null)}
           initialSnap="mid"
           bottomInsetPx={bottomNavHeight + 24}
           topLimitPx={sheetTopLimit}
         >
           <div className="space-y-3">
-            {(sheetMode === "체험" ? experienceList : foodTruckList).map(
-              (item) => {
-                const href =
-                  sheetMode === "체험"
-                    ? `/booths/${item.id}`
-                    : `/booths/foodtrucks/${item.id}`;
+            {(sheetMode === "부스"
+              ? experienceSheetItems
+              : foodTruckList.map((item) => ({
+                  item,
+                  href: `/booths/foodtrucks/${item.id}`,
+                }))
+            ).map(({ item, href }) => {
                 return (
                   <Link
-                    key={item.id}
+                    key={href}
                     href={href}
                     className="flex gap-3 rounded-xl border border-black/5 bg-white p-3 active:bg-black/2"
                   >

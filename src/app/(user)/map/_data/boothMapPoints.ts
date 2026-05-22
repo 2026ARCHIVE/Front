@@ -7,7 +7,7 @@ export type MapCategory =
   | "금연구역"
   | "화장실"
   | "의무실"
-  | "체험";
+  | "부스";
 
 export type BoothMapPoint = {
   id: number;
@@ -122,13 +122,12 @@ export const boothMapPoints: BoothMapPoint[] = [
     lat: 36.832834,
     lng: 127.1786,
   },
-  // 체험
+  // 부스
   {
-    // 체험
     id: 12,
-    name: "체험",
-    category: "체험",
-    location: "체험",
+    name: "부스",
+    category: "부스",
+    location: "부스",
     lat: 36.83323,
     lng: 127.17963,
   },
@@ -206,6 +205,25 @@ export const boothMapPoints: BoothMapPoint[] = [
     lat: 36.83324,
     lng: 127.1807,
   },
+  // 의무실
+  {
+    // 푸드트럭 뒤
+    id: 20,
+    name: "의무실 1",
+    category: "의무실",
+    location: "의무실",
+    lat: 36.83272,
+    lng: 127.179,
+  },
+  {
+    // 푸드트럭 뒤
+    id: 20,
+    name: "의무실 2",
+    category: "의무실",
+    location: "의무실",
+    lat: 36.83276,
+    lng: 127.17879,
+  },
 ];
 
 function averageLatLng(points: BoothMapPoint[]) {
@@ -224,6 +242,6 @@ function averageLatLng(points: BoothMapPoint[]) {
 //  홈 지도 미리보기용 -  화장실·흡연 등 제외, 축제 핵심 시설만으로 잡은 중심
 export const festivalMapFocusCenter = averageLatLng(
   boothMapPoints.filter((p) =>
-    ["무대", "푸드트럭", "운영본부", "체험"].includes(p.category),
+    ["무대", "푸드트럭", "운영본부", "부스"].includes(p.category),
   ),
 );
