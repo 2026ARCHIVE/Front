@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { boothMapPoints, type BoothMapPoint } from "../_data/boothMapPoints";
 
-const DEFAULT_ZOOM = 17;
+const DEFAULT_ZOOM = 18;
 
 function averageCenter(points: BoothMapPoint[]) {
   const fallback = { lat: 36.833678, lng: 127.179155 };
