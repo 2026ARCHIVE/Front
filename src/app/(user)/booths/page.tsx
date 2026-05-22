@@ -15,9 +15,12 @@ export default function BoothsPage() {
 
   const filteredBooths = React.useMemo(() => {
     return booths.filter((booth) => {
+      const keyword = searchKeyword.trim();
       const matchesKeyword =
-        booth.name.includes(searchKeyword) ||
-        booth.host.includes(searchKeyword);
+        keyword === "" ||
+        booth.name.includes(keyword) ||
+        booth.host.includes(keyword) ||
+        booth.location.includes(keyword);
       const matchesFilter =
         activeFilter === "전체" || booth.category === activeFilter;
       return matchesKeyword && matchesFilter;

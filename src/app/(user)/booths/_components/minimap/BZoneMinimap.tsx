@@ -1,6 +1,8 @@
 "use client";
 
 import { experienceList } from "@/data/festival/experiences";
+import { externalCompanyList } from "@/data/festival/external-company";
+import type { FestivalListItem } from "@/data/festival/types";
 
 type BZoneSlot = {
   label: string;
@@ -95,16 +97,23 @@ function parseLocationKey(location?: string): string | null {
   return match ? match[0] : null;
 }
 
+function findBZoneBooth(
+  activeSlotId: string,
+): FestivalListItem | undefined {
+  const match = (item: FestivalListItem) =>
+    item.zone === "B" &&
+    item.boothNo != null &&
+    String(item.boothNo) === activeSlotId;
+
+  return (
+    experienceList.find(match) ?? externalCompanyList.find(match)
+  );
+}
+
 function resolveActiveLocation(activeSlotId?: string | null): string | null {
   if (!activeSlotId) return null;
 
-  const booth = experienceList.find(
-    (item) =>
-      item.zone === "B" &&
-      item.boothNo != null &&
-      String(item.boothNo) === activeSlotId,
-  );
-
+  const booth = findBZoneBooth(activeSlotId);
   return parseLocationKey(booth?.location);
 }
 

@@ -1,6 +1,8 @@
 import type { FestivalListItem } from "@/data/festival/types";
 import { experienceList } from "@/data/festival/experiences";
+import { externalCompanyList } from "@/data/festival/external-company";
 import { foodTruckList } from "@/data/festival/food-trucks";
+import { schoolBoothList } from "@/data/festival/school-booths";
 
 export interface BoothData {
   id: number;
@@ -11,6 +13,10 @@ export interface BoothData {
   location: string; // 위치 (예: 노천극장, 학생회관 앞)
   imageUrl: string; // 부스 썸네일 이미지
 }
+
+export const FOOD_TRUCK_ID_OFFSET = 100;
+export const EXTERNAL_BOOTH_ID_OFFSET = 200;
+export const SCHOOL_BOOTH_ID_OFFSET = 300;
 
 const experienceCategoryById: Record<number, string> = {
   // AR∙VR 미디어디자인 전공
@@ -85,11 +91,13 @@ const experienceCategoryById: Record<number, string> = {
   35: "학과",
 };
 
-// 일반 부스 맵핑
-function festivalItemToBoothData(item: FestivalListItem): BoothData {
-  const category = experienceCategoryById[item.id] ?? "동아리";
+function festivalItemToBoothData(
+  item: FestivalListItem,
+  category: string,
+  id: number,
+): BoothData {
   return {
-    id: item.id,
+    id,
     name: item.name,
     category,
     host: item.host ?? "—",
@@ -99,24 +107,43 @@ function festivalItemToBoothData(item: FestivalListItem): BoothData {
   };
 }
 
-// 푸드트럭 맵핑
-function foodTruckItemToBoothData(item: FestivalListItem): BoothData {
-  return {
-    id: item.id + 100, // ID 중복 방지
-    name: item.name,
-    category: "푸드트럭", // 푸드트럭으로 고정 분류
-    host: item.name, // 호스트명은 일단 푸드트럭의 이름으로 통일
-    time: item.time ?? "—",
-    location: item.location ?? "—",
-    imageUrl: item.imageUrl,
-  };
+function experienceItemToBoothData(item: FestivalListItem): BoothData {
+  const category = experienceCategoryById[item.id] ?? "동아리";
+  return festivalItemToBoothData(item, category, item.id);
 }
 
-// 기존 booth 배열에서 map 처리된 내용
-const experienceBooths = experienceList.map(festivalItemToBoothData);
+function foodTruckItemToBoothData(item: FestivalListItem): BoothData {
+  return festivalItemToBoothData(
+    item,
+    "푸드트럭",
+    item.id + FOOD_TRUCK_ID_OFFSET,
+  );
+}
+
+function externalItemToBoothData(item: FestivalListItem): BoothData {
+  return festivalItemToBoothData(
+    item,
+    "외부업체",
+    item.id + EXTERNAL_BOOTH_ID_OFFSET,
+  );
+}
+
+function schoolItemToBoothData(item: FestivalListItem): BoothData {
+  return festivalItemToBoothData(
+    item,
+    "총학부스",
+    item.id + SCHOOL_BOOTH_ID_OFFSET,
+  );
+}
+
+const experienceBooths = experienceList.map(experienceItemToBoothData);
 const foodTruckBooths = foodTruckList.map(foodTruckItemToBoothData);
+const externalBooths = externalCompanyList.map(externalItemToBoothData);
+const schoolBooths = schoolBoothList.map(schoolItemToBoothData);
 
 export const dummyBooths: BoothData[] = [
   ...experienceBooths,
   ...foodTruckBooths,
+  ...externalBooths,
+  ...schoolBooths,
 ];
