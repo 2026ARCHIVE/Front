@@ -16,6 +16,7 @@ export type EventApiDetailItem = EventApiItem & {
   content: string | null;
   contentType?: string;
   productDescription?: string | null;
+  caution: string | null;
   contentImageUrls?: string[];
   updatedAt: string;
 };
@@ -25,10 +26,6 @@ export async function getEvents(options?: { revalidate?: number }) {
     revalidate: options?.revalidate ?? 300,
   });
   if (!res.ok) throw new Error(`이벤트 목록 조회 실패 (${res.status})`);
-
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[events] raw response:", res.data);
-  }
 
   return res.data ?? [];
 }
