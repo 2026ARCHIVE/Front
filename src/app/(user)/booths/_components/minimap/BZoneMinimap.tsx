@@ -2,6 +2,10 @@
 
 import { experienceList } from "@/data/festival/experiences";
 import { externalCompanyList } from "@/data/festival/external-company";
+import {
+  matchesZoneBoothNo,
+  parseLocationKey,
+} from "@/data/festival/boothPlaceUtils";
 import type { FestivalListItem } from "@/data/festival/types";
 
 type BZoneSlot = {
@@ -91,34 +95,43 @@ const ALL_SLOTS: BZoneSlot[] = [
   ...ISOLATED_ROW,
 ];
 
-function parseLocationKey(location?: string): string | null {
-  if (!location) return null;
-  const match = location.match(/A-\d+-\d+/);
-  return match ? match[0] : null;
-}
-
 function findBZoneBooth(
   activeSlotId: string,
 ): FestivalListItem | undefined {
   const match = (item: FestivalListItem) =>
-    item.zone === "B" &&
-    item.boothNo != null &&
-    String(item.boothNo) === activeSlotId;
+    matchesZoneBoothNo(item, "B", activeSlotId);
 
   return (
     experienceList.find(match) ?? externalCompanyList.find(match)
   );
 }
 
-function resolveActiveLocation(activeSlotId?: string | null): string | null {
+function resolveActiveLocation(
+  activeSlotId?: string | null,
+  location?: string | null,
+): string | null {
+  const fromLocation = parseLocationKey(location);
+  if (fromLocation) return fromLocation;
+
   if (!activeSlotId) return null;
 
   const booth = findBZoneBooth(activeSlotId);
-  return parseLocationKey(booth?.location);
+  if (!booth) return null;
+
+  const place = booth.boothPlaces?.find(
+    (entry) =>
+      entry.zone === "B" &&
+      entry.boothNo != null &&
+      String(entry.boothNo) === activeSlotId,
+  );
+  if (place) return parseLocationKey(place.location);
+
+  return parseLocationKey(booth.location ?? undefined);
 }
 
 type Props = {
   activeSlotId?: string | null;
+  location?: string | null;
 };
 
 function BoothSlotShape({
@@ -159,8 +172,8 @@ function BoothSlotShape({
   );
 }
 
-export default function BZoneMinimap({ activeSlotId }: Props) {
-  const activeLocation = resolveActiveLocation(activeSlotId);
+export default function BZoneMinimap({ activeSlotId, location }: Props) {
+  const activeLocation = resolveActiveLocation(activeSlotId, location);
 
   return (
     <svg
