@@ -38,10 +38,6 @@ export async function getEvent(id: string, options?: { revalidate?: number }) {
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`이벤트 상세 조회 실패 (${res.status})`);
 
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[events] raw detail response:", res.data);
-  }
-
   return res.data;
 }
 
