@@ -10,28 +10,29 @@ export const externalCompanyList: FestivalListItem[] = [
     name: "포토이즘",
     host: "외부부스",
     time: "DAY 1 11:00 ~ 22:00 · DAY 2 11:00 ~ 22:00",
-    location: "학생회관 앞 A-1-1",
+    location: "학생회관 앞 A-1-1 · 계단 좌측 A-3-13",
     description:
       "대동제 기간동안 운영되는 포토이즘입니다. 수뭉이 버전과 Archive 버전 두가지가 있습니다",
     imageUrl: "/map/external/photoism.webp",
     menu: [{ name: "2장", price: "5000원" }],
-  },
-  {
-    id: 2,
-    boothNo: 6,
-    zone: "additional",
-    name: "포토이즘",
-    host: "외부부스",
-    time: "DAY 1 11:00 ~ 22:00 · DAY 2 11:00 ~ 22:00",
-    location: "계단 좌측 A-3-13",
-    description:
-      "대동제 기간동안 운영되는 포토이즘입니다. 수뭉이 버전과 Archive 버전 두가지가 있습니다",
-    imageUrl: "/map/external/photoism.webp",
-    menu: [{ name: "2장", price: "5000원" }],
+    boothPlaces: [
+      {
+        label: "B구역",
+        boothNo: 1,
+        zone: "B",
+        location: "학생회관 앞 A-1-1",
+      },
+      {
+        label: "추가 구역",
+        boothNo: 6,
+        zone: "additional",
+        location: "계단 좌측 A-3-13",
+      },
+    ],
   },
   {
     id: 3,
-    boothNo: 1,
+    boothNo: 3,
     zone: "additional",
     name: "졸리몰리",
     host: "외부부스",
@@ -42,7 +43,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 4,
-    boothNo: 2,
+    boothNo: 4,
     zone: "additional",
     name: "졸리몰리2",
     host: "외부부스",
@@ -53,7 +54,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 5,
-    boothNo: 3,
+    boothNo: 5,
     zone: "additional",
     name: "브라운독 빈티지",
     host: "외부부스",
@@ -64,7 +65,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 6,
-    boothNo: 4,
+    boothNo: 7,
     zone: "additional",
     name: "나다 스토리",
     host: "외부부스",
@@ -75,7 +76,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 7,
-    boothNo: 5,
+    boothNo: 8,
     zone: "additional",
     name: "블럭이랑",
     host: "외부부스",
@@ -86,7 +87,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 8,
-    boothNo: 6,
+    boothNo: 9,
     zone: "additional",
     name: "꼼꼼매듭",
     host: "외부부스",
@@ -97,7 +98,7 @@ export const externalCompanyList: FestivalListItem[] = [
   },
   {
     id: 9,
-    boothNo: 7,
+    boothNo: 10,
     zone: "additional",
     name: "원더우먼",
     host: "외부부스",
