@@ -15,7 +15,9 @@ function GrayBox({ children }: { children: React.ReactNode }) {
 export default function EventDetailView({ item }: { item: EventItem }) {
   const bannerSrc = item.imageUrl;
   const hasHowTo = (item.howToSteps?.length ?? 0) > 0;
-  const hasBenefitText = item.benefitItems?.some((entry) => entry.kind === "line");
+  const hasBenefitText = item.benefitItems?.some(
+    (entry) => entry.kind === "line",
+  );
   const hasBenefitImages = (item.benefitImageUrls?.length ?? 0) > 0;
   const hasCaution = item.cautionItems?.some((entry) => entry.kind === "line");
 
@@ -37,9 +39,16 @@ export default function EventDetailView({ item }: { item: EventItem }) {
         <div>
           <div className="text-[20px] font-bold text-black">{item.title}</div>
           <div className="mt-1.5 flex flex-col gap-0.5 text-[13px] font-normal text-custom-darkgray">
-            <div>
-              <span>{item.timeRange}</span>
-            </div>
+            {item.targetAudience ? (
+              <div>
+                <span>{item.targetAudience}</span>
+              </div>
+            ) : null}
+            {!item.hideTimeRange ? (
+              <div>
+                <span>{item.timeRange}</span>
+              </div>
+            ) : null}
             <div>
               <span>{item.location}</span>
             </div>
@@ -153,8 +162,8 @@ export default function EventDetailView({ item }: { item: EventItem }) {
           <div className="pt-2.5">
             <SectionTitle>이벤트 유의사항</SectionTitle>
             <ul className="mt-2.5 list-disc space-y-2 pl-5 text-[12px] leading-relaxed text-custom-darkgray">
-              {item.cautionItems!
-                .filter((entry) => entry.kind === "line")
+              {item
+                .cautionItems!.filter((entry) => entry.kind === "line")
                 .map((entry, index) => (
                   <li key={`${entry.text}-${index}`}>{entry.text}</li>
                 ))}
