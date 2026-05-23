@@ -9,7 +9,6 @@ export type BenefitDisplayItem =
   | { kind: "line"; text: string }
   | { kind: "section"; title: string };
 
-/** API caution 미제공 시 프론트 고정 유의사항 (이벤트 id 기준) */
 const EVENT_CAUTION_OVERRIDES: Record<string, BenefitDisplayItem[]> = {
   "7": [
     { kind: "line", text: "참여 비용은 종목별 1회 기준입니다." },
@@ -23,7 +22,10 @@ const EVENT_CAUTION_OVERRIDES: Record<string, BenefitDisplayItem[]> = {
       kind: "line",
       text: "운영진의 안내를 따르지 않거나 개인 부주의로 인해 발생한 부상에 대해서는 주최 측에서 책임지지 않습니다.",
     },
-    { kind: "line", text: "기계가 파손될 경우 책임은 참가자 본인에게 있습니다." },
+    {
+      kind: "line",
+      text: "기계가 파손될 경우 책임은 참가자 본인에게 있습니다.",
+    },
     {
       kind: "line",
       text: "동점자 발생 시, 개별 연락으로 게임을 한 번 더 진행합니다.",
@@ -47,14 +49,51 @@ const EVENT_BENEFIT_IMAGE_OVERRIDES: Record<string, string[]> = {
     "/product/olive_5.webp",
     "/product/olive_3.webp",
   ],
+  "8": ["/product/baemin_5.webp"],
+  "10": ["/product/light.webp"],
+  "13": [
+    "/product/ipad.webp",
+    "/product/standbyme.webp",
+    "/product/newworld.webp",
+  ],
+};
+
+/** 이벤트 id → 대상 (상세 일시 위 표시) */
+const EVENT_TARGET_OVERRIDES: Record<string, string> = {
+  "9": "상명대학교 재학생",
+  "10": "학생회비 납부자",
+  "11": "학생회비 납부자",
+  "12": "상명대학교 재(휴)학생",
+  "13": "상명대학교 학생회비 납부자 재학생",
+  "14": "상명대학교 재(휴)학생 및 외부인",
+};
+
+/** 이벤트 id → 운영 시간 미표시 (상세·목록) */
+const EVENT_HIDE_TIME_RANGE_IDS = new Set(["14"]);
+
+/** 이벤트 목록 썸네일 (목록 표시 순서와 동일) */
+const EVENT_LIST_THUMBNAIL_BY_ID: Record<string, string> = {
+  "7": "/Events/thumb_punch.webp",
+  "8": "/Events/thumb_timer.webp",
+  "9": "/Events/thumb_letter.webp",
+  "10": "/Events/thumb_dress.webp",
+  "11": "/Events/thumb_stamp.webp",
+  "12": "/Events/thumb_polaroid.webp",
+  "13": "/Events/thumb_lucky.webp",
+  "14": "/Events/thumb_visitor.webp",
 };
 
 export type EventItem = {
   id: string;
   title: string;
   timeRange: string; // "10:00 - 22:00"
+  hideTimeRange?: boolean;
+  targetAudience?: string;
   location: string; // "학생회관 앞 A 1-5"
   imageUrl?: string;
+  listThumbnailUrl?: string;
+  homeThumbnailUrl?: string;
+  homeLabel?: string;
   content?: string;
   descriptionLines?: string[];
   howToSteps?: string[];
@@ -136,7 +175,9 @@ function parseBenefitSection(section: string) {
   };
 }
 
-function toBenefitItems(text: string | null | undefined): BenefitDisplayItem[] | undefined {
+function toBenefitItems(
+  text: string | null | undefined,
+): BenefitDisplayItem[] | undefined {
   if (!text?.trim()) return undefined;
 
   if (text.includes("\n")) {
@@ -180,7 +221,9 @@ function pickCaution(api: EventApiDetailItem): string | undefined {
   return trimmed.length > 0 ? trimmed : undefined;
 }
 
-function toCautionItems(caution: string | undefined): BenefitDisplayItem[] | undefined {
+function toCautionItems(
+  caution: string | undefined,
+): BenefitDisplayItem[] | undefined {
   if (!caution) return undefined;
   const lines = toTextLines(caution) ?? [caution];
   return lines.map((text) => ({ kind: "line", text }));
@@ -191,7 +234,10 @@ function resolveCautionImageSlot(api: EventApiDetailItem) {
     ?.map((url) => url.trim())
     .filter(Boolean);
   if (!urls?.length) {
-    return { showCautionImageSlot: false as const, cautionImageUrls: [] as string[] };
+    return {
+      showCautionImageSlot: false as const,
+      cautionImageUrls: [] as string[],
+    };
   }
   return {
     showCautionImageSlot: true as const,
@@ -199,7 +245,9 @@ function resolveCautionImageSlot(api: EventApiDetailItem) {
   };
 }
 
-function resolveCautionItems(api: EventApiDetailItem): BenefitDisplayItem[] | undefined {
+function resolveCautionItems(
+  api: EventApiDetailItem,
+): BenefitDisplayItem[] | undefined {
   const fromApi = toCautionItems(pickCaution(api));
   if (fromApi) return fromApi;
 
@@ -253,20 +301,25 @@ function mapEventApiItemToEventItem(api: EventApiItem): EventItem {
   const start = formatHHmm(api.startTime);
   const end = formatHHmm(api.endTime);
   const timeRange = start && end ? `${start} - ${end}` : start || end || "-";
+  const id = String(api.id);
   return {
-    id: String(api.id),
+    id,
     title: api.title,
     timeRange,
+    hideTimeRange: EVENT_HIDE_TIME_RANGE_IDS.has(id),
     location: api.location,
     imageUrl: api.imageUrls?.[0],
+    listThumbnailUrl: EVENT_LIST_THUMBNAIL_BY_ID[id],
     descriptionLines: toTextLines(api.description),
   };
 }
 
 function mapEventApiDetailToEventItem(api: EventApiDetailItem): EventItem {
   const benefitItems = toBenefitItems(api.productDescription);
+  const id = String(api.id);
   return {
     ...mapEventApiItemToEventItem(api),
+    targetAudience: EVENT_TARGET_OVERRIDES[id],
     content: api.content ?? undefined,
     howToSteps: toTextLines(api.content),
     benefitItems,
@@ -276,9 +329,39 @@ function mapEventApiDetailToEventItem(api: EventApiDetailItem): EventItem {
   };
 }
 
+/** 메인 홈에 노출할 이벤트 id (표시 순서) */
+const HOME_FEATURED_EVENT_IDS = ["7", "9", "13"] as const;
+
+/** 메인 홈 썸네일 (펀치 → 편지 → 럭키드로우) */
+const HOME_EVENT_THUMBNAIL_BY_ID: Record<string, string> = {
+  "7": "/Events/main_punch.png",
+  "9": "/Events/main_letter.png",
+  "13": "/Events/main_lucky.png",
+};
+
+/** 메인 홈 썸네일 하단 라벨 */
+const HOME_EVENT_LABEL_BY_ID: Record<string, string> = {
+  "7": "오락실 펀치",
+  "9": "숨겨둔 편지",
+  "13": "럭키 드로우",
+};
+
 export async function fetchEvents(): Promise<EventItem[]> {
   const data = await getEvents();
   return data.map(mapEventApiItemToEventItem);
+}
+
+export async function fetchHomeEvents(): Promise<EventItem[]> {
+  const items = await fetchEvents();
+  const byId = new Map(items.map((item) => [item.id, item]));
+  return HOME_FEATURED_EVENT_IDS.map((id) => {
+    const item = byId.get(id);
+    if (!item) return null;
+    const homeThumbnailUrl = HOME_EVENT_THUMBNAIL_BY_ID[id];
+    const homeLabel = HOME_EVENT_LABEL_BY_ID[id];
+    if (!homeThumbnailUrl && !homeLabel) return item;
+    return { ...item, homeThumbnailUrl, homeLabel };
+  }).filter((item): item is EventItem => item != null);
 }
 
 export async function fetchEventById(id: string): Promise<EventItem | null> {
