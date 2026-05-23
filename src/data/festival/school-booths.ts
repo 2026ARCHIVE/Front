@@ -40,7 +40,8 @@ export const schoolBoothList: FestivalListItem[] = [
     name: "폴라로이드",
     time: "DAY 1 11:30 ~ 17:00 · DAY 2 11:30 ~ 17:00",
     location: "소나무숲 앞 A-3-12",
-    description: "폴라로이드",
+    description: "축제의 소중한 시간,한장의 추억으로 간직하세요!",
+    menu: [{ name: "폴라로이드 사진 1장", price: "" }],
     imageUrl: "/map/school/school-3.webp",
   },
 ];
