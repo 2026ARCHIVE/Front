@@ -27,7 +27,7 @@ export async function getEvents(options?: { revalidate?: number }) {
   });
   if (!res.ok) throw new Error(`이벤트 목록 조회 실패 (${res.status})`);
 
-  return res.data ?? [];
+  return [...(res.data ?? [])].reverse();
 }
 
 export async function getEvent(id: string, options?: { revalidate?: number }) {
