@@ -7,7 +7,7 @@ import { fetchHomeEvents } from "../../event/_data/eventData";
 export default async function EventSection() {
   const items = await fetchHomeEvents();
   return (
-    <SectionLayout title="대동제 한정 이벤트" link="/event">
+    <SectionLayout title="대동제 한정 이벤트" link="/event" scrollable={false}>
       {items.map((item, idx) => {
         const thumbSrc =
           item.homeThumbnailUrl ?? item.listThumbnailUrl ?? item.imageUrl;
@@ -17,22 +17,22 @@ export default async function EventSection() {
             key={item.id}
             href={`/event/${item.id}`}
             aria-label={`${label} 상세로 이동`}
-            className="flex w-30 shrink-0 snap-start flex-col items-center bg-transparent focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform rounded-lg"
+            className="flex min-w-0 flex-col items-center bg-transparent focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform rounded-lg"
           >
-            <div className="relative h-30 w-30 overflow-hidden bg-transparent">
+            <div className="relative mx-auto aspect-square w-24 max-w-full overflow-hidden bg-transparent">
               {thumbSrc ? (
                 <Image
                   src={thumbSrc}
                   alt={`${label} 썸네일`}
                   fill
-                  sizes="120px"
+                  sizes="96px"
                   className="object-contain"
                   priority={idx === 0}
                   loading={idx === 0 ? "eager" : "lazy"}
                 />
               ) : null}
             </div>
-            <span className="mt-[10px] w-full text-center text-[13px] font-semibold text-custom-gray">
+            <span className="mt-2 w-full text-center text-[12px] font-semibold leading-tight text-custom-gray">
               {label}
             </span>
           </Link>

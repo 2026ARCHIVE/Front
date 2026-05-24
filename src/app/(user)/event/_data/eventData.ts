@@ -340,9 +340,9 @@ const HOME_FEATURED_EVENT_IDS = ["7", "9", "13"] as const;
 
 /** 메인 홈 썸네일 (펀치 → 편지 → 럭키드로우) */
 const HOME_EVENT_THUMBNAIL_BY_ID: Record<string, string> = {
-  "7": "/Events/main_punch.png",
-  "9": "/Events/main_letter.png",
-  "13": "/Events/main_lucky.png",
+  "7": "/Events/main_punch.svg",
+  "9": "/Events/main_letter.svg",
+  "13": "/Events/main_lucky.svg",
 };
 
 /** 메인 홈 썸네일 하단 라벨 */
