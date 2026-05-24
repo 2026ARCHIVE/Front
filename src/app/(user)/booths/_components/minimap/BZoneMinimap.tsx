@@ -56,24 +56,7 @@ const BOTTOM_ROW: { x: number; y: number }[] = [
 
 const BOTTOM_WIDTH = 14.7705;
 
-const ISOLATED_ROW: BZoneSlot[] = [
-  {
-    label: "5",
-    x: 313.014,
-    y: 163.337,
-    width: BOTTOM_WIDTH,
-    locationKey: "A-1-5",
-  },
-  {
-    label: "6",
-    x: 332.447,
-    y: 163.337,
-    width: BOTTOM_WIDTH,
-    locationKey: "A-1-6",
-  },
-];
-
-/** B구역 전체 부스 슬롯 (1–14, 15–25, 우측 5·6) */
+/** B구역 전체 부스 슬롯 (1–14 상단, 15–25 하단) */
 const ALL_SLOTS: BZoneSlot[] = [
   ...TOP_ROW.map((coord, i) => {
     const mapNo = i + 1;
@@ -82,7 +65,7 @@ const ALL_SLOTS: BZoneSlot[] = [
       x: coord.x,
       y: coord.y,
       width: TOP_WIDTHS[i],
-      locationKey: mapNo === 5 || mapNo === 6 ? undefined : `A-1-${mapNo}`,
+      locationKey: `A-1-${mapNo}`,
     };
   }),
   ...BOTTOM_ROW.map((coord, i) => ({
@@ -92,7 +75,6 @@ const ALL_SLOTS: BZoneSlot[] = [
     width: BOTTOM_WIDTH,
     locationKey: `A-2-${i + 1}`,
   })),
-  ...ISOLATED_ROW,
 ];
 
 function findBZoneBooth(
