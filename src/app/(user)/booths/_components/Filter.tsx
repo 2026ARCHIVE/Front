@@ -26,7 +26,7 @@ export default function Filter({
 }: FilterProps) {
   const list = filters ?? [...BOOTH_FILTERS];
   return (
-    <div className="flex overflow-x-auto gap-3 scrollbar-hide snap-x">
+    <div className="flex overflow-x-auto gap-2 scrollbar-hide snap-x">
       {list.map((filter) => (
         <FilterItem
           key={filter}
