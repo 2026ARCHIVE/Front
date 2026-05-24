@@ -17,7 +17,7 @@ export const schoolBoothList: FestivalListItem[] = [
       { name: "펀치 1회", price: "1,000원" },
       { name: "타이머 맞추기 1회", price: "1,000원" },
     ],
-    imageUrl: "/map/school/school-1-final.webp",
+    imageUrl: "/map/school/school-1.webp",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const schoolBoothList: FestivalListItem[] = [
     description:
       "내 마음을 엽서에 담아 보내고, 누군가의 이야기에 살짝 공감해보는 시간!",
     menu: [{ name: "편지 작성 1회", price: "500원" }],
-    imageUrl: "/map/school/school-2-final.webp",
+    imageUrl: "/map/school/school-2.webp",
   },
   {
     id: 3,
@@ -42,6 +42,6 @@ export const schoolBoothList: FestivalListItem[] = [
     location: "소나무숲 앞 A-3-12",
     description: "축제의 소중한 시간,한장의 추억으로 간직하세요!",
     menu: [{ name: "폴라로이드 사진 1장", price: "" }],
-    imageUrl: "/map/school/school-3-final.webp",
+    imageUrl: "/map/school/school-3.webp",
   },
 ];
