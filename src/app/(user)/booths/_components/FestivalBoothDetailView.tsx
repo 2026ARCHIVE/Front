@@ -21,7 +21,7 @@ export default function FestivalBoothDetailView({
           src={item.imageUrl}
           alt={item.name}
           fill
-          className="object-contain object-left"
+          className="object-cover"
           sizes="(max-width: 448px) 100vw, 400px"
           priority
         />
