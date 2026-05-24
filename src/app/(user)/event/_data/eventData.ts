@@ -51,6 +51,12 @@ const EVENT_BENEFIT_IMAGE_OVERRIDES: Record<string, string[]> = {
   ],
   "8": ["/product/baemin_5.webp"],
   "10": ["/product/light.webp"],
+  "11": [
+    "/product/max.webp",
+    "/product/moms.webp",
+    "/product/5000.webp",
+    "/product/coupon.webp",
+  ],
   "13": [
     "/product/ipad.webp",
     "/product/standbyme.webp",
