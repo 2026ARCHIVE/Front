@@ -98,8 +98,8 @@ export const experienceList: FestivalListItem[] = [
     description: "빙수 판매",
     imageUrl: "/map/experience/booth-06.webp",
     menu: [
-      { name: "팥빙수", price: "3,000원" },
-      { name: "초코빙수", price: "4,000원" },
+      { name: "팥빙수", price: "4,500원" },
+      { name: "초코빙수", price: "5,000원" },
       { name: "인절미 콩가루 옵션", price: "500원" },
     ],
   },
