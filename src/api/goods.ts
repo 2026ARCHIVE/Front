@@ -14,6 +14,7 @@ export interface Goods {
 export interface GoodsDetail extends Goods {
   salesOpenTime: string;
   salesCloseTime: string;
+  caution: string;
 }
 
 export async function getGoods() {
