@@ -24,7 +24,7 @@ export default function SectionLayout({
         className={
           scrollable
             ? "flex overflow-x-auto gap-4.5 scrollbar-hide snap-x"
-            : "grid grid-cols-3 gap-2"
+            : "flex justify-between"
         }
       >
         {children}

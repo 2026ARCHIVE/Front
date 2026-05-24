@@ -17,15 +17,15 @@ export default async function EventSection() {
             key={item.id}
             href={`/event/${item.id}`}
             aria-label={`${label} 상세로 이동`}
-            className="flex min-w-0 flex-col items-center bg-transparent focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform rounded-lg"
+            className="flex w-[95px] flex-col items-start bg-transparent focus:outline-none focus:ring-2 focus:ring-black/20 active:scale-[0.98] transition-transform rounded-lg"
           >
-            <div className="relative mx-auto aspect-square w-24 max-w-full overflow-hidden bg-transparent">
+            <div className="relative h-[90px] w-[95px] overflow-hidden bg-transparent">
               {thumbSrc ? (
                 <Image
                   src={thumbSrc}
                   alt={`${label} 썸네일`}
                   fill
-                  sizes="96px"
+                  sizes="95px"
                   className="object-contain"
                   priority={idx === 0}
                   loading={idx === 0 ? "eager" : "lazy"}
