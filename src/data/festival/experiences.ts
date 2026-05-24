@@ -96,7 +96,7 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 A-2-10",
     zone: "B",
     description: "빙수 판매",
-    imageUrl: "/map/experience/booth-06.webp",
+    imageUrl: "/map/experience/booth-06.jpeg",
     menu: [
       { name: "팥빙수", price: "4,500원" },
       { name: "초코빙수", price: "5,000원" },
