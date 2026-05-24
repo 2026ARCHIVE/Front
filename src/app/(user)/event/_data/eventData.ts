@@ -89,6 +89,14 @@ const EVENT_LIST_THUMBNAIL_BY_ID: Record<string, string> = {
   "14": "/Events/thumb_visitor.webp",
 };
 
+/** 이벤트 id → 상세 상단 배너 (public 경로, API 이미지보다 우선) */
+const EVENT_DETAIL_BANNER_BY_ID: Record<string, string> = {
+  "10": "/Events/banner_dress.webp",
+  "11": "/Events/banner_stamp.webp",
+  "12": "/Events/banner_polaroid.webp",
+  "13": "/Events/banner_lucky.webp",
+};
+
 export type EventItem = {
   id: string;
   title: string;
@@ -329,7 +337,7 @@ function mapEventApiItemToEventItem(api: EventApiItem): EventItem {
     timeRange,
     hideTimeRange: EVENT_HIDE_TIME_RANGE_IDS.has(id),
     location: api.location,
-    imageUrl: api.imageUrls?.[0],
+    imageUrl: EVENT_DETAIL_BANNER_BY_ID[id] ?? api.imageUrls?.[0],
     listThumbnailUrl: EVENT_LIST_THUMBNAIL_BY_ID[id],
     descriptionLines: toTextLines(api.description),
   };
