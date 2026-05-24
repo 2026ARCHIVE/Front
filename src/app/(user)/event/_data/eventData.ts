@@ -127,6 +127,21 @@ function toTextLines(text: string | null | undefined) {
   return lines.length > 0 ? lines : undefined;
 }
 
+/** 드레스코드 등: 한 줄에 27일·28일이 붙어 있으면 28일 앞에서 분리 */
+function normalizeHowToSteps(id: string, content: string | null | undefined) {
+  const lines = toTextLines(content);
+  if (!lines) return undefined;
+  if (id !== "10") return lines;
+
+  return lines.flatMap((line) => {
+    const parts = line
+      .split(/(?=28일:)/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+    return parts.length > 1 ? parts : [line];
+  });
+}
+
 function normalizeImageUrls(urls: unknown): string[] | undefined {
   if (!Array.isArray(urls)) return undefined;
   const normalized = urls
@@ -327,7 +342,7 @@ function mapEventApiDetailToEventItem(api: EventApiDetailItem): EventItem {
     ...mapEventApiItemToEventItem(api),
     targetAudience: EVENT_TARGET_OVERRIDES[id],
     content: api.content ?? undefined,
-    howToSteps: toTextLines(api.content),
+    howToSteps: normalizeHowToSteps(id, api.content),
     benefitItems,
     benefitImageUrls: resolveBenefitImageUrls(api, benefitItems),
     cautionItems: resolveCautionItems(api),

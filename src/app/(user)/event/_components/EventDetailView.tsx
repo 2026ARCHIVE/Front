@@ -56,9 +56,26 @@ function IndentedText({
 }
 
 function HowToStepItem({ text }: { text: string }) {
+  const trimmed = text.trim();
+  const numbered = splitListMarker(trimmed);
+  const dateOnly = !numbered && /^(\d+일:)(\s*)([\s\S]+)$/.exec(trimmed);
+
   return (
     <div className="border-b border-[#ECEEF0] py-2 text-[16px] font-semibold leading-relaxed text-black">
-      <IndentedText text={text} />
+      {dateOnly ? (
+        <div className="flex">
+          <span className="shrink-0 invisible" aria-hidden="true">
+            1.{" "}
+          </span>
+          <span className="shrink-0">{dateOnly[1]}</span>
+          <span className="shrink-0 whitespace-pre">
+            {dateOnly[2].length > 0 ? dateOnly[2] : " "}
+          </span>
+          <span className="min-w-0">{dateOnly[3]}</span>
+        </div>
+      ) : (
+        <IndentedText text={trimmed} />
+      )}
     </div>
   );
 }
