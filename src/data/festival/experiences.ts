@@ -268,7 +268,7 @@ export const experienceList: FestivalListItem[] = [
     time: "DAY 1 12:00-15:00 · DAY 2 11:00-15:00",
     location: "학생회관 앞 A-1-11",
     zone: "B",
-    description: "마음 처방전, 응원 메시지 벽, 걱정 인형 만들기",
+    description: "마음처방전 - 메시지 카드, 응원 메시지 벽, 걱정 인형 만들기",
     imageUrl: "/map/experience/booth-18.webp",
     menu: [{ name: " 참가비 무료", price: "" }],
   },
