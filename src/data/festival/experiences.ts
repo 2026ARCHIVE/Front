@@ -84,7 +84,8 @@ export const experienceList: FestivalListItem[] = [
       { name: "번호 1개 넣기", price: "1,000원" },
       { name: "번호 3개 넣기", price: "1,500원" },
       { name: "번호 2개 뽑기", price: "2,000원" },
-      { name: "농구 게임 1회", price: "2,000원" },
+      { name: "농구 게임 1회", price: "1,500원" },
+      { name: "슬로건ㄱ", price: "7,000원" },
     ],
   },
   {
@@ -145,7 +146,7 @@ export const experienceList: FestivalListItem[] = [
     location: "학생회관 앞 A-1-6",
     zone: "B",
     description: "7.77초 맞춰라 및 음식 판매",
-    imageUrl: "/map/experience/booth-09.webp",
+    imageUrl: "/map/experience/booth-09-change.webp",
     menu: [
       { name: "게임 참여 1회", price: "1,000원" },
       { name: "물냉면+만두 2개", price: "6,000원" },
@@ -192,7 +193,8 @@ export const experienceList: FestivalListItem[] = [
     time: "DAY 1 11:30-18:00 · DAY 2 11:30-18:00",
     location: "학생회관 앞 A-1-8",
     zone: "B",
-    description: "애니멀 페어링",
+    description:
+      "강아지 고양이 토끼 여우 등 다양한 동물상으로 매칭되어 원하는 이상형을 만날 수 있는 특별한 소개팅입니다💗",
     imageUrl: "/map/experience/booth-12.webp",
     menu: [
       { name: "접수(2회)", price: "1,000원" },
@@ -348,10 +350,11 @@ export const experienceList: FestivalListItem[] = [
     description: "굿즈 판매 부스",
     imageUrl: "/map/experience/booth-22.webp",
     menu: [
-      { name: "키링", price: "2,000원" },
-      { name: "스티커", price: "1,500원" },
-      { name: "티셔츠", price: "5,000원" },
-      { name: "핀버튼", price: "2,000원" },
+      { name: "키링/핀뱃지", price: "2,500원" },
+      { name: "티셔츠", price: "8,000원" },
+      { name: "스티커", price: "▼" },
+      { name: "낱장", price: "1,500원" },
+      { name: "5개 묶음", price: "5,000원" },
     ],
   },
   {
