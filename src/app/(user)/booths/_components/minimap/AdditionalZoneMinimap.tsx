@@ -13,8 +13,8 @@ const BOOTH_HEIGHT = 25.6541;
 
 /** 상단 5칸 (좌 2칸 빈 슬롯 · 1–3) — additional-final.svg y=77.3887 */
 const TOP_ROW: AdditionalZoneSlot[] = [
-  { label: "", x: 175.389, y: 77.3887, width: BOOTH_WIDTH, showLabel: false },
-  { label: "", x: 194.822, y: 77.3887, width: BOOTH_WIDTH, showLabel: false },
+  // { label: "", x: 175.389, y: 77.3887, width: BOOTH_WIDTH, showLabel: false },
+  // { label: "", x: 194.822, y: 77.3887, width: BOOTH_WIDTH, showLabel: false },
   { label: "1", x: 214.256, y: 77.3887, width: BOOTH_WIDTH },
   { label: "2", x: 232.916, y: 77.3887, width: BOOTH_WIDTH },
   { label: "3", x: 252.35, y: 77.3887, width: BOOTH_WIDTH },
