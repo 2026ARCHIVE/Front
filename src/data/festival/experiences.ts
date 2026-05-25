@@ -416,7 +416,7 @@ export const experienceList: FestivalListItem[] = [
     name: "<인연(緣) 한 상>",
     host: "연",
     time: "DAY 1 10:00-18:00 · DAY 2 10:00-18:00",
-    location: "소나무 숲 앞 A-3-22",
+    location: "소나무 숲 앞 A-3-23",
     zone: "A",
     description: "민속촌 분위기의 음식 판매 및 게임 부스",
     imageUrl: "/map/experience/booth-26.webp",
