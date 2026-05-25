@@ -10,7 +10,7 @@ export const externalCompanyList: FestivalListItem[] = [
     name: "포토이즘",
     host: "외부부스",
     time: "DAY 1 11:00 ~ 22:00 · DAY 2 11:00 ~ 22:00",
-    location: "학생회관 앞 A-1-1 · 계단 좌측 A-3-13",
+    location: "학생회관 앞 A-1-1 · 본관 앞 A-3-17",
     description:
       "대동제 기간동안 운영되는 포토이즘입니다. 수뭉이 버전과 Archive 버전 두가지가 있습니다",
     imageUrl: "/map/external/photoism.webp",
