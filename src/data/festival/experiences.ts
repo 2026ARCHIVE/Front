@@ -148,7 +148,7 @@ export const experienceList: FestivalListItem[] = [
     menu: [
       { name: "게임 참여 1회", price: "무료" },
       { name: "물냉면+만두 2개", price: "5,000원" },
-      { name: "불냉면+만두 2개", price: "6,000원" },
+      { name: "불냉면+만두 2개", price: "5,000원" },
     ],
   },
   {
