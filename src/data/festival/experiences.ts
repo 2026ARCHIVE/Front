@@ -116,6 +116,7 @@ export const experienceList: FestivalListItem[] = [
       { name: "멜론소다", price: "2,000원" },
       { name: "얼박사", price: "2,000원" },
       { name: "체리콕", price: "2,000원" },
+      { name: "메론 소다 아이스크림 토핑 추가", price: "500원" },
     ],
   },
   {
@@ -269,16 +270,7 @@ export const experienceList: FestivalListItem[] = [
     zone: "B",
     description: "마음 처방전, 응원 메시지 벽, 걱정 인형 만들기",
     imageUrl: "/map/experience/booth-18.webp",
-    menu: [
-      { name: "양말목 팔찌", price: "2,000원" },
-      { name: "양말목 클로버 키링", price: "2,000원" },
-      { name: "양말목 꽃모양 키링", price: "2,000원" },
-      { name: "버섯 키링", price: "3,500원" },
-      { name: "푸딩 키링", price: "4,000원" },
-      { name: "주머니 키링", price: "5,000원" },
-      { name: "토마토 키링", price: "1,000원" },
-      { name: "기타 코바늘 인형 키링", price: "3,000원" },
-    ],
+    menu: [{ name: " 참가비 무료", price: "" }],
   },
   {
     id: 18,
