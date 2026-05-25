@@ -12,6 +12,74 @@ function GrayBox({ children }: { children: React.ReactNode }) {
   return <div className="mt-3 bg-custom-lightgray">{children}</div>;
 }
 
+function splitListMarker(text: string) {
+  const match = text.match(/^((?:\d+\.|-))(\s*)([\s\S]+)$/);
+  if (!match) return null;
+
+  return {
+    marker: match[1],
+    spacing: match[2].length > 0 ? match[2] : " ",
+    body: match[3],
+  };
+}
+
+function IndentedText({
+  text,
+  className,
+  fallbackBullet = false,
+}: {
+  text: string;
+  className?: string;
+  fallbackBullet?: boolean;
+}) {
+  const parts = splitListMarker(text);
+  if (!parts) {
+    if (fallbackBullet) {
+      return (
+        <div className={className ? `flex gap-1.5 ${className}` : "flex gap-1.5"}>
+          <span className="shrink-0">•</span>
+          <span className="min-w-0">{text}</span>
+        </div>
+      );
+    }
+
+    return <span className={className}>{text}</span>;
+  }
+
+  return (
+    <div className={className ? `flex ${className}` : "flex"}>
+      <span className="shrink-0">{parts.marker}</span>
+      <span className="shrink-0 whitespace-pre">{parts.spacing}</span>
+      <span className="min-w-0">{parts.body}</span>
+    </div>
+  );
+}
+
+function HowToStepItem({ text }: { text: string }) {
+  const trimmed = text.trim();
+  const numbered = splitListMarker(trimmed);
+  const dateOnly = !numbered && /^(\d+일:)(\s*)([\s\S]+)$/.exec(trimmed);
+
+  return (
+    <div className="border-b border-[#ECEEF0] py-2 text-[16px] font-semibold leading-relaxed text-black">
+      {dateOnly ? (
+        <div className="flex">
+          <span className="shrink-0 invisible" aria-hidden="true">
+            1.{" "}
+          </span>
+          <span className="shrink-0">{dateOnly[1]}</span>
+          <span className="shrink-0 whitespace-pre">
+            {dateOnly[2].length > 0 ? dateOnly[2] : " "}
+          </span>
+          <span className="min-w-0">{dateOnly[3]}</span>
+        </div>
+      ) : (
+        <IndentedText text={trimmed} />
+      )}
+    </div>
+  );
+}
+
 export default function EventDetailView({ item }: { item: EventItem }) {
   const bannerSrc = item.imageUrl;
   const hasHowTo = (item.howToSteps?.length ?? 0) > 0;
@@ -70,12 +138,7 @@ export default function EventDetailView({ item }: { item: EventItem }) {
             <SectionTitle>진행 방법</SectionTitle>
             <div className="flex flex-col">
               {item.howToSteps!.map((s) => (
-                <div
-                  key={s}
-                  className="border-b border-[#ECEEF0] py-2 text-[16px] font-semibold text-black"
-                >
-                  {s}
-                </div>
+                <HowToStepItem key={s} text={s} />
               ))}
             </div>
           </div>
@@ -114,9 +177,10 @@ export default function EventDetailView({ item }: { item: EventItem }) {
                         key={`${entry.text}-${index}`}
                         className="flex flex-col gap-2"
                       >
-                        <p className="text-[14px] font-semibold leading-relaxed text-black">
-                          {entry.text}
-                        </p>
+                        <IndentedText
+                          text={entry.text}
+                          className="text-[14px] font-semibold leading-relaxed text-black"
+                        />
                         {imageUrl ? (
                           <div className="relative aspect-[350/123] w-full overflow-hidden bg-gray-200">
                             <Image
@@ -161,11 +225,13 @@ export default function EventDetailView({ item }: { item: EventItem }) {
         {hasCaution && (
           <div className="pt-2.5">
             <SectionTitle>이벤트 유의사항</SectionTitle>
-            <ul className="mt-2.5 list-disc space-y-2 pl-5 text-[12px] leading-relaxed text-custom-darkgray">
+            <ul className="mt-2.5 list-none space-y-2 text-[12px] leading-relaxed text-custom-darkgray">
               {item
                 .cautionItems!.filter((entry) => entry.kind === "line")
                 .map((entry, index) => (
-                  <li key={`${entry.text}-${index}`}>{entry.text}</li>
+                  <li key={`${entry.text}-${index}`}>
+                    <IndentedText text={entry.text} fallbackBullet />
+                  </li>
                 ))}
             </ul>
           </div>

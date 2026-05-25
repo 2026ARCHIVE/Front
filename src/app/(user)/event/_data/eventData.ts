@@ -51,6 +51,12 @@ const EVENT_BENEFIT_IMAGE_OVERRIDES: Record<string, string[]> = {
   ],
   "8": ["/product/baemin_5.webp"],
   "10": ["/product/light.webp"],
+  "11": [
+    "/product/max.webp",
+    "/product/moms.webp",
+    "/product/5000.webp",
+    "/product/coupon.webp",
+  ],
   "13": [
     "/product/ipad.webp",
     "/product/standbyme.webp",
@@ -81,6 +87,14 @@ const EVENT_LIST_THUMBNAIL_BY_ID: Record<string, string> = {
   "12": "/Events/thumb_polaroid.webp",
   "13": "/Events/thumb_lucky.webp",
   "14": "/Events/thumb_visitor.webp",
+};
+
+/** 이벤트 id → 상세 상단 배너 (public 경로, API 이미지보다 우선) */
+const EVENT_DETAIL_BANNER_BY_ID: Record<string, string> = {
+  "10": "/Events/banner_dress.webp",
+  "11": "/Events/banner_stamp.webp",
+  "12": "/Events/banner_polaroid.webp",
+  "13": "/Events/banner_lucky.webp",
 };
 
 export type EventItem = {
@@ -119,6 +133,21 @@ function toTextLines(text: string | null | undefined) {
     .map((v) => v.trim())
     .filter(Boolean);
   return lines.length > 0 ? lines : undefined;
+}
+
+/** 드레스코드 등: 한 줄에 27일·28일이 붙어 있으면 28일 앞에서 분리 */
+function normalizeHowToSteps(id: string, content: string | null | undefined) {
+  const lines = toTextLines(content);
+  if (!lines) return undefined;
+  if (id !== "10") return lines;
+
+  return lines.flatMap((line) => {
+    const parts = line
+      .split(/(?=28일:)/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+    return parts.length > 1 ? parts : [line];
+  });
 }
 
 function normalizeImageUrls(urls: unknown): string[] | undefined {
@@ -308,7 +337,7 @@ function mapEventApiItemToEventItem(api: EventApiItem): EventItem {
     timeRange,
     hideTimeRange: EVENT_HIDE_TIME_RANGE_IDS.has(id),
     location: api.location,
-    imageUrl: api.imageUrls?.[0],
+    imageUrl: EVENT_DETAIL_BANNER_BY_ID[id] ?? api.imageUrls?.[0],
     listThumbnailUrl: EVENT_LIST_THUMBNAIL_BY_ID[id],
     descriptionLines: toTextLines(api.description),
   };
@@ -321,7 +350,7 @@ function mapEventApiDetailToEventItem(api: EventApiDetailItem): EventItem {
     ...mapEventApiItemToEventItem(api),
     targetAudience: EVENT_TARGET_OVERRIDES[id],
     content: api.content ?? undefined,
-    howToSteps: toTextLines(api.content),
+    howToSteps: normalizeHowToSteps(id, api.content),
     benefitItems,
     benefitImageUrls: resolveBenefitImageUrls(api, benefitItems),
     cautionItems: resolveCautionItems(api),
@@ -334,9 +363,9 @@ const HOME_FEATURED_EVENT_IDS = ["7", "9", "13"] as const;
 
 /** 메인 홈 썸네일 (펀치 → 편지 → 럭키드로우) */
 const HOME_EVENT_THUMBNAIL_BY_ID: Record<string, string> = {
-  "7": "/Events/main_punch.png",
-  "9": "/Events/main_letter.png",
-  "13": "/Events/main_lucky.png",
+  "7": "/Events/main_punch.svg",
+  "9": "/Events/main_letter.svg",
+  "13": "/Events/main_lucky.svg",
 };
 
 /** 메인 홈 썸네일 하단 라벨 */
