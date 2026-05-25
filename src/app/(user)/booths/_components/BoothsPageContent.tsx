@@ -74,7 +74,13 @@ export default function BoothsPageContent() {
         keyword === "" ||
         booth.name.includes(keyword) ||
         booth.host.includes(keyword) ||
-        booth.location.includes(keyword);
+        booth.location.includes(keyword) ||
+        booth.name.includes(keyword.toUpperCase()) ||
+        booth.host.includes(keyword.toUpperCase()) ||
+        booth.location.includes(keyword.toUpperCase()) ||
+        booth.name.includes(keyword.toLowerCase()) ||
+        booth.host.includes(keyword.toLowerCase()) ||
+        booth.location.includes(keyword.toLowerCase());
       const matchesFilter =
         activeFilter === "전체" || booth.category === activeFilter;
       return matchesKeyword && matchesFilter;
