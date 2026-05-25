@@ -78,14 +78,11 @@ export const experienceList: FestivalListItem[] = [
     time: "DAY 1 11:00-18:00 · DAY 2 11:00-18:00",
     location: "학생회관 앞 A-2-1",
     zone: "B",
-    description: "사탕팅 및 농구 게임",
+    description: "농구 게임 및 굿즈 판매",
     imageUrl: "/map/experience/booth-05.webp",
     menu: [
-      { name: "번호 1개 넣기", price: "1,000원" },
-      { name: "번호 3개 넣기", price: "1,500원" },
-      { name: "번호 2개 뽑기", price: "2,000원" },
       { name: "농구 게임 1회", price: "1,500원" },
-      { name: "슬로건ㄱ", price: "7,000원" },
+      { name: "슬로건", price: "7,000원" },
     ],
   },
   {
