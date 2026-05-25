@@ -25,7 +25,9 @@ export default function BoothsPageContent() {
   const [inputValue, setInputValue] = React.useState(searchKeywordFromUrl);
 
   React.useEffect(() => {
-    setInputValue(searchKeywordFromUrl);
+    setTimeout(() => {
+      setInputValue(searchKeywordFromUrl);
+    }, 0);
   }, [searchKeywordFromUrl]);
 
   React.useEffect(() => {
@@ -42,13 +44,7 @@ export default function BoothsPageContent() {
     }, 300);
 
     return () => window.clearTimeout(timer);
-  }, [
-    inputValue,
-    searchKeywordFromUrl,
-    pathname,
-    router,
-    searchParams,
-  ]);
+  }, [inputValue, searchKeywordFromUrl, pathname, router, searchParams]);
 
   const updateQuery = React.useCallback(
     (next: { filter?: BoothFilter; q?: string }) => {

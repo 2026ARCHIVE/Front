@@ -5,7 +5,7 @@ import type { FestivalListItem } from "./types";
 export const schoolBoothList: FestivalListItem[] = [
   {
     id: 1,
-    boothNo: 6,
+    boothNo: 9,
     zone: "A",
     host: "총학생회",
     name: "오락실 부스",
@@ -21,7 +21,7 @@ export const schoolBoothList: FestivalListItem[] = [
   },
   {
     id: 2,
-    boothNo: 7,
+    boothNo: 10,
     zone: "A",
     host: "총학생회",
     name: "숨겨둔 편지",
@@ -34,7 +34,7 @@ export const schoolBoothList: FestivalListItem[] = [
   },
   {
     id: 3,
-    boothNo: 7,
+    boothNo: 10,
     zone: "A",
     host: "총학생회",
     name: "폴라로이드",

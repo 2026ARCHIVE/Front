@@ -23,7 +23,7 @@ export default function MiniMap({ boothNo, zone, location }: Props) {
   if (zone === "B") {
     return (
       <div className="w-full overflow-hidden rounded-lg border border-[#ECEFF0] bg-white p-2">
-        <BZoneMinimap activeSlotId={slotId} location={location} />
+        <BZoneMinimap activeSlotId={slotId} />
       </div>
     );
   }
@@ -39,7 +39,7 @@ export default function MiniMap({ boothNo, zone, location }: Props) {
   if (zone === "additional") {
     return (
       <div className="w-full overflow-hidden rounded-lg border border-[#ECEFF0] bg-white p-2">
-        <AdditionalZoneMinimap activeSlotId={slotId} location={location} />
+        <AdditionalZoneMinimap activeSlotId={slotId} />
       </div>
     );
   }
