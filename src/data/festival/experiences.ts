@@ -113,9 +113,9 @@ export const experienceList: FestivalListItem[] = [
     imageUrl: "/map/experience/booth-07.webp",
     menu: [
       { name: "입장료", price: "1,000원" },
-      { name: "멜론소다", price: "1,500원" },
-      { name: "얼박사", price: "1,500원" },
-      { name: "체리콕", price: "1,500원" },
+      { name: "멜론소다", price: "2,000원" },
+      { name: "얼박사", price: "2,000원" },
+      { name: "체리콕", price: "2,000원" },
     ],
   },
   {
