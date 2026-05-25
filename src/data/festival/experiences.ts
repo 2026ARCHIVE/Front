@@ -146,8 +146,8 @@ export const experienceList: FestivalListItem[] = [
     description: "7.77초 맞춰라 및 음식 판매",
     imageUrl: "/map/experience/booth-09-change.webp",
     menu: [
-      { name: "게임 참여 1회", price: "1,000원" },
-      { name: "물냉면+만두 2개", price: "6,000원" },
+      { name: "게임 참여 1회", price: "무료" },
+      { name: "물냉면+만두 2개", price: "5,000원" },
       { name: "불냉면+만두 2개", price: "6,000원" },
     ],
   },
