@@ -516,10 +516,9 @@ export const experienceList: FestivalListItem[] = [
     description: "음식 판매",
     imageUrl: "/map/experience/booth-31.webp",
     menu: [
-      { name: "본인 번호 넣기", price: "500원" },
-      { name: "상대방 번호 뽑기", price: "500원" },
-      { name: "에이드(3종)", price: "2,500원" },
-      { name: "쿨링시트(2매입)", price: "1,000원" },
+      { name: "불닭쌈", price: "3,500원" },
+      { name: "콘치즈", price: "3,500원" },
+      { name: "불닭쌈+콘치즈 세트", price: "5,000원" },
     ],
   },
   {
