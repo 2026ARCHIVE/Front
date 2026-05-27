@@ -43,7 +43,7 @@ export const experienceList: FestivalListItem[] = [
     time: "DAY 1 10:00-18:00 · DAY 2 10:00-18:00",
     location: "학생회관 앞 A-2-4",
     zone: "B",
-    description: "실크 스트린을 통한 옷 제작 및 디제잉 운영",
+    description: "실크 스크린을 통한 옷 제작 및 디제잉 운영",
     imageUrl: "/map/experience/booth-03.webp",
     menu: [
       { name: "옷+체험", price: "9,900원" },
@@ -171,7 +171,7 @@ export const experienceList: FestivalListItem[] = [
     time: "DAY 1 13:00-17:00 · DAY 2 13:00-17:00",
     location: "소나무 숲 앞 A-3-21",
     zone: "A",
-    description: "실크스크린을 활용한 제품 판매 및 그래픽 굿즈 판매",
+    description: "실크 스크린을 활용한 제품 판매 및 그래픽 굿즈 판매",
     imageUrl: "/map/experience/booth-11.webp",
     menu: [
       { name: "티셔츠(2종)", price: "25,000원" },
